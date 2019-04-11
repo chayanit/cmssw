@@ -15,12 +15,13 @@ step1Defaults = {'--relval'      : None, # need to be explicitly set
                  }
 # step1 gensim: for postLS1
 step1Up2015Defaults = {'-s' : 'GEN,SIM',
-                             '-n'            : 10,
-                             '--conditions'  : 'auto:run2_mc',
-                             '--beamspot'    : 'Realistic50ns13TeVCollision',
-                             '--datatier'    : 'GEN-SIM',
-                             '--eventcontent': 'FEVTDEBUG',
-                             '--era'         : 'Run2_2016'
+                             '-n'              : 10,
+                             '--conditions'    : 'auto:run2_mc',
+                             '--beamspot'      : 'Realistic50ns13TeVCollision',
+                             '--datatier'      : 'GEN-SIM',
+                             '--eventcontent'  : 'FEVTDEBUG',
+                             '--era'           : 'Run2_2016',
+			     '--runUnscheduled': '',
                              }
 # step1 gensim: for 2017
 step1Up2017Defaults = merge ([{'--conditions':'auto:phase1_2017_realistic','--era':'Run2_2017','--beamspot':'Realistic25ns13TeVEarly2017Collision'},step1Up2015Defaults])
@@ -1249,19 +1250,22 @@ step1GenDefaults=merge([{'-s':'GEN,VALIDATION:genvalid',
                          '--relval':'250000,5000',
                          '--eventcontent':'RAWSIM,DQM',
                          '--datatier':'GEN,DQMIO',
-                         '--conditions':'auto:run2_mc_FULL'
+                         '--conditions':'auto:run2_mc_FULL',
+			 '--runUnscheduled':'',
                          },
                         step1Defaults])
 
 step1HadronizerDefaults=merge([{'--datatier':'GEN-SIM,DQMIO',
-                           '--relval':'200000,5000'
+                           '--relval':'200000,5000',
+			   '--runUnscheduled':'',
                             },step1GenDefaults])
 
 step1LHEDefaults=merge([{'-s':'LHE',
                          '--relval':'200000,5000',
                          '--eventcontent':'LHE',
                          '--datatier':'GEN',
-                         '--conditions':'auto:run2_mc_FULL'
+                         '--conditions':'auto:run2_mc_FULL',
+			 '--runUnscheduled':'',
                          },
                         step1Defaults])
 
@@ -1514,33 +1518,36 @@ step2Defaults = { '-s'            : 'DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@fake',
                   '--conditions'  : 'auto:run1_mc',
                   }
 #for 2015
-step2Upg2015Defaults = {'-s'     :'DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2016',
-                 '--conditions'  :'auto:run2_mc',
-                 '--datatier'    :'GEN-SIM-DIGI-RAW-HLTDEBUG',
-                 '--eventcontent':'FEVTDEBUGHLT',
-                 '--era'         :'Run2_2016',
-                 '-n'            :'10',
+step2Upg2015Defaults = {'-s'       :'DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2016',
+                 '--conditions'    :'auto:run2_mc',
+                 '--datatier'      :'GEN-SIM-DIGI-RAW-HLTDEBUG',
+                 '--eventcontent'  :'FEVTDEBUGHLT',
+                 '--era'           :'Run2_2016',
+                 '-n'              :'10',
+		 '--runUnscheduled':'',
                   }
 step2Upg2015Defaults50ns = merge([{'-s':'DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval50ns','--conditions':'auto:run2_mc_50ns','--era':'Run2_50ns'},step2Upg2015Defaults])
 
 #for 2017
-step2Upg2017Defaults = {'-s'     :'DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2017',
-                 '--conditions'  :'auto:phase1_2017_realistic',
-                 '--datatier'    :'GEN-SIM-DIGI-RAW-HLTDEBUG',
-                 '--eventcontent':'FEVTDEBUGHLT',
-                 '--era'         :'Run2_2017',
-                 '-n'            :'10',
-                 '--geometry'    :'DB:Extended',
+step2Upg2017Defaults = {'-s'       :'DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2017',
+                 '--conditions'    :'auto:phase1_2017_realistic',
+                 '--datatier'      :'GEN-SIM-DIGI-RAW-HLTDEBUG',
+                 '--eventcontent'  :'FEVTDEBUGHLT',
+                 '--era'           :'Run2_2017',
+                 '-n'              :'10',
+                 '--geometry'      :'DB:Extended',
+		 '--runUnscheduled':'',
                   }
 
 #for 2018
-step2Upg2018Defaults = {'-s'     :'DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2018',
-                 '--conditions'  :'auto:phase1_2018_realistic',
-                 '--datatier'    :'GEN-SIM-DIGI-RAW-HLTDEBUG',
-                 '--eventcontent':'FEVTDEBUGHLT',
-                 '--era'         :'Run2_2018',
-                 '-n'            :'10',
-                 '--geometry'    :'DB:Extended',
+step2Upg2018Defaults = {'-s'       :'DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2018',
+                 '--conditions'    :'auto:phase1_2018_realistic',
+                 '--datatier'      :'GEN-SIM-DIGI-RAW-HLTDEBUG',
+                 '--eventcontent'  :'FEVTDEBUGHLT',
+                 '--era'           :'Run2_2018',
+                 '-n'              :'10',
+                 '--geometry'      :'DB:Extended',
+		 '--runUnscheduled':'',
                   }
 
 
@@ -2445,7 +2452,8 @@ steps['HARVESTGEN']={'-s':'HARVESTING:genHarvesting',
                      '--mc':'',
                      '--era' :'Run2_2016',
                      '--filetype':'DQM',
-                     '--filein':'file:step1_inDQM.root'
+                     '--filein':'file:step1_inDQM.root',
+		     '--runUnscheduled':'',
                   }
 
 steps['HARVESTGEN2']=merge([{'--filein':'file:step2_inDQM.root'},steps['HARVESTGEN']])
@@ -2783,12 +2791,13 @@ steps['REMINIAOD_data2017'] = stepReMiniAODData17
 try : stepMiniAODData = remove(stepMiniAODDataUP15,'--era')
 except : stepMiniAODData = remove(stepMiniAODDataUP15,'--customise')
 
-stepMiniAODMC = merge([{'--conditions'   : 'auto:run2_mc',
-                        '--mc'           : '',
-                        '--era'          : 'Run2_2016',
-                        '--datatier'     : 'MINIAODSIM',
-                        '--eventcontent' : 'MINIAODSIM',
-                        '--filein'       :'file:step3.root'
+stepMiniAODMC = merge([{'--conditions'    : 'auto:run2_mc',
+                        '--mc'            : '',
+                        '--era'           : 'Run2_2016',
+                        '--datatier'      : 'MINIAODSIM',
+                        '--eventcontent'  : 'MINIAODSIM',
+                        '--filein'        : 'file:step3.root',
+			'--runUnscheduled': '',
                         },stepMiniAODDefaults])
 
 steps['REMINIAOD_mc2016'] = merge([{'-s' : 'PAT,VALIDATION:@miniAODValidation,DQM:@miniAODDQM',
@@ -2820,6 +2829,7 @@ steps['DBLMINIAODMCUP15NODQM'] = merge([{'--conditions':'auto:run2_mc',
                                          '--eventcontent':'MINIAOD',},stepMiniAODMC])
 
 #MiniAOD 2017
+steps['MINIAODMCUP17']   =merge([{'--conditions':'auto:phase1_2017_realistic','--era':'Run2_2017'},stepMiniAODMC])
 steps['MINIAODMCUP17FS']   =merge([{'--filein':'file:step1.root','--fast':'','--conditions':'auto:phase1_2017_realistic','--era':'Run2_2017_FastSim'},stepMiniAODMC])
 
 #MiniAOD 2018
@@ -2827,12 +2837,12 @@ steps['MINIAODMCUP18']   =merge([{'--conditions':'auto:phase1_2018_realistic','-
 steps['MINIAODMCUP18bParking']   =merge([{'--conditions':'auto:phase1_2018_realistic','--era':'Run2_2018,bParking'},stepMiniAODMC])
 steps['MINIAODMCUP18FS']   =merge([{'--filein':'file:step1.root','--fast':'','--conditions':'auto:phase1_2018_realistic','--era':'Run2_2018_FastSim'},stepMiniAODMC])
 
-stepNanoAODDefaults = { '-s': 'NANO,DQM:@nanoAODDQM', '-n': 1000 }
+stepNanoAODDefaults = { '-s': 'NANO,DQM:@nanoAODDQM', '-n': 1000, '--runUnscheduled': '' }
 stepNanoAODData = merge([{ '--data':'', '--eventcontent' : 'NANOAOD,DQM' ,'--datatier': 'NANOAOD,DQMIO'    }, stepNanoAODDefaults ])
 stepNanoAODMC   = merge([{ '--mc':''  , '--eventcontent' : 'NANOAODSIM,DQM','--datatier': 'NANOAODSIM,DQMIO' }, stepNanoAODDefaults ])
 stepNanoEDMData = merge([{ '--data':'', '--eventcontent' : 'NANOEDMAOD,DQM' ,'--datatier': 'NANOAOD,DQMIO'     }, stepNanoAODDefaults ])
 stepNanoEDMMC   = merge([{ '--mc':''  , '--eventcontent' : 'NANOEDMAODSIM,DQM','--datatier': 'NANOAODSIM,DQMIO'    }, stepNanoAODDefaults ])
-stepNanoEDMMCProd   = merge([{ '--mc':'', '-s': 'NANO', '--eventcontent' : 'NANOEDMAODSIM','--datatier': 'NANOAODSIM'    }, stepNanoAODDefaults ])
+stepNanoEDMMCProd   = merge([{ '--mc':'', '-s': 'NANO', '--eventcontent' : 'NANOEDMAODSIM','--datatier': 'NANOAODSIM','--runUnscheduled': '' }, stepNanoAODDefaults ])
 
 steps['NANOAOD2016']   = merge([{'--conditions': 'auto:run2_data_relval', '--era': 'Run2_2016'}, stepNanoAODData ])
 steps['NANOAOD2017']   = merge([{'--conditions': 'auto:run2_data_relval', '--era': 'Run2_2017'}, stepNanoAODData ])
@@ -2852,6 +2862,8 @@ steps['NANOEDMMC2017'] = merge([{'--conditions': 'auto:phase1_2017_realistic', '
 steps['NANOEDMMC2017_94XMiniAODv1'] = merge([{'--era': 'Run2_2017,run2_nanoAOD_94XMiniAODv1'}, steps['NANOEDMMC2017'] ])
 steps['NANOEDMMC2017_94XMiniAODv2'] = merge([{'--era': 'Run2_2017,run2_nanoAOD_94XMiniAODv2'}, steps['NANOEDMMC2017'] ])
 steps['NANOEDMMC2016_80X'] = merge([{'--conditions': 'auto:run2_mc', '--era': 'Run2_2016,run2_miniAOD_80XLegacy'}, steps['NANOEDMMC2017'] ])
+steps['NANOEDMMC2016_PROD'] = merge([{'--conditions': 'auto:run2_mc', '--era': 'Run2_2016', '--filein':'file:step3_inMINIAODSIM.root'}, stepNanoEDMMCProd ])
+steps['NANOEDMMC2017_PROD'] = merge([{'--conditions': 'auto:phase1_2017_realistic', '--era': 'Run2_2017', '--filein':'file:step3_inMINIAODSIM.root'}, stepNanoEDMMCProd ])
 steps['NANOEDMMC2018_PROD'] = merge([{'--conditions': 'auto:phase1_2018_realistic', '--era': 'Run2_2018', '--filein':'file:step3_inMINIAODSIM.root'}, stepNanoEDMMCProd ])
 
 steps['NANOEDM2017'] = merge([{'--conditions': 'auto:run2_data_relval', '--era': 'Run2_2017'}, stepNanoEDMData ])
@@ -2869,7 +2881,7 @@ steps['HARVESTNANOAOD2017']=merge([{'--data':'','-s':'HARVESTING:@nanoAODDQM','-
 steps['HARVESTNANOAOD2017_94XMiniAODv1']=merge([{'--era': 'Run2_2017,run2_nanoAOD_94XMiniAODv1'},steps['HARVESTNANOAOD2017']])
 steps['HARVESTNANOAOD2017_94XMiniAODv2']=merge([{'--era': 'Run2_2017,run2_nanoAOD_94XMiniAODv2'},steps['HARVESTNANOAOD2017']])
 steps['HARVESTNANOAOD2016_80X']=merge([{'--era': 'Run2_2016,run2_miniAOD_80XLegacy'},steps['HARVESTNANOAOD2017']])
-steps['HARVESTNANOAOD2018']=merge([{'--conditions': 'auto:run2_data_promptlike', '--era':'Run2_2018'}, steps['HARVESTNANOAOD2017']])
+steps['HARVESTNANOAOD2018']=merge([{'--conditions': 'auto:run2_data_promptlike', '--era':'Run2_2018', '--runUnscheduled':''}, steps['HARVESTNANOAOD2017']])
 
 steps['NANOMERGE'] = { '-s': 'ENDJOB', '-n': 1000 , '--eventcontent' : 'NANOAODSIM','--datatier': 'NANOAODSIM', '--conditions': 'auto:run2_mc' }
 

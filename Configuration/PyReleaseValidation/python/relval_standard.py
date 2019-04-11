@@ -15,25 +15,28 @@ overridesEv5={'-n':'5'}
 workflows[1] = ['', ['ProdMinBias','DIGIPROD1','RECOPROD1']]
 workflows[2] = ['', ['ProdTTbar','DIGIPROD1','RECOPROD1']]
 workflows[3] = ['', ['ProdQCD_Pt_3000_3500','DIGIPROD1','RECOPROD1']]
-workflows.addOverride(3,overridesEv5)                                                      #######################################################
-###Prod2016
-#workflows[1301] = ['', ['ProdMinBias_13','DIGIUP15PROD1','RECOPRODUP15','MINIAODMCUP15']] # Re-add miniaod here, to keep event content scrutinized
-workflows[1301] = ['', ['ProdMinBias_13','DIGIUP15PROD1','RECOPRODUP15']]                  ######################################################## 
-workflows[1302] = ['', ['ProdTTbar_13','DIGIUP15PROD1','RECOPRODUP15']]
-workflows[1303] = ['', ['ProdQCD_Pt_3000_3500_13','DIGIUP15PROD1','RECOPRODUP15']]
+workflows.addOverride(3,overridesEv5)                                                      
+########################################################
+####Prod2016
+workflows[1301] = ['', ['ProdMinBias_13','DIGIUP15PROD1','RECOPRODUP15','MINIAODMCUP15','NANOEDMMC2016_PROD']] # Re-add miniaod here, to keep event content scrutinized
+#workflows[1301] = ['', ['ProdMinBias_13','DIGIUP15PROD1','RECOPRODUP15']]                  
+######################################################## 
+
+workflows[1302] = ['', ['ProdTTbar_13','DIGIUP15PROD1','RECOPRODUP15','MINIAODMCUP15','NANOEDMMC2016_PROD']]
+workflows[1303] = ['', ['ProdQCD_Pt_3000_3500_13','DIGIUP15PROD1','RECOPRODUP15','MINIAODMCUP15','NANOEDMMC2016_PROD']]
 workflows.addOverride(1303,overridesEv5)
 
 
 #####Prod2017
-workflows[1301.17] = ['', ['ProdMinBias_13UP17','DIGIUP17PROD1','RECOPRODUP17']]
-workflows[1302.17] = ['', ['ProdTTbar_13UP17','DIGIUP17PROD1','RECOPRODUP17']]
-workflows[1303.17] = ['', ['ProdQCD_Pt_3000_3500_13UP17','DIGIUP17PROD1','RECOPRODUP17']]
+workflows[1301.17] = ['', ['ProdMinBias_13UP17','DIGIUP17PROD1','RECOPRODUP17','MINIAODMCUP17','NANOEDMMC2017_PROD']]
+workflows[1302.17] = ['', ['ProdTTbar_13UP17','DIGIUP17PROD1','RECOPRODUP17','MINIAODMCUP17','NANOEDMMC2017_PROD']]
+workflows[1303.17] = ['', ['ProdQCD_Pt_3000_3500_13UP17','DIGIUP17PROD1','RECOPRODUP17','MINIAODMCUP17','NANOEDMMC2017_PROD']]
 workflows.addOverride(1303.17,overridesEv5)
 
 #####Prod2018
-#workflows[1301.18] = ['', ['ProdMinBias_13UP18','DIGIUP18PROD1','RECOPRODUP18']]
-workflows[1302.18] = ['', ['ProdTTbar_13UP18','DIGIUP18PROD1','RECOPRODUP18']]
-#workflows[1303.18] = ['', ['ProdQCD_Pt_3000_3500_13UP18','DIGIUP18PROD1','RECOPRODUP18']]
+#workflows[1301.18] = ['', ['ProdMinBias_13UP18','DIGIUP18PROD1','RECOPRODUP18','MINIAODMCUP18']]
+workflows[1302.18] = ['', ['ProdTTbar_13UP18','DIGIUP18PROD1','RECOPRODUP18','MINIAODMCUP18']]
+#workflows[1303.18] = ['', ['ProdQCD_Pt_3000_3500_13UP18','DIGIUP18PROD1','RECOPRODUP18','MINIAODMCUP18']]
 workflows[1304.18] = ['', ['ProdZEE_13UP18','DIGIUP18PROD1','RECOPRODUP18','MINIAODMCUP18']]
 workflows[1304.181] = ['', ['ProdZEE_13UP18','DIGIUP18PROD1','RECOPRODUP18bParking','MINIAODMCUP18bParking']]
 #workflows.addOverride(1303.17,overridesEv5)
