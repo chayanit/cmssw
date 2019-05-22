@@ -64,21 +64,26 @@ class Eras (object):
                            'run2_nanoAOD_94XMiniAODv1', 'run2_nanoAOD_94XMiniAODv2', 'run2_nanoAOD_94X2016',
                            'run2_miniAOD_devel', 'run2_nanoAOD_102Xv1',
                            'hcalHardcodeConditions', 'hcalSkipPacker',
+                           'run2_HLTconditions_2016','run2_HLTconditions_2017','run2_HLTconditions_2018',
                            'bParking']
         internalUseModChains = ['run2_2017_noTrackingModifier']
 
+        self.pythonCfgLines = {}
 
         for e in allEras:
             eObj=getattr(__import__('Configuration.Eras.Era_'+e+'_cff',globals(),locals(),[e],0),e)
             self.addEra(e,eObj)
+            self.pythonCfgLines[e] = 'from Configuration.Eras.Era_'+e+'_cff import '+e
 
         for e in internalUseMods:
             eObj=getattr(__import__('Configuration.Eras.Modifier_'+e+'_cff',globals(),locals(),[e],0),e)
             self.addEra(e,eObj)
+            self.pythonCfgLines[e] = 'from Configuration.Eras.Modifier_'+e+'_cff import '+e
 
         for e in internalUseModChains:
             eObj=getattr(__import__('Configuration.Eras.ModifierChain_'+e+'_cff',globals(),locals(),[e],0),e)
             self.addEra(e,eObj)
+            self.pythonCfgLines[e] = 'from Configuration.Eras.ModifierChain_'+e+'_cff import '+e
 
 
     def addEra(self,name,obj):
