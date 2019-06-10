@@ -41,7 +41,7 @@ PFAlgo::setParameters(double nSigmaECAL,
 
 
 PFMuonAlgo* PFAlgo::getPFMuonAlgo() {
-  return pfmu_;
+  return pfmu_.get();
 }
 
 void PFAlgo::setEGammaParameters(bool use_EGammaFilters, bool useProtectionsForJetMET)
@@ -67,7 +67,7 @@ void  PFAlgo::setEGammaCollections(const edm::View<reco::PFCandidate> & pfEgamma
 void
 PFAlgo::setPFMuonAndFakeParameters(const edm::ParameterSet& pset)
 {
-  pfmu_ = new PFMuonAlgo(pset);
+  pfmu_ = std::make_unique<PFMuonAlgo>(pset);
 
   // Muon parameters
   muonHCAL_= pset.getParameter<std::vector<double> >("muon_HCAL");
@@ -165,20 +165,10 @@ PFAlgo::setPFVertexParameters(bool useVertex, reco::VertexCollection const&  pri
 
 void PFAlgo::reconstructParticles( const reco::PFBlockHandle& blockHandle, PFEGammaFilters const* pfegamma ) {
 
-  blockHandle_ = blockHandle;
-
-  auto blocks = *blockHandle_;
+  auto const& blocks = *blockHandle;
 
   // reset output collection
-  if(pfCandidates_.get() )
-    pfCandidates_->clear();
-  else
-    pfCandidates_.reset( new reco::PFCandidateCollection );
-
-  if(pfCleanedCandidates_.get() )
-    pfCleanedCandidates_->clear();
-  else
-    pfCleanedCandidates_.reset( new reco::PFCandidateCollection );
+  pfCandidates_->clear();
 
   if( debug_ ) {
     cout<<"*********************************************************"<<endl;
@@ -193,8 +183,7 @@ void PFAlgo::reconstructParticles( const reco::PFBlockHandle& blockHandle, PFEGa
   std::list< reco::PFBlockRef > otherBlockRefs;
 
   for( unsigned i=0; i<blocks.size(); ++i ) {
-    // reco::PFBlockRef blockref( blockh,i );
-    reco::PFBlockRef blockref = createBlockRef( blocks, i);
+    reco::PFBlockRef blockref = reco::PFBlockRef(  blockHandle, i );
 
     const reco::PFBlock& block = *blockref;
     const edm::OwnVector< reco::PFBlockElement >&
@@ -256,7 +245,11 @@ void PFAlgo::reconstructParticles( const reco::PFBlockHandle& blockHandle, PFEGa
   }
 
   // Post HF Cleaning
-  postCleaning();
+  pfCleanedCandidates_.clear();
+  // Check if the post HF Cleaning was requested - if not, do nothing
+  if (postHFCleaning_) {
+    postCleaning();
+  }
 
   //Muon post cleaning
   pfmu_->postClean(pfCandidates_.get());
@@ -267,39 +260,7 @@ void PFAlgo::reconstructParticles( const reco::PFBlockHandle& blockHandle, PFEGa
 }
 
 
-void PFAlgo::processBlock( const reco::PFBlockRef& blockref,
-                           std::list<reco::PFBlockRef>& hcalBlockRefs,
-                           std::list<reco::PFBlockRef>& ecalBlockRefs, PFEGammaFilters const* pfegamma  ) {
-
-  // debug_ = false;
-  assert(!blockref.isNull() );
-  const reco::PFBlock& block = *blockref;
-
-  if(debug_) {
-    cout<<"#########################################################"<<endl;
-    cout<<"#####           Process Block:                      #####"<<endl;
-    cout<<"#########################################################"<<endl;
-    cout<<block<<endl;
-  }
-
-
-  const edm::OwnVector< reco::PFBlockElement >& elements = block.elements();
-  // make a copy of the link data, which will be edited.
-  PFBlock::LinkData linkData =  block.linkData();
-
-  // keep track of the elements which are still active.
-  vector<bool>   active( elements.size(), true );
-
-
-  // //PFElectrons:
-  // usePFElectrons_ external configurable parameter to set the usage of pf electron
-  std::vector<reco::PFCandidate> tempElectronCandidates;
-  tempElectronCandidates.clear();
-
-
-  // New EGamma Reconstruction 10/10/2013
-  if(useEGammaFilters_) {
-
+void PFAlgo::egammaFilters(const reco::PFBlockRef &blockref, std::vector<bool>& active, PFEGammaFilters const* pfegamma) {
     // const edm::ValueMap<reco::GsfElectronRef> & myGedElectronValMap(*valueMapGedElectrons_);
     bool egmLocalDebug = debug_;
     bool egmLocalBlockDebug = false;
@@ -461,122 +422,32 @@ void PFAlgo::processBlock( const reco::PFBlockRef& blockref,
 	} // end isSafe
       } // end isGoodPhoton
     } // end loop on EGM candidates
-  } // end if use EGammaFilters
+}
 
-
-
-  //Lock extra conversion tracks not used by Photon Algo
-  if (usePFConversions_  )
-    {
-      for(unsigned iEle=0; iEle<elements.size(); iEle++) {
-	PFBlockElement::Type type = elements[iEle].type();
-	if(type==PFBlockElement::TRACK)
-	  {
-	    if(elements[iEle].trackRef()->algo() == reco::TrackBase::conversionStep)
-	      active[iEle]=false;
-	    if(elements[iEle].trackRef()->quality(reco::TrackBase::highPurity))continue;
-	    const auto* trackRef = dynamic_cast<const reco::PFBlockElementTrack*>((&elements[iEle]));
-	    if(!(trackRef->trackType(reco::PFBlockElement::T_FROM_GAMMACONV)))continue;
-	    if(!elements[iEle].convRefs().empty())active[iEle]=false;
-	  }
+void PFAlgo::conversionAlgo(const edm::OwnVector<reco::PFBlockElement> &elements, std::vector<bool>& active) {
+  for(unsigned iEle=0; iEle<elements.size(); iEle++) {
+    PFBlockElement::Type type = elements[iEle].type();
+    if(type==PFBlockElement::TRACK)
+      {
+        if(elements[iEle].trackRef()->algo() == reco::TrackBase::conversionStep)
+          active[iEle]=false;
+        if(elements[iEle].trackRef()->quality(reco::TrackBase::highPurity))continue;
+        const auto* trackRef = dynamic_cast<const reco::PFBlockElementTrack*>((&elements[iEle]));
+        if(!(trackRef->trackType(reco::PFBlockElement::T_FROM_GAMMACONV)))continue;
+        if(!elements[iEle].convRefs().empty())active[iEle]=false;
       }
-    }
+  }
+}
 
-
-
-
-
-  if(debug_)
-    cout<<endl<<"--------------- loop 1 ------------------"<<endl;
-
-  //COLINFEB16
-  // In loop 1, we loop on all elements.
-
-  // The primary goal is to deal with tracks that are:
-  // - not associated to an HCAL cluster
-  // - not identified as an electron.
-  // Those tracks should be predominantly relatively low energy charged
-  // hadrons which are not detected in the ECAL.
-
-  // The secondary goal is to prepare for the next loops
-  // - The ecal and hcal elements are sorted in separate vectors
-  // which will be used as a base for the corresponding loops.
-  // - For tracks which are connected to more than one HCAL cluster,
-  // the links between the track and the cluster are cut for all clusters
-  // but the closest one.
-  // - HF only blocks ( HFEM, HFHAD, HFEM+HFAD) are identified
-
-  // obsolete comments?
-  // loop1:
-  // - sort ecal and hcal elements in separate vectors
-  // - for tracks:
-  //       - lock closest ecal cluster
-  //       - cut link to farthest hcal cluster, if more than 1.
-
-  // vectors to store indices to ho, hcal and ecal elements
-  vector<unsigned> hcalIs;
-  vector<unsigned> hoIs;
-  vector<unsigned> ecalIs;
-  vector<unsigned> trackIs;
-  vector<unsigned> ps1Is;
-  vector<unsigned> ps2Is;
-
-  vector<unsigned> hfEmIs;
-  vector<unsigned> hfHadIs;
-
-  vector<bool> deadArea(elements.size(), false);
-
+void PFAlgo::elementLoop(const reco::PFBlock &block, reco::PFBlock::LinkData& linkData,
+  const edm::OwnVector<reco::PFBlockElement> &elements, std::vector<bool>& active,
+  const reco::PFBlockRef &blockref, ElementIndices& inds, std::vector<bool> &deadArea) {
   for(unsigned iEle=0; iEle<elements.size(); iEle++) {
     PFBlockElement::Type type = elements[iEle].type();
 
     if(debug_ && type != PFBlockElement::BREM ) cout<<endl<<elements[iEle];
-
-    switch( type ) {
-    case PFBlockElement::TRACK:
-      if ( active[iEle] ) {
-	trackIs.push_back( iEle );
-	if(debug_) cout<<"TRACK, stored index, continue"<<endl;
-      }
-      break;
-    case PFBlockElement::ECAL:
-      if ( active[iEle]  ) {
-	ecalIs.push_back( iEle );
-	if(debug_) cout<<"ECAL, stored index, continue"<<endl;
-      }
-      continue;
-    case PFBlockElement::HCAL:
-      if ( active[iEle] ) {
-	if (elements[iEle].clusterRef()->flags() & reco::CaloCluster::badHcalMarker) {
-	  if(debug_) cout<<"HCAL DEAD AREA: remember and skip."<<endl;
-	  active[iEle] = false;
-	  deadArea[iEle] = true;
-	  continue;
-	}
-	hcalIs.push_back( iEle );
-	if(debug_) cout<<"HCAL, stored index, continue"<<endl;
-      }
-      continue;
-    case PFBlockElement::HO:
-      if (useHO_) {
-	if ( active[iEle] ) {
-	  hoIs.push_back( iEle );
-	  if(debug_) cout<<"HO, stored index, continue"<<endl;
-	}
-      }
-      continue;
-    case PFBlockElement::HFEM:
-      if ( active[iEle] ) {
-	hfEmIs.push_back( iEle );
-	if(debug_) cout<<"HFEM, stored index, continue"<<endl;
-      }
-      continue;
-    case PFBlockElement::HFHAD:
-      if ( active[iEle] ) {
-	hfHadIs.push_back( iEle );
-	if(debug_) cout<<"HFHAD, stored index, continue"<<endl;
-      }
-      continue;
-    default:
+    auto ret_decideType = decideType(elements, type, active, inds, deadArea, iEle);
+    if (ret_decideType == 1) {
       continue;
     }
 
@@ -619,7 +490,9 @@ void PFAlgo::processBlock( const reco::PFBlockRef& blockref,
     assert( !trackRef.isNull() );
 
     if (debug_ ) {
-      cout <<"PFAlgo:processBlock "<<" "<<trackIs.size()<<" "<<ecalIs.size()<<" "<<hcalIs.size()<<" "<<hoIs.size()<<endl;
+      cout <<"PFAlgo:processBlock "<<" "<< inds.trackIs.size()<<" "
+        << inds.ecalIs.size()<<" "<< inds.hcalIs.size()<<" "
+        << inds.hoIs.size()<<endl;
     }
 
     // look for associated elements of all types
@@ -1333,14 +1206,147 @@ void PFAlgo::processBlock( const reco::PFBlockRef& blockref,
       }
     } //loop hcal elements
   } // end of loop 1 on elements iEle of any type
+}
+
+int PFAlgo::decideType(const edm::OwnVector<reco::PFBlockElement> &elements,
+  const reco::PFBlockElement::Type type, std::vector<bool>& active,
+  ElementIndices& inds, std::vector<bool> &deadArea, unsigned int iEle) {
+  switch( type ) {
+  case PFBlockElement::TRACK:
+    if ( active[iEle] ) {
+      inds.trackIs.push_back( iEle );
+      if(debug_) cout<<"TRACK, stored index, continue"<<endl;
+    }
+    break;
+  case PFBlockElement::ECAL:
+    if ( active[iEle]  ) {
+      inds.ecalIs.push_back( iEle );
+      if(debug_) cout<<"ECAL, stored index, continue"<<endl;
+    }
+    return 1; //continue
+  case PFBlockElement::HCAL:
+    if ( active[iEle] ) {
+      if (elements[iEle].clusterRef()->flags() & reco::CaloCluster::badHcalMarker) {
+        if(debug_) cout<<"HCAL DEAD AREA: remember and skip."<<endl;
+        active[iEle] = false;
+        deadArea[iEle] = true;
+        return 1; //continue
+      }
+      inds.hcalIs.push_back( iEle );
+      if(debug_) cout<<"HCAL, stored index, continue"<<endl;
+    }
+    return 1; //continue
+  case PFBlockElement::HO:
+    if (useHO_) {
+      if ( active[iEle] ) {
+        inds.hoIs.push_back( iEle );
+        if(debug_) cout<<"HO, stored index, continue"<<endl;
+      }
+    }
+    return 1; //continue
+  case PFBlockElement::HFEM:
+    if ( active[iEle] ) {
+      inds.hfEmIs.push_back( iEle );
+      if(debug_) cout<<"HFEM, stored index, continue"<<endl;
+    }
+    return 1; //continue
+  case PFBlockElement::HFHAD:
+    if ( active[iEle] ) {
+      inds.hfHadIs.push_back( iEle );
+      if(debug_) cout<<"HFHAD, stored index, continue"<<endl;
+    }
+    return 1; //continue
+  default:
+    return 1; //continue
+  }
+  return 0;
+}
+
+void PFAlgo::processBlock( const reco::PFBlockRef& blockref,
+                           std::list<reco::PFBlockRef>& hcalBlockRefs,
+                           std::list<reco::PFBlockRef>& ecalBlockRefs, PFEGammaFilters const* pfegamma  ) {
+
+  // debug_ = false;
+  assert(!blockref.isNull() );
+  const reco::PFBlock& block = *blockref;
+
+  if(debug_) {
+    cout<<"#########################################################"<<endl;
+    cout<<"#####           Process Block:                      #####"<<endl;
+    cout<<"#########################################################"<<endl;
+    cout<<block<<endl;
+  }
 
 
+  const edm::OwnVector< reco::PFBlockElement >& elements = block.elements();
+  // make a copy of the link data, which will be edited.
+  PFBlock::LinkData linkData =  block.linkData();
+
+  // keep track of the elements which are still active.
+  vector<bool>   active( elements.size(), true );
+
+
+  // //PFElectrons:
+  // usePFElectrons_ external configurable parameter to set the usage of pf electron
+  std::vector<reco::PFCandidate> tempElectronCandidates;
+  tempElectronCandidates.clear();
+
+
+  // New EGamma Reconstruction 10/10/2013
+  if(useEGammaFilters_) {
+    egammaFilters(blockref, active, pfegamma);
+  } // end if use EGammaFilters
+
+
+
+  //Lock extra conversion tracks not used by Photon Algo
+  if (usePFConversions_  ) {
+    conversionAlgo(elements, active);
+  }
+
+
+
+
+
+  if(debug_)
+    cout<<endl<<"--------------- loop 1 ------------------"<<endl;
+
+  //COLINFEB16
+  // In loop 1, we loop on all elements.
+
+  // The primary goal is to deal with tracks that are:
+  // - not associated to an HCAL cluster
+  // - not identified as an electron.
+  // Those tracks should be predominantly relatively low energy charged
+  // hadrons which are not detected in the ECAL.
+
+  // The secondary goal is to prepare for the next loops
+  // - The ecal and hcal elements are sorted in separate vectors
+  // which will be used as a base for the corresponding loops.
+  // - For tracks which are connected to more than one HCAL cluster,
+  // the links between the track and the cluster are cut for all clusters
+  // but the closest one.
+  // - HF only blocks ( HFEM, HFHAD, HFEM+HFAD) are identified
+
+  // obsolete comments?
+  // loop1:
+  // - sort ecal and hcal elements in separate vectors
+  // - for tracks:
+  //       - lock closest ecal cluster
+  //       - cut link to farthest hcal cluster, if more than 1.
+
+  vector<bool> deadArea(elements.size(), false);
+  
+  // vectors to store indices to ho, hcal and ecal elements
+  ElementIndices inds;
+
+  elementLoop(block, linkData, elements, active, blockref, inds, deadArea);
 
   // deal with HF.
-  if( !(hfEmIs.empty() &&  hfHadIs.empty() ) ) {
+  if( !(inds.hfEmIs.empty() &&  inds.hfHadIs.empty() ) ) {
     // there is at least one HF element in this block.
     // so all elements must be HF.
-    assert( hfEmIs.size() + hfHadIs.size() == elements.size() );
+    assert( inds.hfEmIs.size() + inds.hfHadIs.size() == elements.size() );
 
     if( elements.size() == 1 ) {
       //Auguste: HAD-only calibration here
@@ -1364,7 +1370,7 @@ void PFAlgo::processBlock( const reco::PFBlockRef& blockref,
 	(*pfCandidates_)[tmpi].setHoEnergy( 0., 0.);
 	(*pfCandidates_)[tmpi].setPs1Energy( 0. );
 	(*pfCandidates_)[tmpi].setPs2Energy( 0. );
-	(*pfCandidates_)[tmpi].addElementInBlock( blockref, hfEmIs[0] );
+	(*pfCandidates_)[tmpi].addElementInBlock( blockref, inds.hfEmIs[0] );
 	//std::cout << "HF EM alone ! " << energyHF << std::endl;
 	break;
       case PFLayer::HF_HAD:
@@ -1382,7 +1388,7 @@ void PFAlgo::processBlock( const reco::PFBlockRef& blockref,
 	(*pfCandidates_)[tmpi].setHoEnergy( 0., 0.);
 	(*pfCandidates_)[tmpi].setPs1Energy( 0. );
 	(*pfCandidates_)[tmpi].setPs2Energy( 0. );
-	(*pfCandidates_)[tmpi].addElementInBlock( blockref, hfHadIs[0] );
+	(*pfCandidates_)[tmpi].addElementInBlock( blockref, inds.hfHadIs[0] );
 	//std::cout << "HF Had alone ! " << energyHF << std::endl;
 	break;
       default:
@@ -1426,8 +1432,8 @@ void PFAlgo::processBlock( const reco::PFBlockRef& blockref,
       cand.setHoEnergy( 0., 0.);
       cand.setPs1Energy( 0. );
       cand.setPs2Energy( 0. );
-      cand.addElementInBlock( blockref, hfEmIs[0] );
-      cand.addElementInBlock( blockref, hfHadIs[0] );
+      cand.addElementInBlock( blockref, inds.hfEmIs[0] );
+      cand.addElementInBlock( blockref, inds.hfHadIs[0] );
       //std::cout << "HF EM+HAD found ! " << energyHfEm << " " << energyHfHad << std::endl;
     }
     else {
@@ -1453,7 +1459,7 @@ void PFAlgo::processBlock( const reco::PFBlockRef& blockref,
   // hcal energy
   // rescale
 
-  for(unsigned iHcal : hcalIs) {
+  for(unsigned iHcal : inds.hcalIs) {
     PFBlockElement::Type type = elements[iHcal].type();
 
     assert( type == PFBlockElement::HCAL );
@@ -2617,7 +2623,7 @@ void PFAlgo::processBlock( const reco::PFBlockRef& blockref,
 
   //COLINFEB16
   // now dealing with the HCAL elements that are not linked to any track
-  for(unsigned iHcal : hcalIs) {
+  for(unsigned iHcal : inds.hcalIs) {
 
     // Keep ECAL and HO elements for reference in the PFCandidate
     std::vector<unsigned> ecalRefs;
@@ -2837,8 +2843,8 @@ void PFAlgo::processBlock( const reco::PFBlockRef& blockref,
 
   // for each ecal element iEcal = ecalIs[i] in turn:
 
-  for(unsigned i=0; i<ecalIs.size(); i++) {
-    unsigned iEcal = ecalIs[i];
+  for(unsigned i=0; i<inds.ecalIs.size(); i++) {
+    unsigned iEcal = inds.ecalIs[i];
 
     if(debug_)
       cout<<endl<<elements[iEcal]<<" ";
@@ -3145,18 +3151,6 @@ ostream& operator<<(ostream& out, const PFAlgo& algo) {
   return out;
 }
 
-reco::PFBlockRef
-PFAlgo::createBlockRef( const reco::PFBlockCollection& blocks,
-			unsigned bi ) {
-
-  if( blockHandle_.isValid() ) {
-    return reco::PFBlockRef(  blockHandle_, bi );
-  }
-  else {
-    return reco::PFBlockRef(  &blocks, bi );
-  }
-}
-
 void
 PFAlgo::associatePSClusters(unsigned iEcal,
 			    reco::PFBlockElement::Type psElementType,
@@ -3245,9 +3239,6 @@ PFAlgo::isFromSecInt(const reco::PFBlockElement& eTrack, string order) const {
 void
 PFAlgo::postCleaning() {
 
-  // Check if the post HF Cleaning was requested - if not, do nothing
-  if ( !postHFCleaning_ ) return;
-
   //Compute met and met significance (met/sqrt(SumEt))
   double metX = 0.;
   double metY = 0.;
@@ -3335,14 +3326,13 @@ PFAlgo::postCleaning() {
 		<< std::endl;
       for(unsigned int toRemove : pfCandidatesToBeRemoved) {
 	std::cout << "Removed : " << (*pfCandidates_)[toRemove] << std::endl;
-	pfCleanedCandidates_->push_back( (*pfCandidates_)[toRemove] );
+	pfCleanedCandidates_.push_back( (*pfCandidates_)[toRemove] );
 	(*pfCandidates_)[toRemove].rescaleMomentum(1E-6);
 	//reco::PFCandidate::ParticleType unknown = reco::PFCandidate::X;
 	//(*pfCandidates_)[toRemove].setParticleType(unknown);
       }
     }
   }
-
 }
 
 void
