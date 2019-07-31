@@ -17,10 +17,8 @@ class HGCalTriggerGeometryV9Imp2 : public HGCalTriggerGeometryBase {
 public:
   HGCalTriggerGeometryV9Imp2(const edm::ParameterSet& conf);
 
-  void initialize(const edm::ESHandle<CaloGeometry>&) final;
-  void initialize(const edm::ESHandle<HGCalGeometry>&,
-                  const edm::ESHandle<HGCalGeometry>&,
-                  const edm::ESHandle<HGCalGeometry>&) final;
+  void initialize(const CaloGeometry*) final;
+  void initialize(const HGCalGeometry*, const HGCalGeometry*, const HGCalGeometry*) final;
   void reset() final;
 
   unsigned getTriggerCellFromCell(const unsigned) const final;
@@ -100,14 +98,14 @@ void HGCalTriggerGeometryV9Imp2::reset() {
   module_to_wafers_.clear();
 }
 
-void HGCalTriggerGeometryV9Imp2::initialize(const edm::ESHandle<CaloGeometry>& calo_geometry) {
+void HGCalTriggerGeometryV9Imp2::initialize(const CaloGeometry* calo_geometry) {
   throw cms::Exception("BadGeometry")
       << "HGCalTriggerGeometryV9Imp2 geometry cannot be initialized with the V7/V8 HGCAL geometry";
 }
 
-void HGCalTriggerGeometryV9Imp2::initialize(const edm::ESHandle<HGCalGeometry>& hgc_ee_geometry,
-                                            const edm::ESHandle<HGCalGeometry>& hgc_hsi_geometry,
-                                            const edm::ESHandle<HGCalGeometry>& hgc_hsc_geometry) {
+void HGCalTriggerGeometryV9Imp2::initialize(const HGCalGeometry* hgc_ee_geometry,
+                                            const HGCalGeometry* hgc_hsi_geometry,
+                                            const HGCalGeometry* hgc_hsc_geometry) {
   setEEGeometry(hgc_ee_geometry);
   setHSiGeometry(hgc_hsi_geometry);
   setHScGeometry(hgc_hsc_geometry);
@@ -377,9 +375,7 @@ HGCalTriggerGeometryBase::geom_ordered_set HGCalTriggerGeometryV9Imp2::getOrdere
 
 HGCalTriggerGeometryBase::geom_set HGCalTriggerGeometryV9Imp2::getNeighborsFromTriggerCell(
     const unsigned trigger_cell_id) const {
-  HGCalDetId trigger_cell_det_id(trigger_cell_id);
-  geom_set neighbor_detids;
-  return neighbor_detids;
+  throw cms::Exception("FeatureNotImplemented") << "Neighbor search is not implemented in HGCalTriggerGeometryV9Imp2";
 }
 
 unsigned HGCalTriggerGeometryV9Imp2::getLinksInModule(const unsigned module_id) const {

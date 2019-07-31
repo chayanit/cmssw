@@ -5,7 +5,7 @@
 #include <string>
 
 //#define EDM_ML_DEBUG
-HGCalGeomTools::HGCalGeomTools() : factor_(1.0/std::sqrt(3.0)) {}
+HGCalGeomTools::HGCalGeomTools() : factor_(1.0 / std::sqrt(3.0)) {}
 
 void HGCalGeomTools::radius(double zf,
                             double zb,
@@ -23,7 +23,7 @@ void HGCalGeomTools::radius(double zf,
   auto zf1 = std::lower_bound(zFront1.begin(), zFront1.end(), zf);
   if (zf1 != zFront1.begin())
     --zf1;
-  if (std::abs(*(zf1 + 1) - zf) < tol_) {
+  if (((zf1 + 1) != zFront1.end()) && (std::abs(*(zf1 + 1) - zf) < tol_)) {
     ++zf1;
     dz1 = 2 * tol_;
   }
@@ -33,7 +33,7 @@ void HGCalGeomTools::radius(double zf,
   auto zb1 = std::lower_bound(zFront1.begin(), zFront1.end(), zb);
   if (zb1 != zFront1.begin())
     --zb1;
-  if (std::abs(*zb1 - zb) < tol_) {
+  if ((zb1 != zFront1.begin()) && (std::abs(*zb1 - zb) < tol_)) {
     --zb1;
     dz2 = -2 * tol_;
   }
@@ -130,7 +130,7 @@ double HGCalGeomTools::radius(double z,
   if (itrz != zFront.begin())
     --itrz;
   unsigned int ik = static_cast<unsigned int>(itrz - zFront.begin());
-  if (ik < zFront.size() && std::abs(z - zFront[ik + 1]) < tol_)
+  if ((ik + 1) < zFront.size() && std::abs(z - zFront[ik + 1]) < tol_)
     ++ik;
   double r = rFront[ik] + (z - zFront[ik]) * slope[ik];
 #ifdef EDM_ML_DEBUG
@@ -162,21 +162,30 @@ double HGCalGeomTools::radius(
   return r;
 }
 
-std::pair<double,double> HGCalGeomTools::shiftXY(int waferPosition, 
-						 double waferSize) {
-
+std::pair<double, double> HGCalGeomTools::shiftXY(int waferPosition, double waferSize) {
   double dx(0), dy(0);
   switch (waferPosition) {
-  case (CornerCenterYp): { dy = factor_*waferSize; break;}
-  case (CornerCenterYm): { dy =-factor_*waferSize; break;}
-  case (CornerCenterXp): { dx = factor_*waferSize; break;}
-  case (CornerCenterXm): { dx =-factor_*waferSize; break;}
+    case (CornerCenterYp): {
+      dy = factor_ * waferSize;
+      break;
+    }
+    case (CornerCenterYm): {
+      dy = -factor_ * waferSize;
+      break;
+    }
+    case (CornerCenterXp): {
+      dx = factor_ * waferSize;
+      break;
+    }
+    case (CornerCenterXm): {
+      dx = -factor_ * waferSize;
+      break;
+    }
   }
 #ifdef EDM_ML_DEBUG
-  edm::LogVerbatim("HGCalGeom") 
-    << "Shift for " << waferPosition << " is (" << dx << ":" << dy << ")";
+  edm::LogVerbatim("HGCalGeom") << "Shift for " << waferPosition << " is (" << dx << ":" << dy << ")";
 #endif
-  return std::make_pair(dx,dy);
+  return std::make_pair(dx, dy);
 }
 
 double HGCalGeomTools::slope(double z, std::vector<double> const& zFront, std::vector<double> const& slope) {
