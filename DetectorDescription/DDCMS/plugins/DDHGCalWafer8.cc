@@ -6,7 +6,6 @@
  */
 
 #include "DD4hep/DetFactoryHelper.h"
-#include "DataFormats/Math/interface/GeantUnits.h"
 #include "DetectorDescription/DDCMS/interface/DDPlugins.h"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
 #include "FWCore/Utilities/interface/Exception.h"
@@ -120,4 +119,4 @@ static long algorithm(dd4hep::Detector& /* description */,
 }
 
 // first argument is the type from the xml file
-DECLARE_DDCMS_DETELEMENT(DDCMS_HGCal_DDHGCalWafer8, algorithm)
+DECLARE_DDCMS_DETELEMENT(DDCMS_hgcal_DDHGCalWafer8, algorithm)
