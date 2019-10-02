@@ -274,7 +274,11 @@ class MatrixInjector(object):
             wmsplit['HYBRIDZSHI2015']=1
             wmsplit['RECOHID15']=1
             wmsplit['RECOHID18']=1
-                                    
+	    wmsplit['DigiFull_2018']=2
+            wmsplit['RecoFull_2018']=2
+            wmsplit['DigiFullPU_2018PU']=2
+            wmsplit['RecoFullPU_2018PU']=2
+                        
             #import pprint
             #pprint.pprint(wmsplit)            
         except:
@@ -464,6 +468,12 @@ class MatrixInjector(object):
                         for (om,o) in t_input['nowmIO'].items():
                             if primary in o:
                                 #print "found",primary,"procuced by",om,"of",t_input['TaskName']
+				#ad-hoc fix due to restriction in TaskName of 50 characters
+ 				if (len(t_input['TaskName'])>50):
+ 				    if (t_input['TaskName'].find('GenSim') != -1):
+                                        t_input['TaskName'] = 'GenSimFull'
+                                    if (t_input['TaskName'].find('Hadronizer') != -1):
+                                        t_input['TaskName'] = 'HadronizerFull'
                                 t_second['InputTask'] = t_input['TaskName']
                                 t_second['InputFromOutputModule'] = om
                                 #print 't_second',pprint.pformat(t_second)
