@@ -25,7 +25,7 @@ step1Up2015Defaults = {'-s' : 'GEN,SIM',
 # step1 gensim: for 2017
 step1Up2017Defaults = merge ([{'--conditions':'auto:phase1_2017_realistic','--era':'Run2_2017','--beamspot':'Realistic25ns13TeVEarly2017Collision'},step1Up2015Defaults])
 # step1 gensim: for 2018
-step1Up2018Defaults = merge ([{'--conditions':'auto:phase1_2018_realistic','--era':'Run2_2018'},step1Up2017Defaults])
+step1Up2018Defaults = merge ([{'--conditions':'auto:phase1_2018_realistic','--era':'Run2_2018,pf_badHcalMitigation'},step1Up2017Defaults])
 # step1 gensim: for 2018 HI
 step1Up2018HiDefaults = merge ([{'--conditions':'auto:phase1_2018_realistic_hi','--era':'Run2_2018_pp_on_AA'},step1Up2017Defaults])
 # step1 gensim: for 2018 prod
@@ -558,6 +558,8 @@ steps['Wjet_Pt_3000_3500_13']=gen2015('Wjet_Pt_3000_3500_13TeV_TuneCUETP8M1_cfi'
 steps['SMS-T1tttt_mGl-1500_mLSP-100_13']=gen2015('SMS-T1tttt_mGl-1500_mLSP-100_13TeV-pythia8_cfi',Kby(9,50))
 steps['QCD_FlatPt_15_3000_13']=gen2015('QCDForPF_13TeV_TuneCUETP8M1_cfi',Kby(9,100))
 steps['QCD_FlatPt_15_3000HS_13']=gen2015('QCDForPF_13TeV_TuneCUETP8M1_cfi',Kby(50,100))
+
+steps['QCD_FlatPt_15_3000HS_13_UP18']=gen2018('QCDForPF_13TeV_TuneCUETP8M1_cfi',Kby(1000,200))
 
 steps['ZpMM_2250_8TeV']=gen('ZpMM_2250_8TeV_TuneCUETP8M1_cfi',Kby(9,100))
 steps['ZpEE_2250_8TeV']=gen('ZpEE_2250_8TeV_TuneCUETP8M1_cfi',Kby(9,100))
@@ -1566,6 +1568,8 @@ steps['DIGIUP18PROD1']=merge([{'-s':'DIGI,L1,DIGI2RAW,HLT:@relval2018','--eventc
 steps['DIGIUP17_PU25']=merge([PU25UP17,step2Upg2017Defaults])
 steps['DIGIUP18_PU25']=merge([PU25UP18,step2Upg2018Defaults])
 
+steps['DIGIUP18_FlatPU70']=merge([PU25UP18,{'--customise_commands':'"process.mix.input.nbPileupEvents.probFunctionVariable = cms.vint32(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70) \\n process.mix.input.nbPileupEvents.probValue = cms.vdouble(0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085)"'},step2Upg2018Defaults])
+
 # for Run2 PPb MC workflows
 steps['DIGIUP15_PPb']=merge([{'-s':'DIGI:pdigi_valid,L1,DIGI2RAW,HLT:PIon','--conditions':'auto:run2_mc_pa', '--era':'Run2_2016_pA'}, steps['DIGIUP15']])
 
@@ -2088,6 +2092,8 @@ steps['RECOUP17_PU25']=merge([PU25UP17,steps['RECOUP17']])
 
 steps['RECOUP18']=merge([{'--conditions':'auto:phase1_2018_realistic','--era' : 'Run2_2018,pf_badHcalMitigation','--geometry' : 'DB:Extended'},steps['RECOUP15']])
 steps['RECOUP18_PU25']=merge([PU25UP18,steps['RECOUP18']])
+
+steps['RECOUP18_FlatPU70']=merge([PU25UP18,{'--customise_commands':'"process.mix.input.nbPileupEvents.probFunctionVariable = cms.vint32(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70) \\n process.mix.input.nbPileupEvents.probValue = cms.vdouble(0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085)"'},steps['RECOUP18']])
 
 # for Run1 PPb data workflow
 steps['RECO_PPbData']=merge([{'-s':'RAW2DIGI,L1Reco,RECO,ALCA:TkAlMinBias+TkAlMuonIsolatedPA+TkAlUpsilonMuMuPA+TkAlZMuMuPA,SKIM:PAZMM+PAZEE+PAMinBias,EI,DQM','--scenario':'pp','--conditions':'auto:run1_data','--era':'Run1_pA','--datatier':'AOD,DQMIO','--eventcontent':'AOD,DQM'}, dataReco])
@@ -3009,6 +3015,8 @@ for ds in defaultDataSets:
 #    	PUDataSets[ds]={'-n':10,'--pileup':'AVE_50_BX_25ns','--pileup_input':'das:/RelValMinBias_13/%s/GEN-SIM'%(name,)}
 	# realistic PU for HS relval
 	PUDataSets[ds]={'-n':10,'--pileup':'2018_25ns_UltraLegacy_PoissonOOTPU','--pileup_input':'das:/RelValMinBias_13/CMSSW_10_6_4-106X_upgrade2018_realistic_v9_rsb-v1/GEN-SIM'}
+	# flatPU for HS relval
+#	PUDataSets[ds]={'-n':10,'--pileup_input':'das:/RelValMinBias_13/CMSSW_10_6_4-106X_upgrade2018_realistic_v9_rsb-v1/GEN-SIM'}
     elif 'postLS2' in name:
     	PUDataSets[ds]={'-n':10,'--pileup':'AVE_50_BX_25ns','--pileup_input':'das:/RelValMinBias_13/%s/GEN-SIM'%(name,)}
     elif '2023' in name:
@@ -3079,7 +3087,9 @@ for year,k in [(year,k) for year in upgradeKeys for k in upgradeKeys[year]]:
                                       '--datatier':'GEN-SIM-DIGI-RAW',
                                       '-n':'10',
                                       '--eventcontent':'FEVTDEBUGHLT',
-                                      '--geometry' : geom
+                                      '--geometry' : geom,
+				      #'--customise_commands':'"process.mix.input.nbPileupEvents.probFunctionVariable = cms.vint32(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70) \\n process.mix.input.nbPileupEvents.probValue = cms.vdouble(0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085)"',
+				      #'--pileup_input':'das:/RelValMinBias_13/CMSSW_10_6_4-106X_upgrade2018_realistic_v9_rsb-v1/GEN-SIM',
                                       }
 
     # Adding Track trigger step in step2
@@ -3097,7 +3107,9 @@ for year,k in [(year,k) for year in upgradeKeys for k in upgradeKeys[year]]:
                                       '-n':'10',
                                       '--runUnscheduled':'',
                                       '--eventcontent':'RECOSIM,MINIAODSIM,DQM',
-                                      '--geometry' : geom
+                                      '--geometry' : geom,
+				      #'--customise_commands':'"process.mix.input.nbPileupEvents.probFunctionVariable = cms.vint32(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70) \\n process.mix.input.nbPileupEvents.probValue = cms.vdouble(0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085,0.014085)"',
+				      #'--pileup_input':'das:/RelValMinBias_13/CMSSW_10_6_4-106X_upgrade2018_realistic_v9_rsb-v1/GEN-SIM',
                                       }
 
     upgradeStepDict['RecoFullGlobal'][k] = {'-s':'RAW2DIGI,L1Reco,RECO,RECOSIM,PAT,VALIDATION:@phase2Validation+@miniAODValidation,DQM:@phase2+@miniAODDQM',
