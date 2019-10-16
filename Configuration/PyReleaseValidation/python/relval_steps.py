@@ -1412,7 +1412,8 @@ def lhegensim2017(fragment,howMuch):
 
 # LHE-GEN-SIM step for 2018
 step1LHEGenSimUp2018Default = merge ([{'--conditions':'auto:phase1_2018_realistic','--era':'Run2_2018,pf_badHcalMitigation','--beamspot':'Realistic25ns13TeVEarly2018Collision','--geometry':'DB:Extended'},step1LHEGenSimDefault])
-
+#step1LHEGenSimUp2018Default = merge ([{'-s':'GEN,SIM','--datatier':'GEN-SIM','--eventcontent': 'FEVTDEBUG','--conditions':'auto:phase1_2018_realistic','--era':'Run2_2018,pf_badHcalMitigation','--beamspot':'Realistic25ns13TeVEarly2018Collision','--geometry':'DB:Extended'},step1LHEGenSimDefault])
+ 
 def lhegensim2018(fragment,howMuch):
     global step1LHEGenSimUp2018Default
     return merge([{'cfg':fragment},howMuch,step1LHEGenSimUp2018Default])
@@ -1431,9 +1432,9 @@ steps['VBFHToZZTo4Nu_M125_Pow_py8_Evt_13UP18']=lhegensim2018('Configuration/Gene
 steps['VBFHToBB_M125_Pow_py8_Evt_13UP18']=lhegensim2018('Configuration/Generator/python/VBFHbb_Pow_NNPDF30_LHE_13TeV_cfi.py',Kby(9,100))
 
 
-steps['BulkGravToWW_M-600_13UP18']=lhegensim2018('Configuration/Generator/python/BulkGravToWW_M-600_cfi.py',Kby(30,100))
-steps['BulkGravToWW_M-2000_13UP18']=lhegensim2018('Configuration/Generator/python/BulkGravToWW_M-2000_cfi.py',Kby(30,100))
-steps['BulkGravToWW_M-4000_13UP18']=lhegensim2018('Configuration/Generator/python/BulkGravToWW_M-4000_cfi.py',Kby(30,100))
+#steps['BulkGravToHHTo4Q_MX-600to6000_MH-15to250_13UP18']=lhegensim2018('Configuration/Generator/python/BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_cfi.py',Kby(100,100))
+#steps['BulkGravToWW_M-2000_13UP18']=lhegensim2018('Configuration/Generator/python/BulkGravToWW_M-2000_cfi.py',Kby(30,100))
+#steps['BulkGravToWW_M-4000_13UP18']=lhegensim2018('Configuration/Generator/python/BulkGravToWW_M-4000_cfi.py',Kby(30,100))
  
 
 #GEN-SIM inputs for LHE-GEN-SIM workflows
@@ -1488,7 +1489,7 @@ PU50={'-n':10,'--pileup':'AVE_35_BX_50ns','--pileup_input':'das:/RelValMinBias_1
 PUHI={'-n':10,'--pileup_input':'das:/RelValHydjetQ_B12_5020GeV_2018/%s/GEN-SIM'%(baseDataSetRelease[9])}
 PU25UP17={'-n':10,'--pileup':'AVE_35_BX_25ns','--pileup_input':'das:/RelValMinBias_13/%s/GEN-SIM'%(baseDataSetRelease[13],)}
 #PU25UP18={'-n':10,'--pileup':'AVE_50_BX_25ns','--pileup_input':'das:/RelValMinBias_13/%s/GEN-SIM'%(baseDataSetRelease[18],)}
-PU25UP18={'-n':10,'--pileup':'2018_25ns_UltraLegacy_PoissonOOTPU','--pileup_input':'das:/RelValMinBias_13/CMSSW_10_6_4-106X_upgrade2018_realistic_v9_rsb-v1/GEN-SIM'}
+PU25UP18={'-n':10,'--pileup':'2018_25ns_UltraLegacy_PoissonOOTPU','--pileup_input':'das:/RelValMinBias_13/CMSSW_10_6_4_patch1-106X_upgrade2018_realistic_v9_HS-v1/GEN-SIM'}
 
 
 #PU for FastSim
@@ -3014,7 +3015,7 @@ for ds in defaultDataSets:
     elif '2018' in name:
 #    	PUDataSets[ds]={'-n':10,'--pileup':'AVE_50_BX_25ns','--pileup_input':'das:/RelValMinBias_13/%s/GEN-SIM'%(name,)}
 	# realistic PU for HS relval
-	PUDataSets[ds]={'-n':10,'--pileup':'2018_25ns_UltraLegacy_PoissonOOTPU','--pileup_input':'das:/RelValMinBias_13/CMSSW_10_6_4-106X_upgrade2018_realistic_v9_rsb-v1/GEN-SIM'}
+	PUDataSets[ds]={'-n':10,'--pileup':'2018_25ns_UltraLegacy_PoissonOOTPU','--pileup_input':'das:/RelValMinBias_13/CMSSW_10_6_4_patch1-106X_upgrade2018_realistic_v9_HS-v1/GEN-SIM'}
 	# flatPU for HS relval
 #	PUDataSets[ds]={'-n':10,'--pileup_input':'das:/RelValMinBias_13/CMSSW_10_6_4-106X_upgrade2018_realistic_v9_rsb-v1/GEN-SIM'}
     elif 'postLS2' in name:
@@ -3060,8 +3061,12 @@ for year,k in [(year,k) for year in upgradeKeys for k in upgradeKeys[year]]:
                                        '--beamspot' : 'Realistic25ns13TeVEarly2017Collision',
                                        '--datatier' : 'GEN-SIM',
                                        '--eventcontent': 'FEVTDEBUG',
+				       '--customise_commands':'"process.source.numberEventsInLuminosityBlock = cms.untracked.uint32(50)"',
                                        '--geometry' : geom
                                        }
+
+#step1LHEGenSimUp2018Default = merge ([{'-s':'GEN,SIM','--datatier':'GEN-SIM','--eventcontent': 'FEVTDEBUG','--conditions':'auto:phase1_2018_realistic','--era':'Run2_2018,pf_badHcalMitigation','--beamspot':'Realistic25ns13TeVEarly2018Collision','--geometry':'DB:Extended'},step1LHEGenSimDefault])
+
     if beamspot is not None: upgradeStepDict['GenSimFull'][k]['--beamspot']=beamspot
 
     upgradeStepDict['GenSimHLBeamSpotFull'][k]= {'-s' : 'GEN,SIM',
