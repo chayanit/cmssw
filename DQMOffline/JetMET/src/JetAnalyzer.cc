@@ -205,8 +205,10 @@ JetAnalyzer::JetAnalyzer(const edm::ParameterSet& pSet)
   edm::ParameterSet highptjetparms = pSet.getParameter<edm::ParameterSet>("highPtJetTrigger");
   edm::ParameterSet lowptjetparms = pSet.getParameter<edm::ParameterSet>("lowPtJetTrigger");
 
-  highPtJetEventFlag_ = new GenericTriggerEventFlag(highptjetparms, consumesCollector(), *this);
-  lowPtJetEventFlag_ = new GenericTriggerEventFlag(lowptjetparms, consumesCollector(), *this);
+  highPtJetEventFlag_ =
+      new GenericTriggerEventFlag(highptjetparms, consumesCollector(), *this, l1t::UseEventSetupIn::Run);
+  lowPtJetEventFlag_ =
+      new GenericTriggerEventFlag(lowptjetparms, consumesCollector(), *this, l1t::UseEventSetupIn::Run);
 
   highPtJetExpr_ = highptjetparms.getParameter<std::vector<std::string> >("hltPaths");
   lowPtJetExpr_ = lowptjetparms.getParameter<std::vector<std::string> >("hltPaths");
@@ -367,7 +369,7 @@ void JetAnalyzer::bookHistograms(DQMStore::IBooker& ibooker, edm::Run const& iRu
   map_of_MEs.insert(std::pair<std::string, MonitorElement*>(DirName + "/" + "NJets_profile", mNJets_profile));
 
   mPhiVSEta = ibooker.book2D("PhiVSEta", "PhiVSEta", 50, etaMin_, etaMax_, 24, phiMin_, phiMax_);
-  mPhiVSEta->getTH2F()->SetOption("colz");
+  mPhiVSEta->setOption("colz");
   mPhiVSEta->setAxisTitle("#eta", 1);
   mPhiVSEta->setAxisTitle("#phi", 2);
   map_of_MEs.insert(std::pair<std::string, MonitorElement*>(DirName + "/" + "PhiVSEta", mPhiVSEta));
@@ -2238,9 +2240,6 @@ void JetAnalyzer::dqmBeginRun(const edm::Run& iRun, const edm::EventSetup& iSetu
     }
   }
 }
-
-// ***********************************************************
-void JetAnalyzer::endRun(const edm::Run& iRun, const edm::EventSetup& iSetup) {}
 
 // ***********************************************************
 void JetAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup) {

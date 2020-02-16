@@ -1,33 +1,49 @@
-
-#include "GEDGsfElectronProducer.h"
-#include "RecoEgamma/EgammaElectronAlgos/interface/GsfElectronAlgo.h"
-
+#include "DataFormats/ParticleFlowCandidate/interface/PFCandidateFwd.h"
+#include "DataFormats/Common/interface/ValueMap.h"
+#include "DataFormats/EgammaCandidates/interface/GsfElectronFwd.h"
+#include "DataFormats/EgammaCandidates/interface/GsfElectron.h"
+#include "DataFormats/GsfTrackReco/interface/GsfTrack.h"
+#include "DataFormats/EgammaCandidates/interface/GsfElectronFwd.h"
+#include "DataFormats/ParticleFlowCandidate/interface/PFCandidate.h"
+#include "DataFormats/ParticleFlowCandidate/interface/PFCandidateEGammaExtra.h"
+#include "DataFormats/ParticleFlowCandidate/interface/PFCandidateEGammaExtraFwd.h"
 #include "FWCore/Framework/interface/Frameworkfwd.h"
 #include "FWCore/Framework/interface/MakerMacros.h"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "FWCore/ParameterSet/interface/ConfigurationDescriptions.h"
 #include "FWCore/ParameterSet/interface/ParameterSetDescription.h"
+#include "RecoEgamma/EgammaElectronAlgos/interface/GsfElectronAlgo.h"
 
-#include "DataFormats/Common/interface/ValueMap.h"
-
-#include "DataFormats/EgammaCandidates/interface/GsfElectronFwd.h"
-#include "DataFormats/EgammaCandidates/interface/GsfElectron.h"
-
-#include "DataFormats/GsfTrackReco/interface/GsfTrack.h"
-
-#include "DataFormats/EgammaCandidates/interface/GsfElectronFwd.h"
-#include "DataFormats/ParticleFlowCandidate/interface/PFCandidate.h"
-#include "DataFormats/ParticleFlowCandidate/interface/PFCandidateEGammaExtra.h"
-#include "DataFormats/ParticleFlowCandidate/interface/PFCandidateEGammaExtraFwd.h"
+#include "GsfElectronBaseProducer.h"
 
 #include <iostream>
 #include <string>
+#include <map>
+
+class GEDGsfElectronProducer : public GsfElectronBaseProducer {
+public:
+  explicit GEDGsfElectronProducer(const edm::ParameterSet&, const GsfElectronAlgo::HeavyObjectCache*);
+  void produce(edm::Event&, const edm::EventSetup&) override;
+
+private:
+  edm::EDGetTokenT<reco::PFCandidateCollection> egmPFCandidateCollection_;
+  std::map<reco::GsfTrackRef, reco::GsfElectron::MvaInput> gsfMVAInputMap_;
+  std::map<reco::GsfTrackRef, reco::GsfElectron::MvaOutput> gsfMVAOutputMap_;
+
+private:
+  void fillGsfElectronValueMap(edm::Event& event, edm::ValueMap<reco::GsfElectronRef>::Filler& filler);
+  void matchWithPFCandidates(edm::Event& event);
+  void setMVAOutputs(reco::GsfElectronCollection& electrons,
+                     const GsfElectronAlgo::HeavyObjectCache*,
+                     const std::map<reco::GsfTrackRef, reco::GsfElectron::MvaOutput>& mvaOutputs,
+                     reco::VertexCollection const& vertices) const;
+};
 
 using namespace reco;
 
 GEDGsfElectronProducer::GEDGsfElectronProducer(const edm::ParameterSet& cfg,
-                                               const gsfAlgoHelpers::HeavyObjectCache* hoc)
+                                               const GsfElectronAlgo::HeavyObjectCache* hoc)
     : GsfElectronBaseProducer(cfg, hoc),
       egmPFCandidateCollection_(
           consumes<reco::PFCandidateCollection>(cfg.getParameter<edm::InputTag>("egmPFCandidatesTag"))) {
@@ -126,7 +142,7 @@ void GEDGsfElectronProducer::matchWithPFCandidates(edm::Event& event) {
 }
 
 void GEDGsfElectronProducer::setMVAOutputs(reco::GsfElectronCollection& electrons,
-                                           const gsfAlgoHelpers::HeavyObjectCache* hoc,
+                                           const GsfElectronAlgo::HeavyObjectCache* hoc,
                                            const std::map<reco::GsfTrackRef, reco::GsfElectron::MvaOutput>& mvaOutputs,
                                            reco::VertexCollection const& vertices) const {
   for (auto el = electrons.begin(); el != electrons.end(); el++) {
@@ -138,3 +154,6 @@ void GEDGsfElectronProducer::setMVAOutputs(reco::GsfElectronCollection& electron
     el->setMvaOutput(mvaOutput);
   }
 }
+
+#include "FWCore/Framework/interface/MakerMacros.h"
+DEFINE_FWK_MODULE(GEDGsfElectronProducer);

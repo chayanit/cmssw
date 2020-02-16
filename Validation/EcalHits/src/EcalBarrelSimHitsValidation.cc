@@ -28,18 +28,6 @@ EcalBarrelSimHitsValidation::EcalBarrelSimHitsValidation(const edm::ParameterSet
   // get hold of back-end interface
   dbe_ = nullptr;
   dbe_ = edm::Service<DQMStore>().operator->();
-  if (dbe_) {
-    if (verbose_) {
-      dbe_->setVerbose(1);
-    } else {
-      dbe_->setVerbose(0);
-    }
-  }
-
-  if (dbe_) {
-    if (verbose_)
-      dbe_->showDirStructure();
-  }
 
   menEBHits_ = nullptr;
   menEBCrystals_ = nullptr;
@@ -76,6 +64,7 @@ EcalBarrelSimHitsValidation::EcalBarrelSimHitsValidation(const edm::ParameterSet
 
   if (dbe_) {
     dbe_->setCurrentFolder("EcalHitsV/EcalSimHitsValidation");
+    dbe_->setScope(MonitorElementData::Scope::RUN);
 
     sprintf(histo, "EB hits multiplicity");
     menEBHits_ = dbe_->book1D(histo, histo, 50, 0., 5000.);

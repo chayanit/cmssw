@@ -45,8 +45,8 @@ void DQMDcsInfo::bookHistograms(DQMStore::IBooker& ibooker,
   ibooker.cd();
   ibooker.setCurrentFolder(subsystemname_ + "/" + dcsinfofolder_);
 
+  auto scope = DQMStore::IBooker::UseLumiScope(ibooker);
   DCSbyLS_ = ibooker.book1D("DCSbyLS", "DCS", 25, 0., 25.);
-  DCSbyLS_->setLumiFlag();
 
   // initialize
   for (bool& dc : dcs)
@@ -60,7 +60,7 @@ void DQMDcsInfo::analyze(const edm::Event& e, const edm::EventSetup& c) {
   return;
 }
 
-void DQMDcsInfo::endLuminosityBlock(const edm::LuminosityBlock& l, const edm::EventSetup& c) {
+void DQMDcsInfo::dqmEndLuminosityBlock(const edm::LuminosityBlock& l, const edm::EventSetup& c) {
   // int nlumi = l.id().luminosityBlock();
 
   // fill dcs vs lumi

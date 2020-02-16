@@ -42,7 +42,7 @@ void TotemTimingRecHitProducerAlgorithm::build(const CTPPSGeometry& geom,
     float x_width = 0.f, y_width = 0.f, z_width = 0.f;
 
     // retrieve the geometry element associated to this DetID ( if present )
-    const DetGeomDesc* det = geom.getSensorNoThrow(detid);
+    const DetGeomDesc* det = geom.sensorNoThrow(detid);
 
     if (det) {
       x_pos = det->translation().x();
@@ -191,5 +191,5 @@ float TotemTimingRecHitProducerAlgorithm::constantFractionDiscriminator(const st
                        (dataProcessed[indexOfThresholdCrossing - 1] - dataProcessed[indexOfThresholdCrossing]) *
                        (threshold - dataProcessed[indexOfThresholdCrossing]) +
                    time[indexOfThresholdCrossing]
-             : TotemTimingRecHit::NO_T_AVAILABLE;
+             : (float)TotemTimingRecHit::NO_T_AVAILABLE;
 }
