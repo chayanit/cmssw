@@ -176,7 +176,11 @@ class MatrixInjector(object):
             wmsplit['DIGIUP15_PU50']=1
             wmsplit['RECOUP15_PU50']=1
             wmsplit['DIGIUP15_PU25']=1
+	    wmsplit['DIGIUP15_FlatPU70']=1
             wmsplit['RECOUP15_PU25']=1
+	    wmsplit['RECOUP15_FlatPU70']=1
+	    wmsplit['RECOUP15_PU25_L1TMuDQM']=1
+	    wmsplit['RECOUP15_PU25_L1TEgDQM']=1
             wmsplit['DIGIUP15_PU25HS']=1
             wmsplit['RECOUP15_PU25HS']=1
             wmsplit['DIGIHIMIX']=5
@@ -398,6 +402,7 @@ class MatrixInjector(object):
                                 processStrPrefix='PU_'          # take care of pu overlay done with GEN-SIM mixing
                                 if (  s[2][index].split()[  s[2][index].split().index('--pileup')+1 ]  ).find('25ns')  > 0 :
                                     processStrPrefix='PU25ns_'
+				    #processStrPrefix='FlatPU0to70_'
                                 elif   (  s[2][index].split()[  s[2][index].split().index('--pileup')+1 ]  ).find('50ns')  > 0 :
                                     processStrPrefix='PU50ns_'
                             if 'premix_stage2' in s[2][index] and '--pileup_input' in s[2][index]: # take care of pu overlay done with DIGI mixing of premixed events
