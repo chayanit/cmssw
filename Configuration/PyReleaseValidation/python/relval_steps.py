@@ -837,7 +837,7 @@ steps['CloseByPGun_CE_H_Coarse_300um_2026D49noPU']={'INPUT':InputInfo(dataSet='/
 
 
 #input for Phase2 2026D49PU200 RAW in 11_0_0
-steps['TTbar_2026D49PU200']={'INPUT':InputInfo(dataSet='/RelValTTbar_14TeV/%s/GEN-SIM-DIGI-RAW'%(baseDataSetRelease[24],),location='STD')}
+steps['TTbar_2026D49PU200']={'INPUT':InputInfo(dataSet='/RelValTTbar_14TeV/CMSSW_11_0_0-PU25ns_110X_mcRun4_realistic_v3_2026D49PU200-v2/GEN-SIM-DIGI-RAW',location='STD')}
 steps['NuGun_2026D49PU200']={'INPUT':InputInfo(dataSet='/RelValNuGun/%s/GEN-SIM-DIGI-RAW'%(baseDataSetRelease[24],),location='STD')}
 steps['ZTT_2026D49PU200']={'INPUT':InputInfo(dataSet='/RelValZTT_14TeV/%s/GEN-SIM-DIGI-RAW'%(baseDataSetRelease[24],),location='STD')}
 steps['H125GGgluonfusion_2026D49PU200']={'INPUT':InputInfo(dataSet='/RelValH125GGgluonfusion_14/%s/GEN-SIM-DIGI-RAW'%(baseDataSetRelease[24],),location='STD')}
@@ -1647,7 +1647,7 @@ PU25HS={'-n':10,'--pileup':'AVE_35_BX_25ns','--pileup_input':'das:/RelValMinBias
 
 #PU25 for Phase2 HLT TDR workflows
 PU25_2026D49={'-n':10,'--pileup':'AVE_200_BX_25ns','--pileup_input':'das:/RelValMinBias_14TeV/CMSSW_11_0_0_pre13-110X_mcRun4_realistic_v2_2026D49noPU-v1/GEN-SIM'}
-
+#PU25_2026D49={'-n':10,'--pileup':'AVE_200_BX_25ns','--pileup_input':'das:/RelValMinBias_14TeV/CMSSW_11_1_0_pre3-110X_mcRun4_realistic_v3_2026D49noPU-v1/GEN-SIM'}
 
 #
 steps['TTbarFSPU']=merge([PUFS,Kby(100,500),steps['TTbarFS']] )
@@ -2448,6 +2448,7 @@ step3HLTTDR2026D49 = {
 
 steps['RECO2026D49']=merge([step3HLTTDR2026D49])
 steps['RECO2026D49PU200']=merge([PU25_2026D49,step3HLTTDR2026D49])
+#steps['RECO2026D49PU200']=merge([step3HLTTDR2026D49])
 
 # mask away - to be removed once we'll migrate the matrix to be fully unscheduled for RECO step
 #steps['RECOmAOD']=merge([step3DefaultsUnsch])
@@ -2967,6 +2968,7 @@ steps['HARVEST2026D49']={
                         '-n':'100'}
 
 steps['HARVEST2026D49PU200']=merge([PU25_2026D49,steps['HARVEST2026D49']])
+#steps['HARVEST2026D49PU200']=steps['HARVEST2026D49']
 
 
 steps['ALCASPLIT']={'-s':'ALCAOUTPUT:@allForPrompt',
