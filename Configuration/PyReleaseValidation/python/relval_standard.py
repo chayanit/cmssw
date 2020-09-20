@@ -722,3 +722,10 @@ workflows[280]= ['',['AMPT_PPb_5020GeV_MinimumBias','DIGI','RECO','HARVEST']]
 
 ### pPb Run2 ###
 workflows[281]= ['',['EPOS_PPb_8160GeV_MinimumBias','DIGIUP15_PPb','RECOUP15_PPb','HARVESTUP15_PPb']]
+
+#Special request
+workflows[11834.1]= ['',['TTbar_14TeV','RECOUP21_PU25','HARVESTUP21_PU25']]
+workflows[23434.1]= ['',['TTbar_14TeV_2026D49','RECO2026D49_PU25','HARVEST2026D49_PU25']]
+
+
+

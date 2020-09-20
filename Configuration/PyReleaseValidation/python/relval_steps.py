@@ -826,6 +826,8 @@ steps['SMS-T1tttt_mGl-1500_mLSP-100_13UP18INPUT']={'INPUT':InputInfo(dataSet='/R
 steps['ZMM_13_HSINPUT']={'INPUT':InputInfo(dataSet='/RelValZMM_13_HS/%s/GEN-SIM'%(baseDataSetRelease[10],),location='STD')}
 steps['TTbar_13_HSINPUT']={'INPUT':InputInfo(dataSet='/RelValTTbar_13_HS/%s/GEN-SIM'%(baseDataSetRelease[10],),location='STD')}
 
+steps['TTbar_14TeV']={'INPUT':InputInfo(dataSet='/RelValTTbar_14TeV/CMSSW_11_2_0_pre5-PU_112X_mcRun3_2021_realistic_v7-v1/GEN-SIM-DIGI-RAW',location='STD')}
+steps['TTbar_14TeV_2026D49']={'INPUT':InputInfo(dataSet='/RelValTTbar_14TeV/CMSSW_11_2_0_pre5-PU25ns_110X_mcRun4_realistic_v3_2026D49PU200-v1/GEN-SIM-DIGI-RAW',location='STD')}
 
 ## high stat step1
 ecalHcal={
@@ -1588,6 +1590,8 @@ PUHI={'-n':10,'--pileup_input':'das:/RelValHydjetQ_B12_5020GeV_2018/%s/GEN-SIM'%
 PUHI2021={'-n':10,'--pileup_input':'das:/RelValHydjetQ_B12_5020GeV_2021_ppReco/%s/GEN-SIM'%(baseDataSetRelease[23])}
 PU25UP17={'-n':10,'--pileup':'AVE_35_BX_25ns','--pileup_input':'das:/RelValMinBias_13/%s/GEN-SIM'%(baseDataSetRelease[13],)}
 PU25UP18={'-n':10,'--pileup':'AVE_50_BX_25ns','--pileup_input':'das:/RelValMinBias_13/%s/GEN-SIM'%(baseDataSetRelease[18],)}
+PU25UP21={'-n':10,'--pileup':'Run3_Flat55To75_PoissonOOTPU','--pileup_input':'das:/RelValMinBias_14TeV/CMSSW_11_2_0_pre6-112X_mcRun3_2021_realistic_v7-v1/GEN-SIM'}
+PU25UP26D49={'-n':10,'--pileup':'AVE_200_BX_25ns','--pileup_input':'das:/RelValMinBias_14TeV/CMSSW_11_2_0_pre6-112X_mcRun4_realistic_v2_2026D49noPU-v1/GEN-SIM'}
 
 #PU for FastSim
 # FS_PU_INPUT_13TEV = "file:/afs/cern.ch/work/l/lveldere/minbias.root" # placeholder for relval to be produced with wf  135.8
@@ -2168,7 +2172,8 @@ steps['DIGIPU']=merge([{'--process':'REDIGI'},steps['DIGIPU1']])
 #for 2015
 step3Up2015Defaults = {
     #'-s':'RAW2DIGI,L1Reco,RECO,EI,VALIDATION,DQM',
-    '-s':'RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidationNoHLT+@miniAODValidation,DQM:@standardDQMFakeHLT+@miniAODDQM',
+    #'-s':'RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidationNoHLT+@miniAODValidation,DQM:@standardDQMFakeHLT+@miniAODDQM',
+    '-s':'RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidation+@miniAODValidation,DQM:@standardDQM+@ExtraHLT+@miniAODDQM',
     '--conditions':'auto:run2_mc',
     '-n':'10',
     '--datatier':'GEN-SIM-RECO,MINIAODSIM,DQMIO',
@@ -2219,6 +2224,11 @@ steps['RECOUP17_PU25']=merge([PU25UP17,steps['RECOUP17']])
 steps['RECOUP18']=merge([{'--conditions':'auto:phase1_2018_realistic','--era' : 'Run2_2018','--geometry' : 'DB:Extended'},steps['RECOUP15']])
 steps['RECOUP18ml']=merge([concurrentLumis,steps['RECOUP18']])
 steps['RECOUP18_PU25']=merge([PU25UP18,steps['RECOUP18']])
+
+steps['RECOUP21']=merge([{'--conditions':'auto:phase1_2021_realistic','--era' : 'Run3','--geometry' : 'DB:Extended'},steps['RECOUP15']])
+steps['RECOUP21_PU25']=merge([PU25UP21,steps['RECOUP21']])
+steps['RECO2026D49']=merge([{'--conditions':'auto:phase2_realistic_T15','--era':'Phase2C9','--geometry':'Extended2026D49','-s':'RAW2DIGI,L1Reco,RECO,RECOSIM,PAT,VALIDATION:@phase2Validation+@miniAODValidation,DQM:@phase2+@miniAODDQM','--customise':'SLHCUpgradeSimulations/Configuration/aging.customise_aging_1000','--eventcontent':'FEVTDEBUGHLT,MINIAODSIM,DQM'},steps['RECOUP15']])
+steps['RECO2026D49_PU25']=merge([PU25UP26D49,steps['RECO2026D49']])
 
 # for Run1 PPb data workflow
 steps['RECO_PPbData']=merge([{'-s':'RAW2DIGI,L1Reco,RECO,ALCA:TkAlMinBias+TkAlMuonIsolatedPA+TkAlUpsilonMuMuPA+TkAlZMuMuPA,SKIM:PAZMM+PAZEE+PAMinBias,EI,DQM','--scenario':'pp','--conditions':'auto:run1_data','--era':'Run1_pA','--datatier':'AOD,DQMIO','--eventcontent':'AOD,DQM'}, dataReco])
@@ -2906,7 +2916,8 @@ steps['HARVESTPPREF2017']=merge([ppRefDefaults2017,{'-s':'HARVESTING:validationH
 
 steps['HARVESTUP15']={
     # '-s':'HARVESTING:validationHarvesting+dqmHarvesting', # todo: remove UP from label
-    '-s':'HARVESTING:@standardValidationNoHLT+@standardDQMFakeHLT+@miniAODValidation+@miniAODDQM', # todo: remove UP from label
+    #'-s':'HARVESTING:@standardValidationNoHLT+@standardDQMFakeHLT+@miniAODValidation+@miniAODDQM', # todo: remove UP from label
+    '-s':'HARVESTING:@standardValidation+@standardDQM+@ExtraHLT+@miniAODValidation+@miniAODDQM',
     '--conditions':'auto:run2_mc',
     '--mc':'',
     '--era' : 'Run2_2016',
@@ -2943,6 +2954,9 @@ step_harvest_MRH_RD = {'--harvesting':'AtJobEnd','--customise_commands':'"proces
 steps['HARVESTUP18_PU25_RD']=merge([step_harvest_MRH_RD,steps['HARVESTUP18']])
 steps['HARVESTUP18_PU25_L1TEgDQM_RD']=merge([step_harvest_MRH_RD,steps['HARVESTUP18_L1TEgDQM']])
 steps['HARVESTUP18_PU25_L1TMuDQM_RD']=merge([step_harvest_MRH_RD,steps['HARVESTUP18_L1TMuDQM']])
+
+steps['HARVESTUP21_PU25']=merge([{'--conditions':'auto:phase1_2021_realistic','--era':'Run3','--geometry':'DB:Extended','--scenario':'pp'},steps['HARVESTUP15']])
+steps['HARVEST2026D49_PU25']=merge([{'--conditions':'auto:phase2_realistic_T15','--era':'Phase2C9','--geometry':'Extended2026D49','--scenario':'pp','-s':'HARVESTING:@phase2Validation+@phase2+@miniAODValidation+@miniAODDQM','--customise':'SLHCUpgradeSimulations/Configuration/aging.customise_aging_1000'},steps['HARVESTUP15']])
 
 steps['HARVESTDR2_REMINIAOD_mc2016']=merge([{'-s':'HARVESTING:@miniAODValidation+@miniAODDQM','--era':'Run2_2016,run2_miniAOD_80XLegacy'},steps['HARVESTUP15']])
 steps['HARVESTUP17_REMINIAOD_mc2017']=merge([{'-s':'HARVESTING:@miniAODValidation+@miniAODDQM','--era':'Run2_2017,run2_miniAOD_94XFall17'},steps['HARVESTUP17']])
@@ -3213,7 +3227,7 @@ defaultDataSets['2021']='CMSSW_10_6_1-106X_mcRun3_2021_realistic_v1_rsb-v'
 defaultDataSets['2021Design']='CMSSW_10_6_0_pre3-105X_postLS2_realistic_v6-v'
 defaultDataSets['2023']='CMSSW_10_6_1-106X_mcRun3_2021_realistic_v1_rsb-v'
 defaultDataSets['2024']='CMSSW_10_6_1-106X_mcRun3_2021_realistic_v1_rsb-v'
-defaultDataSets['2026D49']='CMSSW_11_0_0_pre13-110X_mcRun4_realistic_v2_2026D49noPU-v'
+defaultDataSets['2026D49']='CMSSW_11_2_0_pre6-112X_mcRun4_realistic_v2_2026D49noPU-v'
 
 puDataSets = {}
 for key, value in defaultDataSets.items(): puDataSets[key+'PU'] = value
