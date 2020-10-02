@@ -1,0 +1,20 @@
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/test going to execute cd 1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py Configuration/Generator/python/ZprimeToTT_M2000_W600_13TeV_cfi.py  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent FEVTDEBUG,LHE --relval 9000,100 -s LHE,GEN,SIM --datatier GEN-SIM,LHE --beamspot Realistic25ns13TeVEarly2018Collision --geometry DB:Extended -n 5 --fileout file:step1.root  --nThreads 4 > step1_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/test going to execute cd 1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py step2  --conditions auto:phase1_2018_realistic --pileup_input das:/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM -n 10 --era Run2_2018 --eventcontent FEVTDEBUGHLT -s DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2018 --datatier GEN-SIM-DIGI-RAW-HLTDEBUG --pileup 2018_25ns_UltraLegacy_PoissonOOTPU --geometry DB:Extended -n 5 --filein  file:step1.root  --fileout file:step2.root  --nThreads 4 > step2_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/test going to execute cd 1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py step3  --conditions auto:phase1_2018_realistic --pileup_input das:/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM -n 10 --era Run2_2018 --eventcontent RECOSIM,MINIAODSIM,DQM -s RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidationNoHLT+@miniAODValidation,DQM:@standardDQMFakeHLT+@miniAODDQM --datatier GEN-SIM-RECO,MINIAODSIM,DQMIO --pileup 2018_25ns_UltraLegacy_PoissonOOTPU --geometry DB:Extended -n 5 --filein  file:step2.root  --fileout file:step3.root  --nThreads 4 > step3_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/test going to execute cd 1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py step4  --conditions auto:phase1_2018_realistic -s HARVESTING:@standardValidationNoHLT+@standardDQMFakeHLT+@miniAODValidation+@miniAODDQM --scenario pp --filetype DQM --geometry DB:Extended --era Run2_2018 --mc  -n 5 --filein file:step3_inDQM.root --fileout file:step4.root  > step4_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/test going to execute cd 1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py step5  --conditions auto:phase1_2018_realistic --nThreads 2 -n 10 --era Run2_2018 --eventcontent NANOEDMAODSIM --filein file:step3_inMINIAODSIM.root -s NANO --datatier NANOAODSIM --mc  -n 5 --fileout file:step5.root  --nThreads 4 > step5_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 

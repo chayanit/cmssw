@@ -1,0 +1,797 @@
+This is an expert setting, you'd better know what you're doing
+ignoring non-requested file relval_standard
+ignoring non-requested file relval_highstats
+ignoring non-requested file relval_pileup
+ignoring non-requested file relval_generator
+ignoring non-requested file relval_extendedgen
+ignoring non-requested file relval_production
+ignoring non-requested file relval_ged
+processing relval_upgrade
+ignoring non-requested file relval_2017
+ignoring non-requested file relval_2026
+ignoring non-requested file relval_identity
+ignoring non-requested file relval_machine
+ignoring non-requested file relval_premix
+Running up to 4 concurrent jobs, each with 8 threads per process
+
+Preparing to run 10823.0 MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+
+Preparing to run 10824.0 TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py MinBias_13TeV_pythia8_TuneCUETP8M1_cfi  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent FEVTDEBUG --relval 90000,100 -s GEN,SIM --datatier GEN-SIM --beamspot Realistic25ns13TeVEarly2018Collision --geometry DB:Extended --io MinBias_13TeV_pythia8_TuneCUETP8M1_2018_GenSim.io --python MinBias_13TeV_pythia8_TuneCUETP8M1_2018_GenSim.py --fileout file:step1.root  --nThreads 8 > step1_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py TTbar_13TeV_TuneCUETP8M1_cfi  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent FEVTDEBUG --relval 9000,50 -s GEN,SIM --datatier GEN-SIM --beamspot Realistic25ns13TeVEarly2018Collision --geometry DB:Extended --io TTbar_13TeV_TuneCUETP8M1_2018_GenSim.io --python TTbar_13TeV_TuneCUETP8M1_2018_GenSim.py --fileout file:step1.root  --nThreads 8 > step1_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+Preparing to run 10826.0 QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py QCD_Pt_600_800_13TeV_TuneCUETP8M1_cfi  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent FEVTDEBUG --relval 9000,50 -s GEN,SIM --datatier GEN-SIM --beamspot Realistic25ns13TeVEarly2018Collision --geometry DB:Extended --io QCD_Pt_600_800_13TeV_TuneCUETP8M1_2018_GenSim.io --python QCD_Pt_600_800_13TeV_TuneCUETP8M1_2018_GenSim.py --fileout file:step1.root  --nThreads 8 > step1_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+Preparing to run 10859.0 QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_cfi  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent FEVTDEBUG --relval 9000,50 -s GEN,SIM --datatier GEN-SIM --beamspot Realistic25ns13TeVEarly2018Collision --geometry DB:Extended --io QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_2018_GenSim.io --python QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_2018_GenSim.py --fileout file:step1.root  --nThreads 8 > step1_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step2  --conditions auto:phase1_2018_realistic -s DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2018 --datatier GEN-SIM-DIGI-RAW -n 10 --geometry DB:Extended --era Run2_2018 --eventcontent FEVTDEBUGHLT --io Digi_2018.io --python Digi_2018.py --filein  file:step1.root  --fileout file:step2.root  --nThreads 8 > step2_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step2  --conditions auto:phase1_2018_realistic -s DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2018 --datatier GEN-SIM-DIGI-RAW -n 10 --geometry DB:Extended --era Run2_2018 --eventcontent FEVTDEBUGHLT --io Digi_2018.io --python Digi_2018.py --filein  file:step1.root  --fileout file:step2.root  --nThreads 8 > step2_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step2  --conditions auto:phase1_2018_realistic -s DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2018 --datatier GEN-SIM-DIGI-RAW -n 10 --geometry DB:Extended --era Run2_2018 --eventcontent FEVTDEBUGHLT --io Digi_2018.io --python Digi_2018.py --filein  file:step1.root  --fileout file:step2.root  --nThreads 8 > step2_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step3  --conditions auto:phase1_2018_realistic -s RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidation+@miniAODValidation,DQM:@standardDQM+@ExtraHLT+@miniAODDQM --datatier GEN-SIM-RECO,MINIAODSIM,DQMIO -n 10 --geometry DB:Extended --era Run2_2018 --eventcontent RECOSIM,MINIAODSIM,DQM --io Reco_2018.io --python Reco_2018.py --filein  file:step2.root  --fileout file:step3.root  --nThreads 8 > step3_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step2  --conditions auto:phase1_2018_realistic -s DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2018 --datatier GEN-SIM-DIGI-RAW -n 10 --geometry DB:Extended --era Run2_2018 --eventcontent FEVTDEBUGHLT --io Digi_2018.io --python Digi_2018.py --filein  file:step1.root  --fileout file:step2.root  --nThreads 8 > step2_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step3  --conditions auto:phase1_2018_realistic -s RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidation+@miniAODValidation,DQM:@standardDQM+@ExtraHLT+@miniAODDQM --datatier GEN-SIM-RECO,MINIAODSIM,DQMIO -n 10 --geometry DB:Extended --era Run2_2018 --eventcontent RECOSIM,MINIAODSIM,DQM --io Reco_2018.io --python Reco_2018.py --filein  file:step2.root  --fileout file:step3.root  --nThreads 8 > step3_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step3  --conditions auto:phase1_2018_realistic -s RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidation+@miniAODValidation,DQM:@standardDQM+@ExtraHLT+@miniAODDQM --datatier GEN-SIM-RECO,MINIAODSIM,DQMIO -n 10 --geometry DB:Extended --era Run2_2018 --eventcontent RECOSIM,MINIAODSIM,DQM --io Reco_2018.io --python Reco_2018.py --filein  file:step2.root  --fileout file:step3.root  --nThreads 8 > step3_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step4  --conditions auto:phase1_2018_realistic -s HARVESTING:@standardValidation+@standardDQM+@ExtraHLT+@miniAODValidation+@miniAODDQM --scenario pp --filetype DQM --geometry DB:Extended --era Run2_2018 --mc  --io HARVEST_2018.io --python HARVEST_2018.py -n 100  --filein file:step3_inDQM.root --fileout file:step4.root  > step4_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step3  --conditions auto:phase1_2018_realistic -s RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidation+@miniAODValidation,DQM:@standardDQM+@ExtraHLT+@miniAODDQM --datatier GEN-SIM-RECO,MINIAODSIM,DQMIO -n 10 --geometry DB:Extended --era Run2_2018 --eventcontent RECOSIM,MINIAODSIM,DQM --io Reco_2018.io --python Reco_2018.py --filein  file:step2.root  --fileout file:step3.root  --nThreads 8 > step3_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step4  --conditions auto:phase1_2018_realistic -s HARVESTING:@standardValidation+@standardDQM+@ExtraHLT+@miniAODValidation+@miniAODDQM --scenario pp --filetype DQM --geometry DB:Extended --era Run2_2018 --mc  --io HARVEST_2018.io --python HARVEST_2018.py -n 100  --filein file:step3_inDQM.root --fileout file:step4.root  > step4_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step4  --conditions auto:phase1_2018_realistic -s HARVESTING:@standardValidation+@standardDQM+@ExtraHLT+@miniAODValidation+@miniAODDQM --scenario pp --filetype DQM --geometry DB:Extended --era Run2_2018 --mc  --io HARVEST_2018.io --python HARVEST_2018.py -n 100  --filein file:step3_inDQM.root --fileout file:step4.root  > step4_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step5  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent NANOEDMAODSIM --filein file:step3_inMINIAODSIM.root -s NANO --datatier NANOAODSIM --geometry DB:Extended --io Nano_2018.io --python Nano_2018.py --fileout file:step5.root  --nThreads 8 > step5_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step4  --conditions auto:phase1_2018_realistic -s HARVESTING:@standardValidation+@standardDQM+@ExtraHLT+@miniAODValidation+@miniAODDQM --scenario pp --filetype DQM --geometry DB:Extended --era Run2_2018 --mc  --io HARVEST_2018.io --python HARVEST_2018.py -n 100  --filein file:step3_inDQM.root --fileout file:step4.root  > step4_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step5  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent NANOEDMAODSIM --filein file:step3_inMINIAODSIM.root -s NANO --datatier NANOAODSIM --geometry DB:Extended --io Nano_2018.io --python Nano_2018.py --fileout file:step5.root  --nThreads 8 > step5_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step5  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent NANOEDMAODSIM --filein file:step3_inMINIAODSIM.root -s NANO --datatier NANOAODSIM --geometry DB:Extended --io Nano_2018.io --python Nano_2018.py --fileout file:step5.root  --nThreads 8 > step5_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step5  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent NANOEDMAODSIM --filein file:step3_inMINIAODSIM.root -s NANO --datatier NANOAODSIM --geometry DB:Extended --io Nano_2018.io --python Nano_2018.py --fileout file:step5.root  --nThreads 8 > step5_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+Preparing to run 10871.0 QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+
+Preparing to run 10924.0 QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py QCDForPF_13TeV_TuneCUETP8M1_cfi  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent FEVTDEBUG --relval 50000,100 -s GEN,SIM --datatier GEN-SIM --beamspot Realistic25ns13TeVEarly2018Collision --geometry DB:Extended --io QCDForPF_13TeV_TuneCUETP8M1_2018_GenSim.io --python QCDForPF_13TeV_TuneCUETP8M1_2018_GenSim.py --fileout file:step1.root  --nThreads 8 > step1_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py QCD_Pt_1800_2400_13TeV_TuneCP5_cfi  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent FEVTDEBUG --relval 9000,50 -s GEN,SIM --datatier GEN-SIM --beamspot Realistic25ns13TeVEarly2018Collision --geometry DB:Extended --io QCD_Pt_1800_2400_13TeV_TuneCP5_2018_GenSim.io --python QCD_Pt_1800_2400_13TeV_TuneCP5_2018_GenSim.py --fileout file:step1.root  --nThreads 8 > step1_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step2  --conditions auto:phase1_2018_realistic -s DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2018 --datatier GEN-SIM-DIGI-RAW -n 10 --geometry DB:Extended --era Run2_2018 --eventcontent FEVTDEBUGHLT --io Digi_2018.io --python Digi_2018.py --filein  file:step1.root  --fileout file:step2.root  --nThreads 8 > step2_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step2  --conditions auto:phase1_2018_realistic -s DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2018 --datatier GEN-SIM-DIGI-RAW -n 10 --geometry DB:Extended --era Run2_2018 --eventcontent FEVTDEBUGHLT --io Digi_2018.io --python Digi_2018.py --filein  file:step1.root  --fileout file:step2.root  --nThreads 8 > step2_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step3  --conditions auto:phase1_2018_realistic -s RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidation+@miniAODValidation,DQM:@standardDQM+@ExtraHLT+@miniAODDQM --datatier GEN-SIM-RECO,MINIAODSIM,DQMIO -n 10 --geometry DB:Extended --era Run2_2018 --eventcontent RECOSIM,MINIAODSIM,DQM --io Reco_2018.io --python Reco_2018.py --filein  file:step2.root  --fileout file:step3.root  --nThreads 8 > step3_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step3  --conditions auto:phase1_2018_realistic -s RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidation+@miniAODValidation,DQM:@standardDQM+@ExtraHLT+@miniAODDQM --datatier GEN-SIM-RECO,MINIAODSIM,DQMIO -n 10 --geometry DB:Extended --era Run2_2018 --eventcontent RECOSIM,MINIAODSIM,DQM --io Reco_2018.io --python Reco_2018.py --filein  file:step2.root  --fileout file:step3.root  --nThreads 8 > step3_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step4  --conditions auto:phase1_2018_realistic -s HARVESTING:@standardValidation+@standardDQM+@ExtraHLT+@miniAODValidation+@miniAODDQM --scenario pp --filetype DQM --geometry DB:Extended --era Run2_2018 --mc  --io HARVEST_2018.io --python HARVEST_2018.py -n 100  --filein file:step3_inDQM.root --fileout file:step4.root  > step4_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step4  --conditions auto:phase1_2018_realistic -s HARVESTING:@standardValidation+@standardDQM+@ExtraHLT+@miniAODValidation+@miniAODDQM --scenario pp --filetype DQM --geometry DB:Extended --era Run2_2018 --mc  --io HARVEST_2018.io --python HARVEST_2018.py -n 100  --filein file:step3_inDQM.root --fileout file:step4.root  > step4_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step5  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent NANOEDMAODSIM --filein file:step3_inMINIAODSIM.root -s NANO --datatier NANOAODSIM --geometry DB:Extended --io Nano_2018.io --python Nano_2018.py --fileout file:step5.root  --nThreads 8 > step5_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step5  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent NANOEDMAODSIM --filein file:step3_inMINIAODSIM.root -s NANO --datatier NANOAODSIM --geometry DB:Extended --io Nano_2018.io --python Nano_2018.py --fileout file:step5.root  --nThreads 8 > step5_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano Step0-PASSED Step1-PASSED Step2-PASSED Step3-PASSED Step4-PASSED  - time date Thu Sep 24 17:44:40 2020-date Thu Sep 24 17:44:40 2020; exit: 0 0 0 0 0
+10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano Step0-PASSED Step1-PASSED Step2-PASSED Step3-PASSED Step4-PASSED  - time date Thu Sep 24 17:44:40 2020-date Thu Sep 24 17:44:40 2020; exit: 0 0 0 0 0
+10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano Step0-PASSED Step1-PASSED Step2-PASSED Step3-PASSED Step4-PASSED  - time date Thu Sep 24 17:44:40 2020-date Thu Sep 24 17:44:40 2020; exit: 0 0 0 0 0
+10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano Step0-PASSED Step1-PASSED Step2-PASSED Step3-PASSED Step4-PASSED  - time date Thu Sep 24 17:44:40 2020-date Thu Sep 24 17:44:40 2020; exit: 0 0 0 0 0
+10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano Step0-PASSED Step1-PASSED Step2-PASSED Step3-PASSED Step4-PASSED  - time date Thu Sep 24 17:44:41 2020-date Thu Sep 24 17:44:41 2020; exit: 0 0 0 0 0
+10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano Step0-PASSED Step1-PASSED Step2-PASSED Step3-PASSED Step4-PASSED  - time date Thu Sep 24 17:44:41 2020-date Thu Sep 24 17:44:41 2020; exit: 0 0 0 0 0
+6 6 6 6 6 tests passed, 0 0 0 0 0 failed
+
+
+	Found wmclient
+
+inspecting 10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+inspecting 10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+inspecting 10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+inspecting 10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+inspecting 10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano
+inspecting 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+Loading 10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/HARVEST_2018.py to https://cmsweb.cern.ch/couchdb for 10823.0harvesting
+Importing the config, this may take a while...10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/HARVEST_2018.py uploaded to couchDB for 10823.0 with ID 3931dcef8628ffce1a65d284db5a11cd
+Loading 10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Reco_2018.py to https://cmsweb.cern.ch/couchdb for 10823.0Reco_2018
+Importing the config, this may take a while...10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Reco_2018.py  uploaded to couchDB for 10823.0 with ID 3931dcef8628ffce1a65d284db5a7f81
+Loading 10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/MinBias_13TeV_pythia8_TuneCUETP8M1_2018_GenSim.py to https://cmsweb.cern.ch/couchdb for 10823.0MinBias_13TeV_pythia8_TuneCUETP8M1_2018_GenSim
+Importing the config, this may take a while...10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/MinBias_13TeV_pythia8_TuneCUETP8M1_2018_GenSim.py  uploaded to couchDB for 10823.0 with ID 3931dcef8628ffce1a65d284db5a8cb0
+Loading 10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Digi_2018.py to https://cmsweb.cern.ch/couchdb for 10823.0Digi_2018
+Importing the config, this may take a while...10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Digi_2018.py  uploaded to couchDB for 10823.0 with ID 3931dcef8628ffce1a65d284db5a9033
+Loading 10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Nano_2018.py to https://cmsweb.cern.ch/couchdb for 10823.0Nano_2018
+Importing the config, this may take a while...10823.0_MinBias_13+2018+MinBias_13TeV_pythia8_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Nano_2018.py  uploaded to couchDB for 10823.0 with ID 3931dcef8628ffce1a65d284db5a91e4
+Not re-uploading 10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/HARVEST_2018.py to https://cmsweb.cern.ch/couchdb for 10824.0harvesting
+10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/HARVEST_2018.py uploaded to couchDB for 10824.0 with ID 3931dcef8628ffce1a65d284db5a11cd
+Not re-uploading 10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Reco_2018.py to https://cmsweb.cern.ch/couchdb for 10824.0Reco_2018
+10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Reco_2018.py  uploaded to couchDB for 10824.0 with ID 3931dcef8628ffce1a65d284db5a7f81
+Loading 10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/TTbar_13TeV_TuneCUETP8M1_2018_GenSim.py to https://cmsweb.cern.ch/couchdb for 10824.0TTbar_13TeV_TuneCUETP8M1_2018_GenSim
+Importing the config, this may take a while...10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/TTbar_13TeV_TuneCUETP8M1_2018_GenSim.py  uploaded to couchDB for 10824.0 with ID 3931dcef8628ffce1a65d284db5a9d05
+Not re-uploading 10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Digi_2018.py to https://cmsweb.cern.ch/couchdb for 10824.0Digi_2018
+10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Digi_2018.py  uploaded to couchDB for 10824.0 with ID 3931dcef8628ffce1a65d284db5a9033
+Not re-uploading 10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Nano_2018.py to https://cmsweb.cern.ch/couchdb for 10824.0Nano_2018
+10824.0_TTbar_13+2018+TTbar_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Nano_2018.py  uploaded to couchDB for 10824.0 with ID 3931dcef8628ffce1a65d284db5a91e4
+Not re-uploading 10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/HARVEST_2018.py to https://cmsweb.cern.ch/couchdb for 10826.0harvesting
+10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/HARVEST_2018.py uploaded to couchDB for 10826.0 with ID 3931dcef8628ffce1a65d284db5a11cd
+Not re-uploading 10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Reco_2018.py to https://cmsweb.cern.ch/couchdb for 10826.0Reco_2018
+10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Reco_2018.py  uploaded to couchDB for 10826.0 with ID 3931dcef8628ffce1a65d284db5a7f81
+Loading 10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/QCD_Pt_600_800_13TeV_TuneCUETP8M1_2018_GenSim.py to https://cmsweb.cern.ch/couchdb for 10826.0QCD_Pt_600_800_13TeV_TuneCUETP8M1_2018_GenSim
+Importing the config, this may take a while...10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/QCD_Pt_600_800_13TeV_TuneCUETP8M1_2018_GenSim.py  uploaded to couchDB for 10826.0 with ID 3931dcef8628ffce1a65d284db5aa1fd
+Not re-uploading 10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Digi_2018.py to https://cmsweb.cern.ch/couchdb for 10826.0Digi_2018
+10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Digi_2018.py  uploaded to couchDB for 10826.0 with ID 3931dcef8628ffce1a65d284db5a9033
+Not re-uploading 10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Nano_2018.py to https://cmsweb.cern.ch/couchdb for 10826.0Nano_2018
+10826.0_QCD_Pt_600_800_13+2018+QCD_Pt_600_800_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Nano_2018.py  uploaded to couchDB for 10826.0 with ID 3931dcef8628ffce1a65d284db5a91e4
+Not re-uploading 10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/HARVEST_2018.py to https://cmsweb.cern.ch/couchdb for 10859.0harvesting
+10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/HARVEST_2018.py uploaded to couchDB for 10859.0 with ID 3931dcef8628ffce1a65d284db5a11cd
+Not re-uploading 10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Reco_2018.py to https://cmsweb.cern.ch/couchdb for 10859.0Reco_2018
+10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Reco_2018.py  uploaded to couchDB for 10859.0 with ID 3931dcef8628ffce1a65d284db5a7f81
+Loading 10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_2018_GenSim.py to https://cmsweb.cern.ch/couchdb for 10859.0QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_2018_GenSim
+Importing the config, this may take a while...10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_2018_GenSim.py  uploaded to couchDB for 10859.0 with ID 3931dcef8628ffce1a65d284db5ab00f
+Not re-uploading 10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Digi_2018.py to https://cmsweb.cern.ch/couchdb for 10859.0Digi_2018
+10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Digi_2018.py  uploaded to couchDB for 10859.0 with ID 3931dcef8628ffce1a65d284db5a9033
+Not re-uploading 10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Nano_2018.py to https://cmsweb.cern.ch/couchdb for 10859.0Nano_2018
+10859.0_QCD_Pt_3000_3500_13+2018+QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Nano_2018.py  uploaded to couchDB for 10859.0 with ID 3931dcef8628ffce1a65d284db5a91e4
+Not re-uploading 10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano/HARVEST_2018.py to https://cmsweb.cern.ch/couchdb for 10924.0harvesting
+10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano/HARVEST_2018.py uploaded to couchDB for 10924.0 with ID 3931dcef8628ffce1a65d284db5a11cd
+Not re-uploading 10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano/Reco_2018.py to https://cmsweb.cern.ch/couchdb for 10924.0Reco_2018
+10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano/Reco_2018.py  uploaded to couchDB for 10924.0 with ID 3931dcef8628ffce1a65d284db5a7f81
+Loading 10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano/QCD_Pt_1800_2400_13TeV_TuneCP5_2018_GenSim.py to https://cmsweb.cern.ch/couchdb for 10924.0QCD_Pt_1800_2400_13TeV_TuneCP5_2018_GenSim
+Importing the config, this may take a while...10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano/QCD_Pt_1800_2400_13TeV_TuneCP5_2018_GenSim.py  uploaded to couchDB for 10924.0 with ID 3931dcef8628ffce1a65d284db5abaa8
+Not re-uploading 10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano/Digi_2018.py to https://cmsweb.cern.ch/couchdb for 10924.0Digi_2018
+10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano/Digi_2018.py  uploaded to couchDB for 10924.0 with ID 3931dcef8628ffce1a65d284db5a9033
+Not re-uploading 10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano/Nano_2018.py to https://cmsweb.cern.ch/couchdb for 10924.0Nano_2018
+10924.0_QCD_Pt_1800_2400_13+2018+QCD_Pt_1800_2400_13TeV_TuneCP5_GenSim+Digi+Reco+HARVEST+Nano/Nano_2018.py  uploaded to couchDB for 10924.0 with ID 3931dcef8628ffce1a65d284db5a91e4
+Not re-uploading 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/HARVEST_2018.py to https://cmsweb.cern.ch/couchdb for 10871.0harvesting
+10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/HARVEST_2018.py uploaded to couchDB for 10871.0 with ID 3931dcef8628ffce1a65d284db5a11cd
+Not re-uploading 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Reco_2018.py to https://cmsweb.cern.ch/couchdb for 10871.0Reco_2018
+10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Reco_2018.py  uploaded to couchDB for 10871.0 with ID 3931dcef8628ffce1a65d284db5a7f81
+Loading 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/QCDForPF_13TeV_TuneCUETP8M1_2018_GenSim.py to https://cmsweb.cern.ch/couchdb for 10871.0QCDForPF_13TeV_TuneCUETP8M1_2018_GenSim
+Importing the config, this may take a while...10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/QCDForPF_13TeV_TuneCUETP8M1_2018_GenSim.py  uploaded to couchDB for 10871.0 with ID 3931dcef8628ffce1a65d284db5abe59
+Not re-uploading 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Digi_2018.py to https://cmsweb.cern.ch/couchdb for 10871.0Digi_2018
+10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Digi_2018.py  uploaded to couchDB for 10871.0 with ID 3931dcef8628ffce1a65d284db5a9033
+Not re-uploading 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Nano_2018.py to https://cmsweb.cern.ch/couchdb for 10871.0Nano_2018
+10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano/Nano_2018.py  uploaded to couchDB for 10871.0 with ID 3931dcef8628ffce1a65d284db5a91e4
+
+	Found wmcontrol
+
+For eyes before submitting 10823.0
+{'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+ 'CMSSWVersion': 'CMSSW_11_2_0_pre6',
+ 'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+ 'ConfigCacheUrl': 'https://cmsweb.cern.ch/couchdb',
+ 'DQMConfigCacheID': '3931dcef8628ffce1a65d284db5a11cd',
+ 'DQMUploadUrl': 'https://cmsweb.cern.ch/dqm/relval',
+ 'DbsUrl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader',
+ 'EnableHarvesting': 'True',
+ 'GlobalTag': u'112X_upgrade2018_realistic_v3',
+ 'Group': 'ppd',
+ 'Memory': 3000,
+ 'Multicore': 1,
+ 'PrepID': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281-MinBias_13',
+ 'ProcessingString': u'112X_upgrade2018_realistic_v3',
+ 'ProcessingVersion': 1,
+ 'RequestPriority': 500000,
+ 'RequestString': 'RVCMSSW_11_2_0_pre6MinBias_13',
+ 'RequestType': 'TaskChain',
+ 'Requestor': 'chayanit',
+ 'ScramArch': 'slc7_amd64_gcc820',
+ 'SizePerEvent': 1234,
+ 'SubRequestType': 'RelVal',
+ 'Task1': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a8cb0',
+           'EventStreams': 0,
+           'EventsPerJob': 100,
+           'EventsPerLumi': 100,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'KeepOutput': True,
+           'Memory': 13500,
+           'Multicore': 8,
+           'PrimaryDataset': 'RelValMinBias_13',
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'RequestNumEvents': 90000,
+           'Seeding': 'AutomaticSeeding',
+           'SplittingAlgo': 'EventBased',
+           'TaskName': 'MinBias_13TeV_pythia8_TuneCUETP8M1_2018_GenSim'},
+ 'Task2': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a9033',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGoutput',
+           'InputTask': 'MinBias_13TeV_pythia8_TuneCUETP8M1_2018_GenSim',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Digi_2018'},
+ 'Task3': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a7f81',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGHLToutput',
+           'InputTask': 'Digi_2018',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Reco_2018'},
+ 'Task4': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a91e4',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'MINIAODSIMoutput',
+           'InputTask': 'Reco_2018',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Nano_2018'},
+ 'TaskChain': 4,
+ 'TimePerEvent': 10}
+None
+Submitting 10823.0 ...........
+It seemslike the name of the GT '112X_upgrade2018_realistic_v3' has a typo in it, missing the final ::All which will crash your job. If insted you're using CondDBv2, you're fine.
+Will do POST request to:cmsweb.cern.ch/reqmgr2/data/request
+Injected workflow: chayanit_RVCMSSW_11_2_0_pre6MinBias_13_200924_174557_6902
+........... 10823.0 submitted
+For eyes before submitting 10824.0
+{'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+ 'CMSSWVersion': 'CMSSW_11_2_0_pre6',
+ 'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+ 'ConfigCacheUrl': 'https://cmsweb.cern.ch/couchdb',
+ 'DQMConfigCacheID': '3931dcef8628ffce1a65d284db5a11cd',
+ 'DQMUploadUrl': 'https://cmsweb.cern.ch/dqm/relval',
+ 'DbsUrl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader',
+ 'EnableHarvesting': 'True',
+ 'GlobalTag': u'112X_upgrade2018_realistic_v3',
+ 'Group': 'ppd',
+ 'Memory': 3000,
+ 'Multicore': 1,
+ 'PrepID': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281-TTbar_13',
+ 'ProcessingString': u'112X_upgrade2018_realistic_v3',
+ 'ProcessingVersion': 1,
+ 'RequestPriority': 500000,
+ 'RequestString': 'RVCMSSW_11_2_0_pre6TTbar_13',
+ 'RequestType': 'TaskChain',
+ 'Requestor': 'chayanit',
+ 'ScramArch': 'slc7_amd64_gcc820',
+ 'SizePerEvent': 1234,
+ 'SubRequestType': 'RelVal',
+ 'Task1': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a9d05',
+           'EventStreams': 0,
+           'EventsPerJob': 50,
+           'EventsPerLumi': 50,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'KeepOutput': True,
+           'Memory': 13500,
+           'Multicore': 8,
+           'PrimaryDataset': 'RelValTTbar_13',
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'RequestNumEvents': 9000,
+           'Seeding': 'AutomaticSeeding',
+           'SplittingAlgo': 'EventBased',
+           'TaskName': 'TTbar_13TeV_TuneCUETP8M1_2018_GenSim'},
+ 'Task2': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a9033',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGoutput',
+           'InputTask': 'TTbar_13TeV_TuneCUETP8M1_2018_GenSim',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Digi_2018'},
+ 'Task3': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a7f81',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGHLToutput',
+           'InputTask': 'Digi_2018',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Reco_2018'},
+ 'Task4': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a91e4',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'MINIAODSIMoutput',
+           'InputTask': 'Reco_2018',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Nano_2018'},
+ 'TaskChain': 4,
+ 'TimePerEvent': 10}
+None
+Submitting 10824.0 ...........
+It seemslike the name of the GT '112X_upgrade2018_realistic_v3' has a typo in it, missing the final ::All which will crash your job. If insted you're using CondDBv2, you're fine.
+Will do POST request to:cmsweb.cern.ch/reqmgr2/data/request
+Injected workflow: chayanit_RVCMSSW_11_2_0_pre6TTbar_13_200924_174600_8235
+........... 10824.0 submitted
+For eyes before submitting 10826.0
+{'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+ 'CMSSWVersion': 'CMSSW_11_2_0_pre6',
+ 'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+ 'ConfigCacheUrl': 'https://cmsweb.cern.ch/couchdb',
+ 'DQMConfigCacheID': '3931dcef8628ffce1a65d284db5a11cd',
+ 'DQMUploadUrl': 'https://cmsweb.cern.ch/dqm/relval',
+ 'DbsUrl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader',
+ 'EnableHarvesting': 'True',
+ 'GlobalTag': u'112X_upgrade2018_realistic_v3',
+ 'Group': 'ppd',
+ 'Memory': 3000,
+ 'Multicore': 1,
+ 'PrepID': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281-QCD_Pt_600_800_13',
+ 'ProcessingString': u'112X_upgrade2018_realistic_v3',
+ 'ProcessingVersion': 1,
+ 'RequestPriority': 500000,
+ 'RequestString': 'RVCMSSW_11_2_0_pre6QCD_Pt_600_800_13',
+ 'RequestType': 'TaskChain',
+ 'Requestor': 'chayanit',
+ 'ScramArch': 'slc7_amd64_gcc820',
+ 'SizePerEvent': 1234,
+ 'SubRequestType': 'RelVal',
+ 'Task1': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5aa1fd',
+           'EventStreams': 0,
+           'EventsPerJob': 50,
+           'EventsPerLumi': 50,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'KeepOutput': True,
+           'Memory': 13500,
+           'Multicore': 8,
+           'PrimaryDataset': 'RelValQCD_Pt_600_800_13',
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'RequestNumEvents': 9000,
+           'Seeding': 'AutomaticSeeding',
+           'SplittingAlgo': 'EventBased',
+           'TaskName': 'QCD_Pt_600_800_13TeV_TuneCUETP8M1_2018_GenSim'},
+ 'Task2': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a9033',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGoutput',
+           'InputTask': 'QCD_Pt_600_800_13TeV_TuneCUETP8M1_2018_GenSim',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Digi_2018'},
+ 'Task3': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a7f81',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGHLToutput',
+           'InputTask': 'Digi_2018',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Reco_2018'},
+ 'Task4': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a91e4',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'MINIAODSIMoutput',
+           'InputTask': 'Reco_2018',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Nano_2018'},
+ 'TaskChain': 4,
+ 'TimePerEvent': 10}
+None
+Submitting 10826.0 ...........
+It seemslike the name of the GT '112X_upgrade2018_realistic_v3' has a typo in it, missing the final ::All which will crash your job. If insted you're using CondDBv2, you're fine.
+Will do POST request to:cmsweb.cern.ch/reqmgr2/data/request
+Injected workflow: chayanit_RVCMSSW_11_2_0_pre6QCD_Pt_600_800_13_200924_174604_4299
+........... 10826.0 submitted
+For eyes before submitting 10859.0
+{'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+ 'CMSSWVersion': 'CMSSW_11_2_0_pre6',
+ 'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+ 'ConfigCacheUrl': 'https://cmsweb.cern.ch/couchdb',
+ 'DQMConfigCacheID': '3931dcef8628ffce1a65d284db5a11cd',
+ 'DQMUploadUrl': 'https://cmsweb.cern.ch/dqm/relval',
+ 'DbsUrl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader',
+ 'EnableHarvesting': 'True',
+ 'GlobalTag': u'112X_upgrade2018_realistic_v3',
+ 'Group': 'ppd',
+ 'Memory': 3000,
+ 'Multicore': 1,
+ 'PrepID': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281-QCD_Pt_3000_3500_13',
+ 'ProcessingString': u'112X_upgrade2018_realistic_v3',
+ 'ProcessingVersion': 1,
+ 'RequestPriority': 500000,
+ 'RequestString': 'RVCMSSW_11_2_0_pre6QCD_Pt_3000_3500_13',
+ 'RequestType': 'TaskChain',
+ 'Requestor': 'chayanit',
+ 'ScramArch': 'slc7_amd64_gcc820',
+ 'SizePerEvent': 1234,
+ 'SubRequestType': 'RelVal',
+ 'Task1': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5ab00f',
+           'EventStreams': 0,
+           'EventsPerJob': 50,
+           'EventsPerLumi': 50,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'KeepOutput': True,
+           'Memory': 13500,
+           'Multicore': 8,
+           'PrimaryDataset': 'RelValQCD_Pt_3000_3500_13',
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'RequestNumEvents': 9000,
+           'Seeding': 'AutomaticSeeding',
+           'SplittingAlgo': 'EventBased',
+           'TaskName': 'QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_2018_GenSim'},
+ 'Task2': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a9033',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGoutput',
+           'InputTask': 'QCD_Pt_3000_3500_13TeV_TuneCUETP8M1_2018_GenSim',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Digi_2018'},
+ 'Task3': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a7f81',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGHLToutput',
+           'InputTask': 'Digi_2018',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Reco_2018'},
+ 'Task4': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a91e4',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'MINIAODSIMoutput',
+           'InputTask': 'Reco_2018',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Nano_2018'},
+ 'TaskChain': 4,
+ 'TimePerEvent': 10}
+None
+Submitting 10859.0 ...........
+It seemslike the name of the GT '112X_upgrade2018_realistic_v3' has a typo in it, missing the final ::All which will crash your job. If insted you're using CondDBv2, you're fine.
+Will do POST request to:cmsweb.cern.ch/reqmgr2/data/request
+Injected workflow: chayanit_RVCMSSW_11_2_0_pre6QCD_Pt_3000_3500_13_200924_174608_4242
+........... 10859.0 submitted
+For eyes before submitting 10924.0
+{'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+ 'CMSSWVersion': 'CMSSW_11_2_0_pre6',
+ 'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+ 'ConfigCacheUrl': 'https://cmsweb.cern.ch/couchdb',
+ 'DQMConfigCacheID': '3931dcef8628ffce1a65d284db5a11cd',
+ 'DQMUploadUrl': 'https://cmsweb.cern.ch/dqm/relval',
+ 'DbsUrl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader',
+ 'EnableHarvesting': 'True',
+ 'GlobalTag': u'112X_upgrade2018_realistic_v3',
+ 'Group': 'ppd',
+ 'Memory': 3000,
+ 'Multicore': 1,
+ 'PrepID': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281-QCD_Pt_1800_2400_13',
+ 'ProcessingString': u'112X_upgrade2018_realistic_v3',
+ 'ProcessingVersion': 1,
+ 'RequestPriority': 500000,
+ 'RequestString': 'RVCMSSW_11_2_0_pre6QCD_Pt_1800_2400_13',
+ 'RequestType': 'TaskChain',
+ 'Requestor': 'chayanit',
+ 'ScramArch': 'slc7_amd64_gcc820',
+ 'SizePerEvent': 1234,
+ 'SubRequestType': 'RelVal',
+ 'Task1': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5abaa8',
+           'EventStreams': 0,
+           'EventsPerJob': 50,
+           'EventsPerLumi': 50,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'KeepOutput': True,
+           'Memory': 13500,
+           'Multicore': 8,
+           'PrimaryDataset': 'RelValQCD_Pt_1800_2400_13',
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'RequestNumEvents': 9000,
+           'Seeding': 'AutomaticSeeding',
+           'SplittingAlgo': 'EventBased',
+           'TaskName': 'QCD_Pt_1800_2400_13TeV_TuneCP5_2018_GenSim'},
+ 'Task2': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a9033',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGoutput',
+           'InputTask': 'QCD_Pt_1800_2400_13TeV_TuneCP5_2018_GenSim',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Digi_2018'},
+ 'Task3': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a7f81',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGHLToutput',
+           'InputTask': 'Digi_2018',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Reco_2018'},
+ 'Task4': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a91e4',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'MINIAODSIMoutput',
+           'InputTask': 'Reco_2018',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Nano_2018'},
+ 'TaskChain': 4,
+ 'TimePerEvent': 10}
+None
+Submitting 10924.0 ...........
+It seemslike the name of the GT '112X_upgrade2018_realistic_v3' has a typo in it, missing the final ::All which will crash your job. If insted you're using CondDBv2, you're fine.
+Will do POST request to:cmsweb.cern.ch/reqmgr2/data/request
+Injected workflow: chayanit_RVCMSSW_11_2_0_pre6QCD_Pt_1800_2400_13_200924_174613_854
+........... 10924.0 submitted
+For eyes before submitting 10871.0
+{'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+ 'CMSSWVersion': 'CMSSW_11_2_0_pre6',
+ 'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+ 'ConfigCacheUrl': 'https://cmsweb.cern.ch/couchdb',
+ 'DQMConfigCacheID': '3931dcef8628ffce1a65d284db5a11cd',
+ 'DQMUploadUrl': 'https://cmsweb.cern.ch/dqm/relval',
+ 'DbsUrl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader',
+ 'EnableHarvesting': 'True',
+ 'GlobalTag': u'112X_upgrade2018_realistic_v3',
+ 'Group': 'ppd',
+ 'Memory': 3000,
+ 'Multicore': 1,
+ 'PrepID': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281-QCD_FlatPt_15_3000HS_13',
+ 'ProcessingString': u'112X_upgrade2018_realistic_v3',
+ 'ProcessingVersion': 1,
+ 'RequestPriority': 500000,
+ 'RequestString': 'RVCMSSW_11_2_0_pre6QCD_FlatPt_15_3000HS_13',
+ 'RequestType': 'TaskChain',
+ 'Requestor': 'chayanit',
+ 'ScramArch': 'slc7_amd64_gcc820',
+ 'SizePerEvent': 1234,
+ 'SubRequestType': 'RelVal',
+ 'Task1': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5abe59',
+           'EventStreams': 0,
+           'EventsPerJob': 100,
+           'EventsPerLumi': 100,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'KeepOutput': True,
+           'Memory': 13500,
+           'Multicore': 8,
+           'PrimaryDataset': 'RelValQCD_FlatPt_15_3000HS_13',
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'RequestNumEvents': 50000,
+           'Seeding': 'AutomaticSeeding',
+           'SplittingAlgo': 'EventBased',
+           'TaskName': 'QCDForPF_13TeV_TuneCUETP8M1_2018_GenSim'},
+ 'Task2': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a9033',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGoutput',
+           'InputTask': 'QCDForPF_13TeV_TuneCUETP8M1_2018_GenSim',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Digi_2018'},
+ 'Task3': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a7f81',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGHLToutput',
+           'InputTask': 'Digi_2018',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Reco_2018'},
+ 'Task4': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_noPU_2018_set1-1600962281',
+           'ConfigCacheID': '3931dcef8628ffce1a65d284db5a91e4',
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'MINIAODSIMoutput',
+           'InputTask': 'Reco_2018',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 13500,
+           'Multicore': 8,
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Nano_2018'},
+ 'TaskChain': 4,
+ 'TimePerEvent': 10}
+None
+Submitting 10871.0 ...........
+It seemslike the name of the GT '112X_upgrade2018_realistic_v3' has a typo in it, missing the final ::All which will crash your job. If insted you're using CondDBv2, you're fine.
+Will do POST request to:cmsweb.cern.ch/reqmgr2/data/request
+Injected workflow: chayanit_RVCMSSW_11_2_0_pre6QCD_FlatPt_15_3000HS_13_200924_174618_3400
+........... 10871.0 submitted
+ done.
+Added file to the config cache:
+  DocID:    3931dcef8628ffce1a65d284db5abe59
+  Revision: 3-58740b6db568b5be1d2ca01ac977cac1
+ done.
+Added file to the config cache:
+  DocID:    3931dcef8628ffce1a65d284db5abaa8
+  Revision: 3-7ae43e9cb9e0e426e394447d4e555429
+ done.
+Added file to the config cache:
+  DocID:    3931dcef8628ffce1a65d284db5ab00f
+  Revision: 3-5beb1aa66ef6724286498667cfbf8919
+ done.
+Added file to the config cache:
+  DocID:    3931dcef8628ffce1a65d284db5aa1fd
+  Revision: 3-2d34eca24886a474cd3a7cf23e51a64a
+ done.
+Added file to the config cache:
+  DocID:    3931dcef8628ffce1a65d284db5a9d05
+  Revision: 3-5e35fd96ef8e7c4b7b272e17407d09d1
+ done.
+Added file to the config cache:
+  DocID:    3931dcef8628ffce1a65d284db5a91e4
+  Revision: 3-80e57446d83767787d80dd7ba3c2480d
+ done.
+Added file to the config cache:
+  DocID:    3931dcef8628ffce1a65d284db5a9033
+  Revision: 3-8b56cda07086252462dcc955fa4255dc
+ done.
+Added file to the config cache:
+  DocID:    3931dcef8628ffce1a65d284db5a8cb0
+  Revision: 3-e31c7c3f46172fff415efbccea09c379
+ done.
+Added file to the config cache:
+  DocID:    3931dcef8628ffce1a65d284db5a7f81
+  Revision: 3-cc8cf34bc576f404d53ff8da7766cffd

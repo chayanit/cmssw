@@ -1,0 +1,5 @@
+HARVESTING:@standardValidationNoHLT+@standardDQMFakeHLT+@miniAODValidation+@miniAODDQM
+with DB:
+entry file:step3_inDQM.root
+Step: HARVESTING Spec: ['@standardValidationNoHLT', '@standardDQMFakeHLT', '@miniAODValidation', '@miniAODDQM']
+Config file HARVESTUP18_PU25.py created

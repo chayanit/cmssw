@@ -1,0 +1,1 @@
+{"DQMoutput": "file:step3_inDQM.root", "GT": "112X_upgrade2018_realistic_v3", "RECOSIMoutput": "file:step3.root", "primary": ["file:step2.root"], "MINIAODSIMoutput": "file:step3_inMINIAODSIM.root"}

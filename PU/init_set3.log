@@ -1,0 +1,144 @@
+ignoring non-requested file relval_standard
+ignoring non-requested file relval_highstats
+ignoring non-requested file relval_pileup
+ignoring non-requested file relval_generator
+ignoring non-requested file relval_extendedgen
+ignoring non-requested file relval_production
+ignoring non-requested file relval_ged
+processing relval_upgrade
+ignoring non-requested file relval_2017
+ignoring non-requested file relval_2026
+ignoring non-requested file relval_identity
+ignoring non-requested file relval_machine
+ignoring non-requested file relval_premix
+Not running the wf, only creating cfgs and logs
+resetting to default number of process threads = 4
+Running up to 4 concurrent jobs, each with 4 threads per process
+
+Preparing to run 11125.0 BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano
+ cmsDriver.py BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_cfi  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent FEVTDEBUG --relval 9000,50 -s GEN,SIM --datatier GEN-SIM --beamspot Realistic25ns13TeVEarly2018Collision --geometry DB:Extended --io BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_2018PU_GenSim.io --python BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_2018PU_GenSim.py --no_exec --fileout file:step1.root  --nThreads 4 > step1_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano
+ cmsDriver.py step2  --conditions auto:phase1_2018_realistic --pileup_input das:/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM -n 10 --era Run2_2018 --eventcontent FEVTDEBUGHLT -s DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2018 --datatier GEN-SIM-DIGI-RAW --pileup 2018_25ns_UltraLegacy_PoissonOOTPU --geometry DB:Extended --io DigiPU_2018PU.io --python DigiPU_2018PU.py --no_exec --filein  file:step1.root  --fileout file:step2.root  --nThreads 4 > step2_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano
+ cmsDriver.py step3  --conditions auto:phase1_2018_realistic --pileup_input das:/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM -n 10 --era Run2_2018 --eventcontent RECOSIM,MINIAODSIM,DQM -s RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidation+@miniAODValidation,DQM:@standardDQM+@ExtraHLT+@miniAODDQM --datatier GEN-SIM-RECO,MINIAODSIM,DQMIO --pileup 2018_25ns_UltraLegacy_PoissonOOTPU --geometry DB:Extended --io RecoPU_2018PU.io --python RecoPU_2018PU.py --no_exec --filein  file:step2.root  --fileout file:step3.root  --nThreads 4 > step3_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano
+ cmsDriver.py step4  --conditions auto:phase1_2018_realistic -s HARVESTING:@standardValidation+@standardDQM+@ExtraHLT+@miniAODValidation+@miniAODDQM --pileup_input das:/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM -n 10 --era Run2_2018 --scenario pp --pileup 2018_25ns_UltraLegacy_PoissonOOTPU --filetype DQM --geometry DB:Extended --mc  --io HARVESTPU_2018PU.io --python HARVESTPU_2018PU.py --no_exec --filein file:step3_inDQM.root --fileout file:step4.root  > step4_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano
+ cmsDriver.py step5  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent NANOEDMAODSIM --filein file:step3_inMINIAODSIM.root -s NANO --datatier NANOAODSIM --geometry DB:Extended --io Nano_2018PU.io --python Nano_2018PU.py --no_exec --fileout file:step5.root  --nThreads 4 > step5_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano.log  2>&1
+ 
+11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano Step0-PASSED Step1-PASSED Step2-PASSED Step3-PASSED Step4-PASSED  - time date Sun Sep 27 11:31:08 2020-date Sun Sep 27 11:29:52 2020; exit: 0 0 0 0 0
+1 1 1 1 1 tests passed, 0 0 0 0 0 failed
+
+
+	Found wmclient
+
+inspecting 11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano
+	Fake upload of 11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano/HARVESTPU_2018PU.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_11125.0harvesting
+11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano/HARVESTPU_2018PU.py uploaded to couchDB for 11125.0 with ID 1041
+	Fake upload of 11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano/RecoPU_2018PU.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_11125.0RecoPU_2018PU
+11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano/RecoPU_2018PU.py  uploaded to couchDB for 11125.0 with ID 1042
+	Fake upload of 11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano/BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_2018PU_GenSim.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_11125.0GenSimFull
+11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano/BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_2018PU_GenSim.py  uploaded to couchDB for 11125.0 with ID 1043
+	Fake upload of 11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano/DigiPU_2018PU.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_11125.0DigiPU_2018PU
+11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano/DigiPU_2018PU.py  uploaded to couchDB for 11125.0 with ID 1044
+	Fake upload of 11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano/Nano_2018PU.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_11125.0Nano_2018PU
+11125.0_BulkGravitonToHHTo4Q+2018PU+BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_GenSim+DigiPU+RecoPU+HARVESTPU+Nano/Nano_2018PU.py  uploaded to couchDB for 11125.0 with ID 1045
+
+	Found wmcontrol
+
+Only viewing request 11125.0
+{'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+ 'CMSSWVersion': 'CMSSW_11_2_0_pre6',
+ 'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set3-1601199068',
+ 'ConfigCacheUrl': 'https://cmsweb.cern.ch/couchdb',
+ 'DQMConfigCacheID': 1041,
+ 'DQMUploadUrl': 'https://cmsweb.cern.ch/dqm/relval',
+ 'DbsUrl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader',
+ 'EnableHarvesting': 'True',
+ 'GlobalTag': u'112X_upgrade2018_realistic_v3',
+ 'Group': 'ppd',
+ 'Memory': 3000,
+ 'Multicore': 1,
+ 'PrepID': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set3-1601199068-BulkGravitonToHHTo4Q',
+ 'ProcessingString': u'112X_upgrade2018_realistic_v3',
+ 'ProcessingVersion': 1,
+ 'RequestPriority': 500000,
+ 'RequestString': 'RVCMSSW_11_2_0_pre6BulkGravitonToHHTo4Q_PU25ns_',
+ 'RequestType': 'TaskChain',
+ 'Requestor': 'chayanit',
+ 'ScramArch': 'slc7_amd64_gcc820',
+ 'SizePerEvent': 1234,
+ 'SubRequestType': 'RelVal',
+ 'Task1': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set3-1601199068',
+           'ConfigCacheID': 1043,
+           'EventStreams': 0,
+           'EventsPerJob': 50,
+           'EventsPerLumi': 50,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'KeepOutput': True,
+           'Memory': 16000,
+           'Multicore': 4,
+           'PrimaryDataset': 'RelValBulkGravitonToHHTo4Q',
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'RequestNumEvents': 9000,
+           'Seeding': 'AutomaticSeeding',
+           'SplittingAlgo': 'EventBased',
+           'TaskName': 'GenSimFull'},
+ 'Task2': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set3-1601199068',
+           'ConfigCacheID': 1044,
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGoutput',
+           'InputTask': 'GenSimFull',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'MCPileup': u'/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM',
+           'Memory': 16000,
+           'Multicore': 4,
+           'ProcessingString': u'PU25ns_112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'DigiPU_2018PU'},
+ 'Task3': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set3-1601199068',
+           'ConfigCacheID': 1042,
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGHLToutput',
+           'InputTask': 'DigiPU_2018PU',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'MCPileup': u'/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM',
+           'Memory': 16000,
+           'Multicore': 4,
+           'ProcessingString': u'PU25ns_112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'RecoPU_2018PU'},
+ 'Task4': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set3-1601199068',
+           'ConfigCacheID': 1045,
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'MINIAODSIMoutput',
+           'InputTask': 'RecoPU_2018PU',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 16000,
+           'Multicore': 4,
+           'ProcessingString': u'PU25ns_112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'Nano_2018PU'},
+ 'TaskChain': 4,
+ 'TimePerEvent': 10}
+None

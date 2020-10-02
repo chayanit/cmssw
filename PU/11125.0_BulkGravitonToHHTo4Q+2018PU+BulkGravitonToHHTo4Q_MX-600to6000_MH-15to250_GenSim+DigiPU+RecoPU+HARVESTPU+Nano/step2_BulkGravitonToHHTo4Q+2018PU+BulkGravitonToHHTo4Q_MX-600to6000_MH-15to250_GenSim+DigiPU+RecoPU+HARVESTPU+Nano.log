@@ -1,0 +1,14 @@
+DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2018,ENDJOB
+We have determined that this is simulation (if not, rerun cmsDriver.py with --data)
+with DB:
+entry file:step1.root
+the query is file dataset = /RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM
+DAS succeeded after 1 attempts 0
+found files:  ['/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/121A1783-7DD7-DF43-802E-C78CB2377104.root', '/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/63DF706D-C665-0848-A744-017D0D6E346B.root', '/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/6BF323E4-0D38-AB44-AFA5-C01719C291A6.root', '/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/98485592-239C-D94B-A243-A3AEBD643894.root', '/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/A2DA0B0D-D064-D543-9F87-FD29B7E1C030.root', '/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/D08314B9-ADEA-7F44-B116-88CF8C2D1949.root', '/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/E1A06B97-1325-A34A-BD50-D6296B9AE4C4.root']
+Step: DIGI Spec: ['pdigi_valid']
+Step: L1 Spec: 
+Step: DIGI2RAW Spec: 
+Step: HLT Spec: ['@relval2018']
+Step: ENDJOB Spec: 
+customising the process with customizeHLTforMC from HLTrigger/Configuration/customizeHLTforMC
+Config file DigiPU_2018PU.py created

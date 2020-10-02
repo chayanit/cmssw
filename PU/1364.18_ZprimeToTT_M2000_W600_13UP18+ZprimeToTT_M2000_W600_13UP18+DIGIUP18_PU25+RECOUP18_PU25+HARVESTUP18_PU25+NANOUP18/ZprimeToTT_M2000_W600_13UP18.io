@@ -1,0 +1,1 @@
+{"filter": "generator", "FEVTDEBUGoutput": "file:step1.root", "LHEoutput": "file:step1_inLHE.root", "GT": "112X_upgrade2018_realistic_v3"}

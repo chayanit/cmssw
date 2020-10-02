@@ -1,0 +1,5 @@
+HARVESTING:@standardValidation+@standardDQM+@ExtraHLT+@miniAODValidation+@miniAODDQM
+with DB:
+entry file:step3_inDQM.root
+Step: HARVESTING Spec: ['@standardValidation', '@standardDQM', '@ExtraHLT', '@miniAODValidation', '@miniAODDQM']
+Config file HARVEST_2018.py created

@@ -1,0 +1,40 @@
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU going to execute cd 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py QCDForPF_13TeV_TuneCUETP8M1_cfi  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent FEVTDEBUG --relval 50000,100 -s GEN,SIM --datatier GEN-SIM --beamspot Realistic25ns13TeVEarly2018Collision --geometry DB:Extended --io QCDForPF_13TeV_TuneCUETP8M1_2018_GenSim.io --python QCDForPF_13TeV_TuneCUETP8M1_2018_GenSim.py --no_exec --fileout file:step1.root  --nThreads 8 > step1_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU going to execute cd 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step2  --conditions auto:phase1_2018_realistic -s DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2018 --datatier GEN-SIM-DIGI-RAW -n 10 --geometry DB:Extended --era Run2_2018 --eventcontent FEVTDEBUGHLT --io Digi_2018.io --python Digi_2018.py --no_exec --filein  file:step1.root  --fileout file:step2.root  --nThreads 8 > step2_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU going to execute cd 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step3  --conditions auto:phase1_2018_realistic -s RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidation+@miniAODValidation,DQM:@standardDQM+@ExtraHLT+@miniAODDQM --datatier GEN-SIM-RECO,MINIAODSIM,DQMIO -n 10 --geometry DB:Extended --era Run2_2018 --eventcontent RECOSIM,MINIAODSIM,DQM --io Reco_2018.io --python Reco_2018.py --no_exec --filein  file:step2.root  --fileout file:step3.root  --nThreads 8 > step3_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU going to execute cd 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step4  --conditions auto:phase1_2018_realistic -s HARVESTING:@standardValidation+@standardDQM+@ExtraHLT+@miniAODValidation+@miniAODDQM --scenario pp --filetype DQM --geometry DB:Extended --era Run2_2018 --mc  --io HARVEST_2018.io --python HARVEST_2018.py -n 100  --no_exec --filein file:step3_inDQM.root --fileout file:step4.root  > step4_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU going to execute cd 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step5  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent NANOEDMAODSIM --filein file:step3_inMINIAODSIM.root -s NANO --datatier NANOAODSIM --geometry DB:Extended --io Nano_2018.io --python Nano_2018.py --no_exec --fileout file:step5.root  --nThreads 8 > step5_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py QCDForPF_13TeV_TuneCUETP8M1_cfi  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent FEVTDEBUG --relval 50000,100 -s GEN,SIM --datatier GEN-SIM --beamspot Realistic25ns13TeVEarly2018Collision --geometry DB:Extended --io QCDForPF_13TeV_TuneCUETP8M1_2018_GenSim.io --python QCDForPF_13TeV_TuneCUETP8M1_2018_GenSim.py --fileout file:step1.root  --nThreads 8 > step1_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step2  --conditions auto:phase1_2018_realistic -s DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2018 --datatier GEN-SIM-DIGI-RAW -n 10 --geometry DB:Extended --era Run2_2018 --eventcontent FEVTDEBUGHLT --io Digi_2018.io --python Digi_2018.py --filein  file:step1.root  --fileout file:step2.root  --nThreads 8 > step2_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step3  --conditions auto:phase1_2018_realistic -s RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidation+@miniAODValidation,DQM:@standardDQM+@ExtraHLT+@miniAODDQM --datatier GEN-SIM-RECO,MINIAODSIM,DQMIO -n 10 --geometry DB:Extended --era Run2_2018 --eventcontent RECOSIM,MINIAODSIM,DQM --io Reco_2018.io --python Reco_2018.py --filein  file:step2.root  --fileout file:step3.root  --nThreads 8 > step3_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step4  --conditions auto:phase1_2018_realistic -s HARVESTING:@standardValidation+@standardDQM+@ExtraHLT+@miniAODValidation+@miniAODDQM --scenario pp --filetype DQM --geometry DB:Extended --era Run2_2018 --mc  --io HARVEST_2018.io --python HARVEST_2018.py -n 100  --filein file:step3_inDQM.root --fileout file:step4.root  > step4_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/noPU dryRun for 'cd 10871.0_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano
+ cmsDriver.py step5  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent NANOEDMAODSIM --filein file:step3_inMINIAODSIM.root -s NANO --datatier NANOAODSIM --geometry DB:Extended --io Nano_2018.io --python Nano_2018.py --fileout file:step5.root  --nThreads 8 > step5_QCD_FlatPt_15_3000HS_13+2018+QCDForPF_13TeV_TuneCUETP8M1_GenSim+Digi+Reco+HARVEST+Nano.log  2>&1
+ 

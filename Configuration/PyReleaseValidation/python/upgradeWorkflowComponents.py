@@ -874,7 +874,7 @@ upgradeProperties[2017] = {
         'HLTmenu': '@relval2018',
         'Era' : 'Run2_2018',
         'BeamSpot': 'Realistic25ns13TeVEarly2018Collision',
-        'ScenToRun' : ['GenSim','Digi','Reco','HARVEST','ALCA','Nano'],
+        'ScenToRun' : ['GenSim','Digi','Reco','HARVEST','Nano'],
     },
     '2018Design' : {
         'Geom' : 'DB:Extended',
@@ -1170,5 +1170,7 @@ upgradeFragments = OrderedDict([
     ('Upsilon1SToMuMu_forSTEAM_14TeV_TuneCP5_cfi', UpgradeFragment(Kby(9,50),'Upsilon1SToMuMu_14')),
     ('TenTau_E_15_500_Eta3p1_pythia8_cfi', UpgradeFragment(Kby(9,100),'TenTau_15_500_Eta3p1')),
     ('QCD_Pt_1800_2400_14TeV_TuneCP5_cfi', UpgradeFragment(Kby(9,50), 'QCD_Pt_1800_2400_14')),
+    ('QCD_Pt_1800_2400_13TeV_TuneCP5_cfi', UpgradeFragment(Kby(9,50), 'QCD_Pt_1800_2400_13')),
+    ('BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_cfi', UpgradeFragment(Kby(9,50), 'BulkGravitonToHHTo4Q')),
 ])
 

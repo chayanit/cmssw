@@ -287,6 +287,8 @@ class MatrixInjector(object):
             wmsplit['HYBRIDZSHI2015'] = 1
             wmsplit['RECOHID15'] = 1
             wmsplit['RECOHID18'] = 1
+            wmsplit['DIGIUP18_PU25'] = 1
+            wmsplit['RECOUP18_PU25'] = 1
             # automate for phase 2
             from .upgradeWorkflowComponents import upgradeKeys
             for key in upgradeKeys[2026]:

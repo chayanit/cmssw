@@ -1,0 +1,10 @@
+LHE,GEN,SIM,ENDJOB
+We have determined that this is simulation (if not, rerun cmsDriver.py with --data)
+with DB:
+Step: LHE Spec: 
+Loading lhe fragment from Configuration.Generator.ZprimeToTT_M2000_W600_13TeV_cfi
+Step: GEN Spec: 
+Loading generator fragment from Configuration.Generator.ZprimeToTT_M2000_W600_13TeV_cfi
+Step: SIM Spec: 
+Step: ENDJOB Spec: 
+Config file ZprimeToTT_M2000_W600_13UP18.py created

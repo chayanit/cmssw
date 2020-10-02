@@ -1,0 +1,387 @@
+processing relval_standard
+ignoring non-requested file relval_highstats
+ignoring non-requested file relval_pileup
+ignoring non-requested file relval_generator
+ignoring non-requested file relval_extendedgen
+ignoring non-requested file relval_production
+ignoring non-requested file relval_ged
+ignoring non-requested file relval_upgrade
+ignoring non-requested file relval_2017
+ignoring non-requested file relval_2026
+ignoring non-requested file relval_identity
+ignoring non-requested file relval_machine
+ignoring non-requested file relval_premix
+Not running the wf, only creating cfgs and logs
+resetting to default number of process threads = 4
+Running up to 4 concurrent jobs, each with 4 threads per process
+
+Preparing to run 1364.18 ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+cleaning up  1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18  in  /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py Configuration/Generator/python/ZprimeToTT_M2000_W600_13TeV_cfi.py  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent FEVTDEBUG,LHE --relval 9000,100 -s LHE,GEN,SIM --datatier GEN-SIM,LHE --beamspot Realistic25ns13TeVEarly2018Collision --geometry DB:Extended --io ZprimeToTT_M2000_W600_13UP18.io --python ZprimeToTT_M2000_W600_13UP18.py --no_exec --fileout file:step1.root  --nThreads 4 > step1_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+Preparing to run 1366.18 BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+cleaning up  1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18  in  /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU
+
+Preparing to run 1367.18 BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+cleaning up  1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18  in  /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py Configuration/Generator/python/BulkGravitonToWW_narrow_M-5000_cfi.py  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent FEVTDEBUG,LHE --relval 9000,100 -s LHE,GEN,SIM --datatier GEN-SIM,LHE --beamspot Realistic25ns13TeVEarly2018Collision --geometry DB:Extended --io BulkGravitonToWW_13UP18.io --python BulkGravitonToWW_13UP18.py --no_exec --fileout file:step1.root  --nThreads 4 > step1_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py Configuration/Generator/python/BulkGravitonTohh_narrow_M-5000_cfi.py  --conditions auto:phase1_2018_realistic -n 10 --era Run2_2018 --eventcontent FEVTDEBUG,LHE --relval 9000,100 -s LHE,GEN,SIM --datatier GEN-SIM,LHE --beamspot Realistic25ns13TeVEarly2018Collision --geometry DB:Extended --io BulkGravitonTohh_13UP18.io --python BulkGravitonTohh_13UP18.py --no_exec --fileout file:step1.root  --nThreads 4 > step1_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py step2  --conditions auto:phase1_2018_realistic --pileup_input das:/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM -n 10 --era Run2_2018 --eventcontent FEVTDEBUGHLT -s DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2018 --datatier GEN-SIM-DIGI-RAW-HLTDEBUG --pileup 2018_25ns_UltraLegacy_PoissonOOTPU --geometry DB:Extended --io DIGIUP18_PU25.io --python DIGIUP18_PU25.py --no_exec --filein  file:step1.root  --fileout file:step2.root  --nThreads 4 > step2_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py step2  --conditions auto:phase1_2018_realistic --pileup_input das:/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM -n 10 --era Run2_2018 --eventcontent FEVTDEBUGHLT -s DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2018 --datatier GEN-SIM-DIGI-RAW-HLTDEBUG --pileup 2018_25ns_UltraLegacy_PoissonOOTPU --geometry DB:Extended --io DIGIUP18_PU25.io --python DIGIUP18_PU25.py --no_exec --filein  file:step1.root  --fileout file:step2.root  --nThreads 4 > step2_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py step2  --conditions auto:phase1_2018_realistic --pileup_input das:/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM -n 10 --era Run2_2018 --eventcontent FEVTDEBUGHLT -s DIGI:pdigi_valid,L1,DIGI2RAW,HLT:@relval2018 --datatier GEN-SIM-DIGI-RAW-HLTDEBUG --pileup 2018_25ns_UltraLegacy_PoissonOOTPU --geometry DB:Extended --io DIGIUP18_PU25.io --python DIGIUP18_PU25.py --no_exec --filein  file:step1.root  --fileout file:step2.root  --nThreads 4 > step2_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py step3  --conditions auto:phase1_2018_realistic --pileup_input das:/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM -n 10 --era Run2_2018 --eventcontent RECOSIM,MINIAODSIM,DQM -s RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidationNoHLT+@miniAODValidation,DQM:@standardDQMFakeHLT+@miniAODDQM --datatier GEN-SIM-RECO,MINIAODSIM,DQMIO --pileup 2018_25ns_UltraLegacy_PoissonOOTPU --geometry DB:Extended --io RECOUP18_PU25.io --python RECOUP18_PU25.py --no_exec --filein  file:step2.root  --fileout file:step3.root  --nThreads 4 > step3_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py step3  --conditions auto:phase1_2018_realistic --pileup_input das:/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM -n 10 --era Run2_2018 --eventcontent RECOSIM,MINIAODSIM,DQM -s RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidationNoHLT+@miniAODValidation,DQM:@standardDQMFakeHLT+@miniAODDQM --datatier GEN-SIM-RECO,MINIAODSIM,DQMIO --pileup 2018_25ns_UltraLegacy_PoissonOOTPU --geometry DB:Extended --io RECOUP18_PU25.io --python RECOUP18_PU25.py --no_exec --filein  file:step2.root  --fileout file:step3.root  --nThreads 4 > step3_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py step3  --conditions auto:phase1_2018_realistic --pileup_input das:/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM -n 10 --era Run2_2018 --eventcontent RECOSIM,MINIAODSIM,DQM -s RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidationNoHLT+@miniAODValidation,DQM:@standardDQMFakeHLT+@miniAODDQM --datatier GEN-SIM-RECO,MINIAODSIM,DQMIO --pileup 2018_25ns_UltraLegacy_PoissonOOTPU --geometry DB:Extended --io RECOUP18_PU25.io --python RECOUP18_PU25.py --no_exec --filein  file:step2.root  --fileout file:step3.root  --nThreads 4 > step3_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py step4  --conditions auto:phase1_2018_realistic -s HARVESTING:@standardValidationNoHLT+@standardDQMFakeHLT+@miniAODValidation+@miniAODDQM --scenario pp --filetype DQM --geometry DB:Extended --era Run2_2018 --mc  --io HARVESTUP18_PU25.io --python HARVESTUP18_PU25.py -n 100  --no_exec --filein file:step3_inDQM.root --fileout file:step4.root  > step4_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py step4  --conditions auto:phase1_2018_realistic -s HARVESTING:@standardValidationNoHLT+@standardDQMFakeHLT+@miniAODValidation+@miniAODDQM --scenario pp --filetype DQM --geometry DB:Extended --era Run2_2018 --mc  --io HARVESTUP18_PU25.io --python HARVESTUP18_PU25.py -n 100  --no_exec --filein file:step3_inDQM.root --fileout file:step4.root  > step4_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py step4  --conditions auto:phase1_2018_realistic -s HARVESTING:@standardValidationNoHLT+@standardDQMFakeHLT+@miniAODValidation+@miniAODDQM --scenario pp --filetype DQM --geometry DB:Extended --era Run2_2018 --mc  --io HARVESTUP18_PU25.io --python HARVESTUP18_PU25.py -n 100  --no_exec --filein file:step3_inDQM.root --fileout file:step4.root  > step4_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py step5  --conditions auto:phase1_2018_realistic --nThreads 2 -n 10 --era Run2_2018 --eventcontent NANOEDMAODSIM --filein file:step3_inMINIAODSIM.root -s NANO --datatier NANOAODSIM --mc  --io NANOUP18.io --python NANOUP18.py --no_exec --fileout file:step5.root  --nThreads 4 > step5_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py step5  --conditions auto:phase1_2018_realistic --nThreads 2 -n 10 --era Run2_2018 --eventcontent NANOEDMAODSIM --filein file:step3_inMINIAODSIM.root -s NANO --datatier NANOAODSIM --mc  --io NANOUP18.io --python NANOUP18.py --no_exec --fileout file:step5.root  --nThreads 4 > step5_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/c/chayanit/public/RelValidations/PDMVRELVALS-94/CMSSW_11_2_0_pre6/src/PU going to execute cd 1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+ cmsDriver.py step5  --conditions auto:phase1_2018_realistic --nThreads 2 -n 10 --era Run2_2018 --eventcontent NANOEDMAODSIM --filein file:step3_inMINIAODSIM.root -s NANO --datatier NANOAODSIM --mc  --io NANOUP18.io --python NANOUP18.py --no_exec --fileout file:step5.root  --nThreads 4 > step5_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18.log  2>&1
+ 
+1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18 Step0-PASSED Step1-PASSED Step2-PASSED Step3-PASSED Step4-PASSED  - time date Sun Sep 27 11:42:38 2020-date Sun Sep 27 11:41:22 2020; exit: 0 0 0 0 0
+1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18 Step0-PASSED Step1-PASSED Step2-PASSED Step3-PASSED Step4-PASSED  - time date Sun Sep 27 11:42:38 2020-date Sun Sep 27 11:41:23 2020; exit: 0 0 0 0 0
+1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18 Step0-PASSED Step1-PASSED Step2-PASSED Step3-PASSED Step4-PASSED  - time date Sun Sep 27 11:42:38 2020-date Sun Sep 27 11:41:23 2020; exit: 0 0 0 0 0
+3 3 3 3 3 tests passed, 0 0 0 0 0 failed
+
+
+	Found wmclient
+
+inspecting 1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+inspecting 1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+inspecting 1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18
+	Fake upload of 1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/HARVESTUP18_PU25.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_1364.18harvesting
+1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/HARVESTUP18_PU25.py uploaded to couchDB for 1364.18 with ID 1041
+	Fake upload of 1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/RECOUP18_PU25.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_1364.18RECOUP18_PU25
+1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/RECOUP18_PU25.py  uploaded to couchDB for 1364.18 with ID 1042
+	Fake upload of 1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/ZprimeToTT_M2000_W600_13UP18.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_1364.18ZprimeToTT_M2000_W600_13UP18
+1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/ZprimeToTT_M2000_W600_13UP18.py  uploaded to couchDB for 1364.18 with ID 1043
+	Fake upload of 1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/DIGIUP18_PU25.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_1364.18DIGIUP18_PU25
+1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/DIGIUP18_PU25.py  uploaded to couchDB for 1364.18 with ID 1044
+	Fake upload of 1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/NANOUP18.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_1364.18NANOUP18
+1364.18_ZprimeToTT_M2000_W600_13UP18+ZprimeToTT_M2000_W600_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/NANOUP18.py  uploaded to couchDB for 1364.18 with ID 1045
+	Fake upload of 1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/HARVESTUP18_PU25.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_1366.18harvesting
+1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/HARVESTUP18_PU25.py uploaded to couchDB for 1366.18 with ID 1046
+	Fake upload of 1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/RECOUP18_PU25.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_1366.18RECOUP18_PU25
+1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/RECOUP18_PU25.py  uploaded to couchDB for 1366.18 with ID 1047
+	Fake upload of 1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/BulkGravitonToWW_13UP18.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_1366.18BulkGravitonToWW_13UP18
+1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/BulkGravitonToWW_13UP18.py  uploaded to couchDB for 1366.18 with ID 1048
+	Fake upload of 1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/DIGIUP18_PU25.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_1366.18DIGIUP18_PU25
+1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/DIGIUP18_PU25.py  uploaded to couchDB for 1366.18 with ID 1049
+	Fake upload of 1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/NANOUP18.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_1366.18NANOUP18
+1366.18_BulkGravitonToWW_13UP18+BulkGravitonToWW_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/NANOUP18.py  uploaded to couchDB for 1366.18 with ID 1050
+	Fake upload of 1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/HARVESTUP18_PU25.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_1367.18harvesting
+1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/HARVESTUP18_PU25.py uploaded to couchDB for 1367.18 with ID 1051
+	Fake upload of 1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/RECOUP18_PU25.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_1367.18RECOUP18_PU25
+1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/RECOUP18_PU25.py  uploaded to couchDB for 1367.18 with ID 1052
+	Fake upload of 1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/BulkGravitonTohh_13UP18.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_1367.18BulkGravitonTohh_13UP18
+1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/BulkGravitonTohh_13UP18.py  uploaded to couchDB for 1367.18 with ID 1053
+	Fake upload of 1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/DIGIUP18_PU25.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_1367.18DIGIUP18_PU25
+1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/DIGIUP18_PU25.py  uploaded to couchDB for 1367.18 with ID 1054
+	Fake upload of 1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/NANOUP18.py to couch with label RelValSet_CMSSW_11_2_0_pre6_v1_1367.18NANOUP18
+1367.18_BulkGravitonTohh_13UP18+BulkGravitonTohh_13UP18+DIGIUP18_PU25+RECOUP18_PU25+HARVESTUP18_PU25+NANOUP18/NANOUP18.py  uploaded to couchDB for 1367.18 with ID 1055
+
+	Found wmcontrol
+
+Only viewing request 1364.18
+{'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+ 'CMSSWVersion': 'CMSSW_11_2_0_pre6',
+ 'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758',
+ 'ConfigCacheUrl': 'https://cmsweb.cern.ch/couchdb',
+ 'DQMConfigCacheID': 1041,
+ 'DQMUploadUrl': 'https://cmsweb.cern.ch/dqm/relval',
+ 'DbsUrl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader',
+ 'EnableHarvesting': 'True',
+ 'GlobalTag': u'112X_upgrade2018_realistic_v3',
+ 'Group': 'ppd',
+ 'Memory': 3000,
+ 'Multicore': 1,
+ 'PrepID': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758-ZprimeToTT_M2000_W600_13UP18',
+ 'ProcessingString': u'112X_upgrade2018_realistic_v3',
+ 'ProcessingVersion': 1,
+ 'RequestPriority': 500000,
+ 'RequestString': 'RVCMSSW_11_2_0_pre6ZprimeToTT_M2000_W600_13UP18_PU25ns_',
+ 'RequestType': 'TaskChain',
+ 'Requestor': 'chayanit',
+ 'ScramArch': 'slc7_amd64_gcc820',
+ 'SizePerEvent': 1234,
+ 'SubRequestType': 'RelVal',
+ 'Task1': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758',
+           'ConfigCacheID': 1043,
+           'EventStreams': 0,
+           'EventsPerJob': 100,
+           'EventsPerLumi': 100,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'KeepOutput': True,
+           'Memory': 16000,
+           'Multicore': 4,
+           'PrimaryDataset': 'RelValZprimeToTT_M2000_W600_13UP18',
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'RequestNumEvents': 9000,
+           'Seeding': 'AutomaticSeeding',
+           'SplittingAlgo': 'EventBased',
+           'TaskName': 'ZprimeToTT_M2000_W600_13UP18'},
+ 'Task2': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758',
+           'ConfigCacheID': 1044,
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGoutput',
+           'InputTask': 'ZprimeToTT_M2000_W600_13UP18',
+           'KeepOutput': True,
+           'LumisPerJob': 1,
+           'MCPileup': u'/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM',
+           'Memory': 16000,
+           'Multicore': 4,
+           'ProcessingString': u'PU25ns_112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'DIGIUP18_PU25'},
+ 'Task3': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758',
+           'ConfigCacheID': 1042,
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGHLToutput',
+           'InputTask': 'DIGIUP18_PU25',
+           'KeepOutput': True,
+           'LumisPerJob': 1,
+           'MCPileup': u'/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM',
+           'Memory': 16000,
+           'Multicore': 4,
+           'ProcessingString': u'PU25ns_112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'RECOUP18_PU25'},
+ 'Task4': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758',
+           'ConfigCacheID': 1045,
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'MINIAODSIMoutput',
+           'InputTask': 'RECOUP18_PU25',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 16000,
+           'Multicore': 4,
+           'ProcessingString': u'PU25ns_112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'NANOUP18'},
+ 'TaskChain': 4,
+ 'TimePerEvent': 10}
+None
+Only viewing request 1366.18
+{'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+ 'CMSSWVersion': 'CMSSW_11_2_0_pre6',
+ 'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758',
+ 'ConfigCacheUrl': 'https://cmsweb.cern.ch/couchdb',
+ 'DQMConfigCacheID': 1046,
+ 'DQMUploadUrl': 'https://cmsweb.cern.ch/dqm/relval',
+ 'DbsUrl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader',
+ 'EnableHarvesting': 'True',
+ 'GlobalTag': u'112X_upgrade2018_realistic_v3',
+ 'Group': 'ppd',
+ 'Memory': 3000,
+ 'Multicore': 1,
+ 'PrepID': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758-BulkGravitonToWW_13UP18',
+ 'ProcessingString': u'112X_upgrade2018_realistic_v3',
+ 'ProcessingVersion': 1,
+ 'RequestPriority': 500000,
+ 'RequestString': 'RVCMSSW_11_2_0_pre6BulkGravitonToWW_13UP18_PU25ns_',
+ 'RequestType': 'TaskChain',
+ 'Requestor': 'chayanit',
+ 'ScramArch': 'slc7_amd64_gcc820',
+ 'SizePerEvent': 1234,
+ 'SubRequestType': 'RelVal',
+ 'Task1': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758',
+           'ConfigCacheID': 1048,
+           'EventStreams': 0,
+           'EventsPerJob': 100,
+           'EventsPerLumi': 100,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'KeepOutput': True,
+           'Memory': 16000,
+           'Multicore': 4,
+           'PrimaryDataset': 'RelValBulkGravitonToWW_13UP18',
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'RequestNumEvents': 9000,
+           'Seeding': 'AutomaticSeeding',
+           'SplittingAlgo': 'EventBased',
+           'TaskName': 'BulkGravitonToWW_13UP18'},
+ 'Task2': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758',
+           'ConfigCacheID': 1049,
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGoutput',
+           'InputTask': 'BulkGravitonToWW_13UP18',
+           'KeepOutput': True,
+           'LumisPerJob': 1,
+           'MCPileup': u'/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM',
+           'Memory': 16000,
+           'Multicore': 4,
+           'ProcessingString': u'PU25ns_112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'DIGIUP18_PU25'},
+ 'Task3': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758',
+           'ConfigCacheID': 1047,
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGHLToutput',
+           'InputTask': 'DIGIUP18_PU25',
+           'KeepOutput': True,
+           'LumisPerJob': 1,
+           'MCPileup': u'/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM',
+           'Memory': 16000,
+           'Multicore': 4,
+           'ProcessingString': u'PU25ns_112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'RECOUP18_PU25'},
+ 'Task4': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758',
+           'ConfigCacheID': 1050,
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'MINIAODSIMoutput',
+           'InputTask': 'RECOUP18_PU25',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 16000,
+           'Multicore': 4,
+           'ProcessingString': u'PU25ns_112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'NANOUP18'},
+ 'TaskChain': 4,
+ 'TimePerEvent': 10}
+None
+Only viewing request 1367.18
+{'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+ 'CMSSWVersion': 'CMSSW_11_2_0_pre6',
+ 'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758',
+ 'ConfigCacheUrl': 'https://cmsweb.cern.ch/couchdb',
+ 'DQMConfigCacheID': 1051,
+ 'DQMUploadUrl': 'https://cmsweb.cern.ch/dqm/relval',
+ 'DbsUrl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader',
+ 'EnableHarvesting': 'True',
+ 'GlobalTag': u'112X_upgrade2018_realistic_v3',
+ 'Group': 'ppd',
+ 'Memory': 3000,
+ 'Multicore': 1,
+ 'PrepID': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758-BulkGravitonTohh_13UP18',
+ 'ProcessingString': u'112X_upgrade2018_realistic_v3',
+ 'ProcessingVersion': 1,
+ 'RequestPriority': 500000,
+ 'RequestString': 'RVCMSSW_11_2_0_pre6BulkGravitonTohh_13UP18_PU25ns_',
+ 'RequestType': 'TaskChain',
+ 'Requestor': 'chayanit',
+ 'ScramArch': 'slc7_amd64_gcc820',
+ 'SizePerEvent': 1234,
+ 'SubRequestType': 'RelVal',
+ 'Task1': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758',
+           'ConfigCacheID': 1053,
+           'EventStreams': 0,
+           'EventsPerJob': 100,
+           'EventsPerLumi': 100,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'KeepOutput': True,
+           'Memory': 16000,
+           'Multicore': 4,
+           'PrimaryDataset': 'RelValBulkGravitonTohh_13UP18',
+           'ProcessingString': u'112X_upgrade2018_realistic_v3',
+           'RequestNumEvents': 9000,
+           'Seeding': 'AutomaticSeeding',
+           'SplittingAlgo': 'EventBased',
+           'TaskName': 'BulkGravitonTohh_13UP18'},
+ 'Task2': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758',
+           'ConfigCacheID': 1054,
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGoutput',
+           'InputTask': 'BulkGravitonTohh_13UP18',
+           'KeepOutput': True,
+           'LumisPerJob': 1,
+           'MCPileup': u'/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM',
+           'Memory': 16000,
+           'Multicore': 4,
+           'ProcessingString': u'PU25ns_112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'DIGIUP18_PU25'},
+ 'Task3': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758',
+           'ConfigCacheID': 1052,
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'FEVTDEBUGHLToutput',
+           'InputTask': 'DIGIUP18_PU25',
+           'KeepOutput': True,
+           'LumisPerJob': 1,
+           'MCPileup': u'/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM',
+           'Memory': 16000,
+           'Multicore': 4,
+           'ProcessingString': u'PU25ns_112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'RECOUP18_PU25'},
+ 'Task4': {'AcquisitionEra': 'CMSSW_11_2_0_pre6',
+           'Campaign': 'CMSSW_11_2_0_pre6__Fullsim_PU_2018_set2-1601199758',
+           'ConfigCacheID': 1055,
+           'EventStreams': 0,
+           'GlobalTag': u'112X_upgrade2018_realistic_v3',
+           'InputFromOutputModule': u'MINIAODSIMoutput',
+           'InputTask': 'RECOUP18_PU25',
+           'KeepOutput': True,
+           'LumisPerJob': 10,
+           'Memory': 16000,
+           'Multicore': 4,
+           'ProcessingString': u'PU25ns_112X_upgrade2018_realistic_v3',
+           'SplittingAlgo': 'LumiBased',
+           'TaskName': 'NANOUP18'},
+ 'TaskChain': 4,
+ 'TimePerEvent': 10}
+None

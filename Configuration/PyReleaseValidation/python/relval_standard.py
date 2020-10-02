@@ -677,6 +677,10 @@ workflows[1363.17] = ['', ['VBFHToBB_M125_Pow_py8_Evt_13UP17','DIGIUP17','RECOUP
 workflows[1361.18] = ['', ['GluGluHToZZTo4L_M125_Pow_py8_Evt_13UP18','DIGIUP18','RECOUP18','HARVESTUP18','NANOUP18']]
 workflows[1362.18] = ['', ['VBFHToZZTo4Nu_M125_Pow_py8_Evt_13UP18','DIGIUP18','RECOUP18','HARVESTUP18','NANOUP18']]
 workflows[1363.18] = ['', ['VBFHToBB_M125_Pow_py8_Evt_13UP18','DIGIUP18','RECOUP18','HARVESTUP18','NANOUP18']]
+workflows[1364.18] = ['', ['ZprimeToTT_M2000_W600_13UP18','DIGIUP18_PU25','RECOUP18_PU25','HARVESTUP18_PU25','NANOUP18']]
+#workflows[1365.18] = ['', ['BulkGravitonToHHTo4Q_13UP18','DIGIUP18_PU25','RECOUP18_PU25','HARVESTUP18_PU25','NANOUP18']]
+workflows[1366.18] = ['', ['BulkGravitonToWW_13UP18','DIGIUP18_PU25','RECOUP18_PU25','HARVESTUP18_PU25','NANOUP18']]
+workflows[1367.18] = ['', ['BulkGravitonTohh_13UP18','DIGIUP18_PU25','RECOUP18_PU25','HARVESTUP18_PU25','NANOUP18']]
 
 #2018 workflows starting from gridpacks LHE generation with multiple concurrent lumi sections
 workflows[1361.181] = ['', ['GluGluHToZZTo4L_M125_Pow_py8_Evt_13UP18ml','DIGIUP18ml','RECOUP18ml','HARVESTUP18','NANOUP18ml']]

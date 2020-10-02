@@ -1,0 +1,6 @@
+NANO,ENDJOB
+entry file:step3_inMINIAODSIM.root
+Step: NANO Spec: 
+Step: ENDJOB Spec: 
+customising the process with nanoAOD_customizeMC from PhysicsTools/NanoAOD/nano_cff
+Config file NANOUP18.py created

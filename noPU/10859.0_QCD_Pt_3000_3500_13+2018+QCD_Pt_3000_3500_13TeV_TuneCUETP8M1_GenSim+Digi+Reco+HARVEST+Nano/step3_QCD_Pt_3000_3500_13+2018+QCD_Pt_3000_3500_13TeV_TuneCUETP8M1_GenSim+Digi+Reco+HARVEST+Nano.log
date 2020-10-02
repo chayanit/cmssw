@@ -1,0 +1,16 @@
+RAW2DIGI,L1Reco,RECO,RECOSIM,EI,PAT,VALIDATION:@standardValidation+@miniAODValidation,DQM:@standardDQM+@ExtraHLT+@miniAODDQM
+We have determined that this is simulation (if not, rerun cmsDriver.py with --data)
+with DB:
+entry file:step2.root
+Step: RAW2DIGI Spec: 
+Step: L1Reco Spec: 
+Step: RECO Spec: 
+Step: RECOSIM Spec: 
+Step: EI Spec: 
+Step: PAT Spec: 
+Step: VALIDATION Spec: ['@standardValidation', '@miniAODValidation']
+@standardValidation+@miniAODValidation in preparing validation
+Step: DQM Spec: ['@standardDQM', '@ExtraHLT', '@miniAODDQM']
+customising the process with setCrossingFrameOn from SimGeneral/MixingModule/fullMixCustomize_cff
+customising the process with miniAOD_customizeAllMC from PhysicsTools/PatAlgos/slimming/miniAOD_tools
+Config file Reco_2018.py created

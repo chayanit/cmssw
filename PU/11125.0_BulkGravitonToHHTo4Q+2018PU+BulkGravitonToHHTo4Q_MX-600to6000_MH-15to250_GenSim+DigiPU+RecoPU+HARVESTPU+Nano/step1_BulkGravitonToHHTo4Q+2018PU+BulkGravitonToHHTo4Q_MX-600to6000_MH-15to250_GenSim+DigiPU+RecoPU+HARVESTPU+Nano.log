@@ -1,0 +1,8 @@
+GEN,SIM,ENDJOB
+We have determined that this is simulation (if not, rerun cmsDriver.py with --data)
+with DB:
+Step: GEN Spec: 
+Loading generator fragment from Configuration.Generator.BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_cfi
+Step: SIM Spec: 
+Step: ENDJOB Spec: 
+Config file BulkGravitonToHHTo4Q_MX-600to6000_MH-15to250_2018PU_GenSim.py created

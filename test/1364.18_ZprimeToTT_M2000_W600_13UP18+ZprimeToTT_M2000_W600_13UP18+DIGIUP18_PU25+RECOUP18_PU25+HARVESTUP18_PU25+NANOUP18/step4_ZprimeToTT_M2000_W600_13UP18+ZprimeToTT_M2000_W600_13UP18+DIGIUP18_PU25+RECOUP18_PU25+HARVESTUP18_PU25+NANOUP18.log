@@ -1,0 +1,113 @@
+27-Sep-2020 11:38:20 CESTSuccessfully opened file file:step3_inDQM.root
+%MSG-e HLTConfigProvider:   EgHLTOfflineSummaryClient:egHLTOffDQMSummaryClient@beginRun  27-Sep-2020 11:38:31 CEST Run: 1
+Falling back to ProcessName-only init using ProcessName 'HLT' !
+%MSG
+%MSG-e HLTConfigProvider:   EgHLTOfflineSummaryClient:egHLTOffDQMSummaryClient@beginRun  27-Sep-2020 11:38:31 CEST Run: 1
+ Process name 'HLT' not found in registry!
+%MSG
+%MSG-w FastTimerServiceClient:   FastTimerServiceClient:dqmFastTimerServiceClient@endLumi  27-Sep-2020 11:38:32 CEST Run: 1 Lumi: 1
+no lumiVsLS ME is available in HLT/LumiMonitoring
+%MSG
+%MSG-w FastTimerServiceClient:   FastTimerServiceClient:dqmFastTimerServiceClient@endLumi  27-Sep-2020 11:38:32 CEST Run: 1 Lumi: 1
+no puVsLS ME is available in HLT/LumiMonitoring
+%MSG
+%MSG-e DQMGenericClient:  DQMGenericClient:postProcessorTrack@endRun  27-Sep-2020 11:38:33 CEST End Run: 1
+ DQMGenericClient::findAllSubdirectories ==> Missing folder Tracking/TrackBHadron !!!
+%MSG
+%MSG-e DQMGenericClient:  DQMGenericClient:trackingEffFromHitPattern@endRun  27-Sep-2020 11:38:38 CEST End Run: 1
+ DQMGenericClient::findAllSubdirectories ==> Missing folder Tracking/TrackParameters/highPurityTracks/pt_1/HIP_OOT_noINpu !!!
+%MSG
+%MSG-e DQMGenericClient:  DQMGenericClient:trackingEffFromHitPattern@endRun  27-Sep-2020 11:38:38 CEST End Run: 1
+ DQMGenericClient::findAllSubdirectories ==> Missing folder Tracking/TrackParameters/highPurityTracks/pt_1/HIP_noOOT_INpu !!!
+%MSG
+%MSG-e DQMGenericClient:  DQMGenericClient:trackingEffFromHitPattern@endRun  27-Sep-2020 11:38:38 CEST End Run: 1
+ DQMGenericClient::findAllSubdirectories ==> Missing folder Tracking/TrackParameters/highPurityTracks/pt_1/noHIP_noOOT_INpu !!!
+%MSG
+
+
+
+
+
+%MSG-e MuonGEMDigisHarvestor:   MuonGEMDigisHarvestor:gemDigiHarvesting@endProcessBlock  27-Sep-2020 11:38:49 CEST post-events
+failed to get MuonGEMDigisV/GEMDigisTask/Strip/Occupancy/matched_strip_occ_phi_re-1_st2
+%MSG
+%MSG-e MuonGEMDigisHarvestor:   MuonGEMDigisHarvestor:gemDigiHarvesting@endProcessBlock  27-Sep-2020 11:38:49 CEST post-events
+failed to get MuonGEMDigisV/GEMDigisTask/Strip/Occupancy/matched_strip_occ_det_re-1_st2
+%MSG
+%MSG-e MuonGEMDigisHarvestor:   MuonGEMDigisHarvestor:gemDigiHarvesting@endProcessBlock  27-Sep-2020 11:38:49 CEST post-events
+failed to get MuonGEMDigisV/GEMDigisTask/Strip/Occupancy/matched_strip_occ_phi_re1_st1
+%MSG
+%MSG-e MuonGEMDigisHarvestor:   MuonGEMDigisHarvestor:gemDigiHarvesting@endProcessBlock  27-Sep-2020 11:38:49 CEST post-events
+failed to get MuonGEMDigisV/GEMDigisTask/Strip/Occupancy/matched_strip_occ_det_re1_st1
+%MSG
+%MSG-e MuonGEMDigisHarvestor:   MuonGEMDigisHarvestor:gemDigiHarvesting@endProcessBlock  27-Sep-2020 11:38:49 CEST post-events
+failed to get MuonGEMDigisV/GEMDigisTask/Strip/Occupancy/matched_strip_occ_phi_re1_st2
+%MSG
+%MSG-e MuonGEMDigisHarvestor:   MuonGEMDigisHarvestor:gemDigiHarvesting@endProcessBlock  27-Sep-2020 11:38:49 CEST post-events
+failed to get MuonGEMDigisV/GEMDigisTask/Strip/Occupancy/matched_strip_occ_det_re1_st2
+%MSG
+%MSG-e MuonGEMRecHitsHarvestor:   MuonGEMRecHitsHarvestor:gemRecHitHarvesting@endProcessBlock  27-Sep-2020 11:38:49 CEST post-events
+failed to get MuonGEMRecHitsV/GEMRecHitsTask/Occupancy/matched_rechit_occ_phi_re-1_st2
+%MSG
+%MSG-e MuonGEMRecHitsHarvestor:   MuonGEMRecHitsHarvestor:gemRecHitHarvesting@endProcessBlock  27-Sep-2020 11:38:49 CEST post-events
+failed to get MuonGEMRecHitsV/GEMRecHitsTask/Occupancy/matched_rechit_occ_det_re-1_st2
+%MSG
+%MSG-e MuonGEMRecHitsHarvestor:   MuonGEMRecHitsHarvestor:gemRecHitHarvesting@endProcessBlock  27-Sep-2020 11:38:49 CEST post-events
+failed to get MuonGEMRecHitsV/GEMRecHitsTask/Occupancy/matched_rechit_occ_phi_re1_st1
+%MSG
+%MSG-e MuonGEMRecHitsHarvestor:   MuonGEMRecHitsHarvestor:gemRecHitHarvesting@endProcessBlock  27-Sep-2020 11:38:49 CEST post-events
+failed to get MuonGEMRecHitsV/GEMRecHitsTask/Occupancy/matched_rechit_occ_det_re1_st1
+%MSG
+%MSG-e MuonGEMRecHitsHarvestor:   MuonGEMRecHitsHarvestor:gemRecHitHarvesting@endProcessBlock  27-Sep-2020 11:38:49 CEST post-events
+failed to get MuonGEMRecHitsV/GEMRecHitsTask/Occupancy/matched_rechit_occ_phi_re1_st2
+%MSG
+%MSG-e MuonGEMRecHitsHarvestor:   MuonGEMRecHitsHarvestor:gemRecHitHarvesting@endProcessBlock  27-Sep-2020 11:38:49 CEST post-events
+failed to get MuonGEMRecHitsV/GEMRecHitsTask/Occupancy/matched_rechit_occ_det_re1_st2
+%MSG
+%MSG-w FastTimerServiceClient:   FastTimerServiceClient:dqmFastTimerServiceClient@endProcessBlock  27-Sep-2020 11:39:01 CEST post-events
+no lumiVsLS ME is available in HLT/LumiMonitoring
+%MSG
+%MSG-w FastTimerServiceClient:   FastTimerServiceClient:dqmFastTimerServiceClient@endProcessBlock  27-Sep-2020 11:39:01 CEST post-events
+no puVsLS ME is available in HLT/LumiMonitoring
+%MSG
+
+
+
+
+
+DQMFileSaver::globalEndRun()
+
+=============================================
+
+MessageLogger Summary
+
+ type     category        sev    module        subroutine        count    total
+ ---- -------------------- -- ---------------- ----------------  -----    -----
+    1 FastTimerServiceClie -w FastTimerService                       2        2
+    2 FastTimerServiceClie -w FastTimerService                       2        2
+    3 DQMGenericClient     -e DQMGenericClient                       1        1
+    4 DQMGenericClient     -e DQMGenericClient                       3        3
+    5 HLTConfigProvider    -e EgHLTOfflineSumm                       2        2
+    6 MuonGEMDigisHarvesto -e MuonGEMDigisHarv                       6        6
+    7 MuonGEMRecHitsHarves -e MuonGEMRecHitsHa                       6        6
+    8 fileAction           -s AfterModBeginStr                       1        1
+
+ type    category    Examples: run/evt        run/evt          run/evt
+ ---- -------------------- ---------------- ---------------- ----------------
+    1 FastTimerServiceClient Run: 1 Lumi: 1   Run: 1 Lumi: 1   
+    2 FastTimerServiceClient post-events      post-events      
+    3 DQMGenericClient     End Run: 1                        
+    4 DQMGenericClient     End Run: 1       End Run: 1       End Run: 1
+    5 HLTConfigProvider    Run: 1           Run: 1           
+    6 MuonGEMDigisHarvestor post-events      post-events      post-events
+    7 MuonGEMRecHitsHarvestor post-events      post-events      post-events
+    8 fileAction           BeforeEvents                      
+
+Severity    # Occurrences   Total Occurrences
+--------    -------------   -----------------
+Warning                 4                   4
+Error                  18                  18
+System                  1                   1
+
+dropped waiting message count 0
+27-Sep-2020 11:39:16 CESTClosed file

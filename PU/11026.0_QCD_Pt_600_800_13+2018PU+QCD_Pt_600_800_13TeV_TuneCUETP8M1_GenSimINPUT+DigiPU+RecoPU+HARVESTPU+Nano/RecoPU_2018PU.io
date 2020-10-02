@@ -1,0 +1,1 @@
+{"GT": "112X_upgrade2018_realistic_v3", "RECOSIMoutput": "file:step3.root", "primary": ["file:step2.root"], "DQMoutput": "file:step3_inDQM.root", "pileup": "/RelValMinBias_13/CMSSW_11_2_0_pre6-112X_upgrade2018_realistic_v3-v1/GEN-SIM", "MINIAODSIMoutput": "file:step3_inMINIAODSIM.root"}

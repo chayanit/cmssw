@@ -1,0 +1,8 @@
+NANO,ENDJOB
+We have determined that this is simulation (if not, rerun cmsDriver.py with --data)
+with DB:
+entry file:step3_inMINIAODSIM.root
+Step: NANO Spec: 
+Step: ENDJOB Spec: 
+customising the process with nanoAOD_customizeMC from PhysicsTools/NanoAOD/nano_cff
+Config file Nano_2018PU.py created

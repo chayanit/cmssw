@@ -1,0 +1,159 @@
+%MSG-i ThreadStreamSetup:  (NoModuleName) 27-Sep-2020 11:32:57 CEST pre-events
+setting # threads 4
+setting # streams 4
+%MSG
+27-Sep-2020 11:33:11 CEST  Initiating request to open file file:step2.root
+27-Sep-2020 11:33:13 CEST  Successfully opened file file:step2.root
+27-Sep-2020 11:33:38 CEST  Initiating request to open file root://eoscms.cern.ch//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/6BF323E4-0D38-AB44-AFA5-C01719C291A6.root
+%MSG-w XrdAdaptorInternal:  MixingModule:mix@ctor 27-Sep-2020 11:33:39 CEST  pre-events
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/6BF323E4-0D38-AB44-AFA5-C01719C291A6.root?xrdcl.requuid=ab3cb3c7-dfd6-4004-b65c-c6a80805a09a.
+%MSG
+%MSG-w XrdAdaptorInternal:  MixingModule:mix@ctor 27-Sep-2020 11:33:39 CEST  pre-events
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/6BF323E4-0D38-AB44-AFA5-C01719C291A6.root?tried=&xrdcl.requuid=f02fc3e9-0bdb-43da-865e-c41e4de8edf3.
+%MSG
+27-Sep-2020 11:33:39 CEST  Initiating request to open file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/6BF323E4-0D38-AB44-AFA5-C01719C291A6.root
+%MSG-w XrdAdaptor:  MixingModule:mix@ctor 27-Sep-2020 11:33:54 CEST pre-events
+Data is served from [2620 instead of original site T2_FR_GRIF_LLR
+%MSG
+27-Sep-2020 11:33:55 CEST  Successfully opened file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/6BF323E4-0D38-AB44-AFA5-C01719C291A6.root
+27-Sep-2020 11:34:04 CEST  Initiating request to open file root://eoscms.cern.ch//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/63DF706D-C665-0848-A744-017D0D6E346B.root
+%MSG-w XrdAdaptorInternal:  MixingModule:mix@ctor 27-Sep-2020 11:34:05 CEST  pre-events
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/63DF706D-C665-0848-A744-017D0D6E346B.root?xrdcl.requuid=14fb6b7f-1de0-4313-bd6d-c384885ed0c8.
+%MSG
+%MSG-w XrdAdaptorInternal:  MixingModule:mix@ctor 27-Sep-2020 11:34:05 CEST  pre-events
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/63DF706D-C665-0848-A744-017D0D6E346B.root?tried=&xrdcl.requuid=b4727b53-1e52-4294-805a-73a2c62bec3d.
+%MSG
+27-Sep-2020 11:34:05 CEST  Initiating request to open file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/63DF706D-C665-0848-A744-017D0D6E346B.root
+%MSG-w XrdAdaptor:  MixingModule:mix@ctor 27-Sep-2020 11:34:07 CEST pre-events
+Data is served from [2620 instead of original site T2_FR_GRIF_LLR
+%MSG
+27-Sep-2020 11:34:07 CEST  Successfully opened file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/63DF706D-C665-0848-A744-017D0D6E346B.root
+27-Sep-2020 11:34:18 CEST  Initiating request to open file root://eoscms.cern.ch//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/98485592-239C-D94B-A243-A3AEBD643894.root
+%MSG-w XrdAdaptorInternal:  MixingModule:mix@ctor 27-Sep-2020 11:34:19 CEST  pre-events
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/98485592-239C-D94B-A243-A3AEBD643894.root?xrdcl.requuid=a045181d-c778-4a4a-805a-0bc64b1332ee.
+%MSG
+%MSG-w XrdAdaptorInternal:  MixingModule:mix@ctor 27-Sep-2020 11:34:19 CEST  pre-events
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/98485592-239C-D94B-A243-A3AEBD643894.root?tried=&xrdcl.requuid=565bb4af-d3a3-4688-ae4d-1b4fdac8cda4.
+%MSG
+27-Sep-2020 11:34:19 CEST  Initiating request to open file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/98485592-239C-D94B-A243-A3AEBD643894.root
+%MSG-w XrdAdaptor:  MixingModule:mix@ctor 27-Sep-2020 11:34:22 CEST pre-events
+Data is served from [2620 instead of original site T2_FR_GRIF_LLR
+%MSG
+27-Sep-2020 11:34:22 CEST  Successfully opened file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/98485592-239C-D94B-A243-A3AEBD643894.root
+27-Sep-2020 11:34:34 CEST  Initiating request to open file root://eoscms.cern.ch//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/D08314B9-ADEA-7F44-B116-88CF8C2D1949.root
+%MSG-w XrdAdaptorInternal:  MixingModule:mix@ctor 27-Sep-2020 11:34:35 CEST  pre-events
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/D08314B9-ADEA-7F44-B116-88CF8C2D1949.root?xrdcl.requuid=52ae15f6-765b-4aea-8c85-5aa0156ad7dd.
+%MSG
+%MSG-w XrdAdaptorInternal:  MixingModule:mix@ctor 27-Sep-2020 11:34:35 CEST  pre-events
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/D08314B9-ADEA-7F44-B116-88CF8C2D1949.root?tried=&xrdcl.requuid=5030bf5c-b61a-46a5-8d6c-0bdaff326677.
+%MSG
+27-Sep-2020 11:34:35 CEST  Initiating request to open file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/D08314B9-ADEA-7F44-B116-88CF8C2D1949.root
+%MSG-w XrdAdaptor:  MixingModule:mix@ctor 27-Sep-2020 11:34:37 CEST pre-events
+Data is served from [2620 instead of original site T2_FR_GRIF_LLR
+%MSG
+27-Sep-2020 11:34:37 CEST  Successfully opened file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/D08314B9-ADEA-7F44-B116-88CF8C2D1949.root
+create data set info Default
+create data set info Default
+create data set info Default
+create data set info Default
+2020-09-27 11:35:13.955686: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+%MSG-e TkDetLayers:   ConversionTrackCandidateProducer:uncleanedOnlyConversionTrackCandidates@streamBeginRun  27-Sep-2020 11:36:17 CEST Run: 1 Stream: 2
+ ForwardDiskSectorBuilderFromDet: Trying to build Petal Wedge from Dets at different z positions !! Delta_z = -1.03584
+%MSG
+Begin processing the 1st record. Run 1, Event 4, LumiSection 1 on stream 0 at 27-Sep-2020 11:36:29.264 CEST
+Begin processing the 2nd record. Run 1, Event 3, LumiSection 1 on stream 1 at 27-Sep-2020 11:36:29.269 CEST
+Begin processing the 3rd record. Run 1, Event 2, LumiSection 1 on stream 2 at 27-Sep-2020 11:36:29.272 CEST
+27-Sep-2020 11:36:31 CEST  Closed file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/6BF323E4-0D38-AB44-AFA5-C01719C291A6.root
+27-Sep-2020 11:36:31 CEST  Initiating request to open file root://eoscms.cern.ch//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/98485592-239C-D94B-A243-A3AEBD643894.root
+%MSG-w XrdAdaptorInternal:  MixingModule:mix 27-Sep-2020 11:36:32 CEST  Run: 1 Event: 4
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/98485592-239C-D94B-A243-A3AEBD643894.root?xrdcl.requuid=d2a5e900-f7ff-4d8b-b9f0-344a92bd9d4d.
+%MSG
+%MSG-w XrdAdaptorInternal:  MixingModule:mix 27-Sep-2020 11:36:32 CEST  Run: 1 Event: 4
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/98485592-239C-D94B-A243-A3AEBD643894.root?tried=&xrdcl.requuid=05d2b94f-9778-4c5a-96b5-0c2701df760c.
+%MSG
+27-Sep-2020 11:36:32 CEST  Initiating request to open file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/98485592-239C-D94B-A243-A3AEBD643894.root
+%MSG-w XrdAdaptor:  MixingModule:mix 27-Sep-2020 11:36:33 CEST Run: 1 Event: 4
+Data is served from [2620 instead of original site T2_FR_GRIF_LLR
+%MSG
+27-Sep-2020 11:36:34 CEST  Successfully opened file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/98485592-239C-D94B-A243-A3AEBD643894.root
+create data set info Default
+27-Sep-2020 11:36:53 CEST  Closed file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/98485592-239C-D94B-A243-A3AEBD643894.root
+27-Sep-2020 11:36:53 CEST  Initiating request to open file root://eoscms.cern.ch//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/D08314B9-ADEA-7F44-B116-88CF8C2D1949.root
+create data set info Default
+create data set info Default
+%MSG-w XrdAdaptorInternal:  MixingModule:mix 27-Sep-2020 11:36:54 CEST  Run: 1 Event: 2
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/D08314B9-ADEA-7F44-B116-88CF8C2D1949.root?xrdcl.requuid=ff285113-460e-4e8e-9556-f08a6e14d449.
+%MSG
+%MSG-w XrdAdaptorInternal:  MixingModule:mix 27-Sep-2020 11:36:54 CEST  Run: 1 Event: 2
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/D08314B9-ADEA-7F44-B116-88CF8C2D1949.root?tried=&xrdcl.requuid=9d7e97bc-a089-4c28-bfca-4f0155a44dbc.
+%MSG
+27-Sep-2020 11:36:54 CEST  Initiating request to open file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/D08314B9-ADEA-7F44-B116-88CF8C2D1949.root
+%MSG-w XrdAdaptor:  MixingModule:mix 27-Sep-2020 11:36:56 CEST Run: 1 Event: 2
+Data is served from [2620 instead of original site T2_FR_GRIF_LLR
+%MSG
+27-Sep-2020 11:36:56 CEST  Successfully opened file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/D08314B9-ADEA-7F44-B116-88CF8C2D1949.root
+create data set info Default
+27-Sep-2020 11:37:07 CEST  Closed file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/63DF706D-C665-0848-A744-017D0D6E346B.root
+27-Sep-2020 11:37:07 CEST  Initiating request to open file root://eoscms.cern.ch//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/121A1783-7DD7-DF43-802E-C78CB2377104.root
+%MSG-w XrdAdaptorInternal:  MixingModule:mix 27-Sep-2020 11:37:08 CEST  Run: 1 Event: 3
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/121A1783-7DD7-DF43-802E-C78CB2377104.root?xrdcl.requuid=43961753-3f56-46b3-8c71-86b6f7eef6d7.
+%MSG
+%MSG-w XrdAdaptorInternal:  MixingModule:mix 27-Sep-2020 11:37:08 CEST  Run: 1 Event: 3
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/121A1783-7DD7-DF43-802E-C78CB2377104.root?tried=&xrdcl.requuid=ac415551-de8e-4bc2-8713-6029a33f33a3.
+%MSG
+27-Sep-2020 11:37:08 CEST  Initiating request to open file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/121A1783-7DD7-DF43-802E-C78CB2377104.root
+%MSG-w XrdAdaptor:  MixingModule:mix 27-Sep-2020 11:37:10 CEST Run: 1 Event: 3
+Data is served from [2620 instead of original site T2_FR_GRIF_LLR
+%MSG
+27-Sep-2020 11:37:11 CEST  Successfully opened file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/121A1783-7DD7-DF43-802E-C78CB2377104.root
+0(4.5) 
+1(4.5) 
+2(4.5) 
+4(4.5) 
+5(4.5) 
+6(4.5) 
+27-Sep-2020 11:37:35 CEST  Closed file file:step2.root
+27-Sep-2020 11:37:39 CEST  Closed file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/98485592-239C-D94B-A243-A3AEBD643894.root
+27-Sep-2020 11:37:39 CEST  Closed file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/121A1783-7DD7-DF43-802E-C78CB2377104.root
+27-Sep-2020 11:37:39 CEST  Closed file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/D08314B9-ADEA-7F44-B116-88CF8C2D1949.root
+27-Sep-2020 11:37:39 CEST  Closed file root://xrootd-cms.infn.it//store/relval/CMSSW_11_2_0_pre6/RelValMinBias_13/GEN-SIM/112X_upgrade2018_realistic_v3-v1/20000/D08314B9-ADEA-7F44-B116-88CF8C2D1949.root
+
+=============================================
+
+MessageLogger Summary
+
+ type     category        sev    module        subroutine        count    total
+ ---- -------------------- -- ---------------- ----------------  -----    -----
+    1 CastorDigiMonitor    -w CastorMonitorMod                       6        6
+    2 XrdAdaptor           -w MixingModule:mix                       3        3
+    3 XrdAdaptor           -w MixingModule:mix                       4        4
+    4 XrdAdaptorInternal   -w MixingModule:mix                       6        6
+    5 XrdAdaptorInternal   -w MixingModule:mix                       8        8
+    6 TkDetLayers          -e ConversionTrackC                       1        1
+    7 fileAction           -s MixingModule:mix                      12       12
+    8 fileAction           -s MixingModule:mix                      12       12
+    9 fileAction           -s MixingModule:mix                       4        4
+   10 fileAction           -s file_close                             1        1
+   11 fileAction           -s file_open                              2        2
+
+ type    category    Examples: run/evt        run/evt          run/evt
+ ---- -------------------- ---------------- ---------------- ----------------
+    1 CastorDigiMonitor    End Run: 1       End Run: 1       End Run: 1
+    2 XrdAdaptor           1/4              1/2              1/3
+    3 XrdAdaptor           pre-events       pre-events       pre-events
+    4 XrdAdaptorInternal   1/4              1/4              1/3
+    5 XrdAdaptorInternal   pre-events       pre-events       pre-events
+    6 TkDetLayers          Run: 1 Stream: 2                  
+    7 fileAction           1/4              1/4              1/3
+    8 fileAction           pre-events       pre-events       pre-events
+    9 fileAction           post-events      post-events      post-events
+   10 fileAction           PostGlobalEndRun                  
+   11 fileAction           pre-events       pre-events       
+
+Severity    # Occurrences   Total Occurrences
+--------    -------------   -----------------
+Warning                27                  27
+Error                   1                   1
+System                 31                  31
+
+dropped waiting message count 0
