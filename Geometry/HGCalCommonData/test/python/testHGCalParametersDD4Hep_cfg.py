@@ -9,12 +9,12 @@ if hasattr(process,'MessageLogger'):
     process.MessageLogger.categories.append('HGCalGeom')
 
 process.DDDetectorESProducer = cms.ESSource("DDDetectorESProducer",
-                                            confGeomXMLFiles = cms.FileInPath('Geometry/HGCalCommonData/data/dd4hep/cms-test-ddhgcal-algorithm.xml'),
+                                            confGeomXMLFiles = cms.FileInPath('Geometry/HGCalCommonData/data/dd4hep/testHGCalV14.xml'),
                                             appendToDataLabel = cms.string('')
                                             )
 
 process.DDCompactViewESProducer = cms.ESProducer("DDCompactViewESProducer",
-                                                appendToDataLabel = cms.string('')
+                                                 appendToDataLabel = cms.string('')
 )
 
 process.load("IOMC.RandomEngine.IOMC_cff")
@@ -60,5 +60,5 @@ process.testHESci = process.testEE.clone(
     Mode = cms.untracked.int32(2)
 )
  
-#process.p1 = cms.Path(process.generator*process.testEE*process.testHESil*process.testHESci)
-process.p1 = cms.Path(process.generator*process.testEE*process.testHESil)
+process.p1 = cms.Path(process.generator*process.testEE*process.testHESil*process.testHESci)
+#process.p1 = cms.Path(process.generator*process.testEE*process.testHESil)

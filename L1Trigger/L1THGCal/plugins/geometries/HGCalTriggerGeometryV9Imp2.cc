@@ -9,6 +9,7 @@
 #include "L1Trigger/L1THGCal/interface/HGCalTriggerGeometryBase.h"
 #include "DataFormats/ForwardDetId/interface/HFNoseDetIdToModule.h"
 
+#include "tbb/concurrent_unordered_set.h"
 #include <fstream>
 #include <iostream>
 #include <regex>
@@ -42,6 +43,7 @@ public:
   GlobalPoint getTriggerCellPosition(const unsigned) const final;
   GlobalPoint getModulePosition(const unsigned) const final;
 
+  bool validCell(const unsigned) const final;
   bool validTriggerCell(const unsigned) const final;
   bool disconnectedModule(const unsigned) const final;
   unsigned lastTriggerLayer() const final { return last_trigger_layer_; }
@@ -54,6 +56,8 @@ private:
   unsigned hSc_links_per_module_ = 1;
   unsigned hSc_wafers_per_module_ = 3;
 
+  unsigned sector0_mask_ = 0x7f;  // 7 bits to encode module number in 60deg sector
+
   edm::FileInPath l1tModulesMapping_;
   edm::FileInPath l1tLinksMapping_;
 
@@ -61,6 +65,7 @@ private:
   std::unordered_map<unsigned, unsigned> wafer_to_module_;
   std::unordered_multimap<unsigned, unsigned> module_to_wafers_;
   std::unordered_map<unsigned, unsigned> links_per_module_;
+  mutable tbb::concurrent_unordered_set<unsigned> cache_missing_wafers_;
 
   // Disconnected modules and layers
   std::unordered_set<unsigned> disconnected_modules_;
@@ -108,6 +113,7 @@ HGCalTriggerGeometryV9Imp2::HGCalTriggerGeometryV9Imp2(const edm::ParameterSet& 
 void HGCalTriggerGeometryV9Imp2::reset() {
   wafer_to_module_.clear();
   module_to_wafers_.clear();
+  cache_missing_wafers_.clear();
 }
 
 void HGCalTriggerGeometryV9Imp2::initialize(const CaloGeometry* calo_geometry) {
@@ -265,13 +271,20 @@ unsigned HGCalTriggerGeometryV9Imp2::getModuleFromTriggerCell(const unsigned tri
       int waferu = trigger_cell_trig_id.waferU();
       int waferv = trigger_cell_trig_id.waferV();
       unsigned layer_with_offset = layerWithOffset(trigger_cell_id);
-      auto module_itr = wafer_to_module_.find(packLayerWaferId(layer_with_offset, waferu, waferv));
+      unsigned packed_wafer = packLayerWaferId(layer_with_offset, waferu, waferv);
+      auto module_itr = wafer_to_module_.find(packed_wafer);
       if (module_itr == wafer_to_module_.end()) {
-        throw cms::Exception("BadGeometry")
-            << trigger_cell_trig_id << "HGCalTriggerGeometry: Wafer (" << waferu << "," << waferv
-            << ") is not mapped to any trigger module. The module mapping should be modified. \n";
+        // return missing modules as disconnected (id=0)
+        module = 0;
+        auto insert_itr = cache_missing_wafers_.emplace(packed_wafer);
+        if (insert_itr.second) {
+          edm::LogWarning("HGCalTriggerGeometry")
+              << "Found missing wafer (layer=" << layer_with_offset << " u=" << waferu << " v=" << waferv
+              << ") in trigger modules mapping";
+        }
+      } else {
+        module = module_itr->second;
       }
-      module = module_itr->second;
     }
     module_id =
         HGCalDetId((ForwardSubdetector)subdet_old, zside, layer, tc_type, module, HGCalDetId::kHGCalCellMask).rawId();
@@ -505,8 +518,7 @@ unsigned HGCalTriggerGeometryV9Imp2::getLinksInModule(const unsigned module_id) 
     HGCalDetId module_det_id_si(module_id);
     unsigned module = module_det_id_si.wafer();
     unsigned layer = layerWithOffset(module_id);
-    const unsigned sector0_mask = 0x7F;
-    module = (module & sector0_mask);
+    module = (module & sector0_mask_);
     links = links_per_module_.at(packLayerModuleId(layer, module));
   }
   return links;
@@ -617,10 +629,13 @@ void HGCalTriggerGeometryV9Imp2::fillMaps() {
     throw cms::Exception("MissingDataFile") << "Cannot open HGCalTriggerGeometry L1TLinksMapping file\n";
   }
   short links = 0;
+  const short max_modules_60deg_sector = 127;
   for (; l1tLinksMappingStream >> layer >> module >> links;) {
     if (module_to_wafers_.find(packLayerModuleId(layer, module)) == module_to_wafers_.end()) {
       links = 0;
     }
+    if (module > max_modules_60deg_sector)
+      sector0_mask_ = 0xff;  // Use 8 bits to encode module number in 120deg sector
     links_per_module_.emplace(packLayerModuleId(layer, module), links);
   }
   if (!l1tLinksMappingStream.eof()) {
@@ -706,6 +721,29 @@ unsigned HGCalTriggerGeometryV9Imp2::triggerLayer(const unsigned id) const {
   if (layer >= trigger_layers_.size())
     return 0;
   return trigger_layers_[layer];
+}
+
+bool HGCalTriggerGeometryV9Imp2::validCell(unsigned cell_id) const {
+  bool is_valid = false;
+  unsigned det = DetId(cell_id).det();
+  switch (det) {
+    case DetId::HGCalEE:
+      is_valid = eeTopology().valid(cell_id);
+      break;
+    case DetId::HGCalHSi:
+      is_valid = hsiTopology().valid(cell_id);
+      break;
+    case DetId::HGCalHSc:
+      is_valid = hscTopology().valid(cell_id);
+      break;
+    case DetId::Forward:
+      is_valid = noseTopology().valid(cell_id);
+      break;
+    default:
+      is_valid = false;
+      break;
+  }
+  return is_valid;
 }
 
 bool HGCalTriggerGeometryV9Imp2::validTriggerCellFromCells(const unsigned trigger_cell_id) const {

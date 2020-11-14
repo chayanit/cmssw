@@ -247,6 +247,7 @@ namespace edm {
     treePointers_[InEvent] = &eventTree_;
     treePointers_[InLumi] = &lumiTree_;
     treePointers_[InRun] = &runTree_;
+    treePointers_[InProcess] = nullptr;
 
     // Read the metadata tree.
     // We use a smart pointer so the tree will be deleted after use, and not kept for the life of the file.
@@ -503,6 +504,10 @@ namespace edm {
     for (auto& product : pList) {
       BranchDescription& prod = product.second;
       prod.init();
+      if (prod.branchType() == InProcess) {
+        // ProcessBlock input not implemented yet
+        continue;
+      }
       treePointers_[prod.branchType()]->setPresence(prod, newBranchToOldBranch(prod.branchName()));
     }
 
@@ -559,12 +564,20 @@ namespace edm {
 
       int i = 0;
       for (auto t : treePointers_) {
+        if (t == nullptr) {
+          // ProcessBlock input not implemented yet
+          continue;
+        }
         t->numberOfBranchesToAdd(nBranches[i]);
         ++i;
       }
     }
     for (auto const& product : prodList) {
       BranchDescription const& prod = product.second;
+      if (prod.branchType() == InProcess) {
+        // ProcessBlock input not implemented yet
+        continue;
+      }
       treePointers_[prod.branchType()]->addBranch(prod, newBranchToOldBranch(prod.branchName()));
     }
 
@@ -748,6 +761,7 @@ namespace edm {
     if (indexIntoFileIter_ == indexIntoFileEnd_) {
       return false;
     }
+
     if (eventSkipperByID_ && eventSkipperByID_->somethingToSkip()) {
       // See first if the entire lumi or run is skipped, so we won't have to read the event Auxiliary in that case.
       if (eventSkipperByID_->skipIt(indexIntoFileIter_.run(), indexIntoFileIter_.lumi(), 0U)) {
@@ -764,18 +778,16 @@ namespace edm {
 
       // Skip runs with no lumis if either lumisToSkip or lumisToProcess have been set to select lumis
       if (indexIntoFileIter_.getEntryType() == IndexIntoFile::kRun && eventSkipperByID_->skippingLumis()) {
-        IndexIntoFile::IndexIntoFileItr iterLumi = indexIntoFileIter_;
-
         // There are no lumis in this run, not even ones we will skip
-        if (iterLumi.peekAheadAtLumi() == IndexIntoFile::invalidLumi) {
+        if (indexIntoFileIter_.peekAheadAtLumi() == IndexIntoFile::invalidLumi) {
           return true;
         }
         // If we get here there are lumis in the run, check to see if we are skipping all of them
         do {
-          if (!eventSkipperByID_->skipIt(iterLumi.run(), iterLumi.peekAheadAtLumi(), 0U)) {
+          if (!eventSkipperByID_->skipIt(indexIntoFileIter_.run(), indexIntoFileIter_.peekAheadAtLumi(), 0U)) {
             return false;
           }
-        } while (iterLumi.skipLumiInRun());
+        } while (indexIntoFileIter_.skipLumiInRun());
         return true;
       }
     }
@@ -819,7 +831,7 @@ namespace edm {
     }
     if (entryType == IndexIntoFile::kRun) {
       run = indexIntoFileIter_.run();
-      runHelper_->checkForNewRun(run);
+      runHelper_->checkForNewRun(run, indexIntoFileIter_.peekAheadAtLumi());
       return IndexIntoFile::kRun;
     } else if (processingMode_ == InputSource::Runs) {
       indexIntoFileIter_.advanceToNextRun();
@@ -1201,6 +1213,10 @@ namespace edm {
     // Just to play it safe, zero all pointers to objects in the InputFile to be closed.
     eventHistoryTree_ = nullptr;
     for (auto& treePointer : treePointers_) {
+      if (treePointer == nullptr) {
+        // ProcessBlock input not implemented yet
+        continue;
+      }
       treePointer->close();
       treePointer = nullptr;
     }
@@ -1785,7 +1801,10 @@ namespace edm {
                                    << "of file '" << file_ << "' because it is dependent on a branch\n"
                                    << "that was explicitly dropped.\n";
           }
-          treePointers_[prod.branchType()]->dropBranch(newBranchToOldBranch(prod.branchName()));
+          // ProcessBlock input is not implemented yet
+          if (prod.branchType() != InProcess) {
+            treePointers_[prod.branchType()]->dropBranch(newBranchToOldBranch(prod.branchName()));
+          }
           hasNewlyDroppedBranch_[prod.branchType()] = true;
         }
         ProductRegistry::ProductList::iterator icopy = it;
@@ -1801,7 +1820,7 @@ namespace edm {
       TString tString;
       for (ProductRegistry::ProductList::iterator it = prodList.begin(), itEnd = prodList.end(); it != itEnd;) {
         BranchDescription const& prod = it->second;
-        if (prod.branchType() != InEvent) {
+        if (prod.branchType() != InEvent && prod.branchType() != InProcess) {
           TClass* cp = prod.wrappedType().getClass();
           void* p = cp->New();
           int offset = cp->GetBaseClassOffset(edProductClass_);

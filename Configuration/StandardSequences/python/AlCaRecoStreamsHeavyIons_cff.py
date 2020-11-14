@@ -83,11 +83,6 @@ from Alignment.CommonAlignmentProducer.ALCARECOMuAlOverlaps_cff import *
 # RPC calibration
 ###############################################################
 from CalibMuon.RPCCalibration.ALCARECORpcCalHLT_cff import *
-###############################################################
-# DT calibration
-###############################################################
-from CalibMuon.DTCalibration.ALCARECODtCalibHI_cff import *
-
 
 ###############################################################
 # nonbeam alcas
@@ -144,14 +139,13 @@ pathALCARECOHcalCalIsolatedBunchSelector = cms.Path(seqALCARECOHcalCalIsolatedBu
 pathALCARECOHcalCalHBHEMuonFilter = cms.Path(seqALCARECOHcalCalHBHEMuonFilter)
 pathALCARECOHcalCalLowPUHBHEMuonFilter = cms.Path(seqALCARECOHcalCalLowPUHBHEMuonFilter)
 pathALCARECOHcalCalHEMuonFilter = cms.Path(seqALCARECOHcalCalHEMuonFilter)
-pathALCARECOMuAlCalIsolatedMu = cms.Path(seqALCARECOMuAlCalIsolatedMu*ALCARECOMuAlCalIsolatedMuDQM*ALCARECODTCalibrationDQM)
-pathALCARECOMuAlZMuMu = cms.Path(seqALCARECOMuAlZMuMu*ALCARECOMuAlZMuMuDQM)
-pathALCARECOMuAlOverlaps = cms.Path(seqALCARECOMuAlOverlaps*ALCARECOMuAlOverlapsDQM)
+pathALCARECOMuAlCalIsolatedMu = cms.Path(seqALCARECOMuAlCalIsolatedMu)
+pathALCARECOMuAlZMuMu = cms.Path(seqALCARECOMuAlZMuMu)
+pathALCARECOMuAlOverlaps = cms.Path(seqALCARECOMuAlOverlaps)
 pathALCARECORpcCalHLT = cms.Path(seqALCARECORpcCalHLT)
-pathALCARECODtCalibHI = cms.Path(seqALCARECODtCalibHI*ALCARECODTCalibSynchDQM)
 pathALCARECOTkAlBeamHalo = cms.Path(seqALCARECOTkAlBeamHalo*ALCARECOTkAlBeamHaloDQM)
-pathALCARECOMuAlBeamHaloOverlaps = cms.Path(seqALCARECOMuAlBeamHaloOverlaps*ALCARECOMuAlBeamHaloOverlapsDQM)
-pathALCARECOMuAlBeamHalo = cms.Path(seqALCARECOMuAlBeamHalo*ALCARECOMuAlBeamHaloDQM)
+pathALCARECOMuAlBeamHaloOverlaps = cms.Path(seqALCARECOMuAlBeamHaloOverlaps)
+pathALCARECOMuAlBeamHalo = cms.Path(seqALCARECOMuAlBeamHalo)
 pathALCARECOTkAlLAS = cms.Path(seqALCARECOTkAlLAS*ALCARECOTkAlLASDQM)
 pathALCARECOTkAlCosmicsInCollisions = cms.Path(seqALCARECOTkAlCosmicsInCollisions*ALCARECOTkAlCosmicsInCollisionsDQM)
 pathALCARECOTkAlCosmicsCTF = cms.Path(seqALCARECOTkAlCosmicsCTF*ALCARECOTkAlCosmicsCTFDQM)
@@ -166,8 +160,8 @@ pathALCARECOTkAlCosmicsRegionalHLT = cms.Path(seqALCARECOTkAlCosmicsRegionalHLT*
 pathALCARECOTkAlCosmicsCTF0THLT = cms.Path(seqALCARECOTkAlCosmicsCTF0THLT*ALCARECOTkAlCosmicsCTF0TDQM)
 pathALCARECOTkAlCosmicsCosmicTF0THLT = cms.Path(seqALCARECOTkAlCosmicsCosmicTF0THLT*ALCARECOTkAlCosmicsCosmicTF0TDQM)
 pathALCARECOTkAlCosmicsRegional0THLT = cms.Path(seqALCARECOTkAlCosmicsRegional0THLT*ALCARECOTkAlCosmicsRegional0TDQM)
-pathALCARECOMuAlGlobalCosmicsInCollisions = cms.Path(seqALCARECOMuAlGlobalCosmicsInCollisions*ALCARECOMuAlGlobalCosmicsInCollisionsDQM)
-pathALCARECOMuAlGlobalCosmics = cms.Path(seqALCARECOMuAlGlobalCosmics*ALCARECOMuAlGlobalCosmicsDQM)
+pathALCARECOMuAlGlobalCosmicsInCollisions = cms.Path(seqALCARECOMuAlGlobalCosmicsInCollisions)
+pathALCARECOMuAlGlobalCosmics = cms.Path(seqALCARECOMuAlGlobalCosmics)
 pathALCARECOPromptCalibProd = cms.Path(seqALCARECOPromptCalibProd)
 pathALCARECOPromptCalibProdSiStrip = cms.Path(seqALCARECOPromptCalibProdSiStrip)
 pathALCARECOPromptCalibProdSiStripGains = cms.Path(seqALCARECOPromptCalibProdSiStripGains)
@@ -423,15 +417,6 @@ ALCARECOStreamRpcCalHLT = cms.FilteredStream(
 	paths  = (pathALCARECORpcCalHLT),
 	content = OutALCARECORpcCalHLT.outputCommands,
 	selectEvents = OutALCARECORpcCalHLT.SelectEvents,
-	dataTier = cms.untracked.string('ALCARECO')
-	)
-
-ALCARECOStreamDtCalibHI = cms.FilteredStream(
-	responsible = 'Antonio Vileila',
-	name = 'DtCalibHI',
-	paths  = (pathALCARECODtCalibHI),
-	content = OutALCARECODtCalibHI.outputCommands,
-	selectEvents = OutALCARECODtCalibHI.SelectEvents,
 	dataTier = cms.untracked.string('ALCARECO')
 	)
 

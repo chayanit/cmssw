@@ -42,6 +42,8 @@ from Alignment.OfflineValidation.TkAlAllInOneTool.zMuMuValidation \
     import ZMuMuValidation
 from Alignment.OfflineValidation.TkAlAllInOneTool.primaryVertexValidation \
     import PrimaryVertexValidation
+from Alignment.OfflineValidation.TkAlAllInOneTool.primaryVertexResolution \
+    import PrimaryVertexResolution
 from Alignment.OfflineValidation.TkAlAllInOneTool.preexistingValidation \
     import *
 from Alignment.OfflineValidation.TkAlAllInOneTool.plottingOptions \
@@ -189,6 +191,9 @@ class ValidationJob(ValidationBase):
                 Alignment( alignments.strip(), config ), config )
         elif valType == "primaryvertex":
             validation = PrimaryVertexValidation( name,
+                Alignment( alignments.strip(), config ), config )
+        elif valType == "pvresolution":
+            validation = PrimaryVertexResolution( name,
                 Alignment( alignments.strip(), config ), config )
         elif valType == "preexistingprimaryvertex":
             validation = PreexistingPrimaryVertexValidation(name, self.__config)
@@ -640,6 +645,13 @@ To merge the outcome of all validation procedures run TkAlMerge.sh in your valid
 
 
     (options, args) = optParser.parse_args(argv)
+
+    if not options.dryRun:
+        schedinfo = subprocess.check_output(["myschedd","show"])
+        if not 'tzero' in schedinfo:
+            print("\nAll-In-One Tool: you need to call `module load lxbatch/tzero` before trying to submit jobs. Please do so and try again")
+            exit(1)
+
 
     if not options.restrictTo == None:
         options.restrictTo = options.restrictTo.split(",")

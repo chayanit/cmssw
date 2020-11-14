@@ -1,16 +1,19 @@
 #include "RecoLocalCalo/HGCalRecProducers/plugins/HGCalRecHitWorkerSimple.h"
-#include "DataFormats/ForwardDetId/interface/HGCalDetId.h"
-#include "DataFormats/ForwardDetId/interface/ForwardSubdetector.h"
-#include "FWCore/Framework/interface/EventSetup.h"
-#include "FWCore/Framework/interface/Event.h"
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
+
+#include <memory>
+
 #include "CommonTools/Utils/interface/StringToEnumValue.h"
+#include "DataFormats/ForwardDetId/interface/ForwardSubdetector.h"
+#include "DataFormats/ForwardDetId/interface/HGCalDetId.h"
 #include "DataFormats/HcalDetId/interface/HcalSubdetector.h"
+#include "FWCore/Framework/interface/Event.h"
+#include "FWCore/Framework/interface/EventSetup.h"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
 #include "RecoLocalCalo/HGCalRecProducers/interface/ComputeClusterTime.h"
 
 HGCalRecHitWorkerSimple::HGCalRecHitWorkerSimple(const edm::ParameterSet& ps) : HGCalRecHitWorkerBaseClass(ps) {
-  rechitMaker_.reset(new HGCalRecHitSimpleAlgo());
-  tools_.reset(new hgcal::RecHitTools());
+  rechitMaker_ = std::make_unique<HGCalRecHitSimpleAlgo>();
+  tools_ = std::make_unique<hgcal::RecHitTools>();
   constexpr float keV2GeV = 1e-6;
   // HGCee constants
   hgcEE_keV2DIGI_ = ps.getParameter<double>("HGCEE_keV2DIGI");
@@ -48,12 +51,18 @@ HGCalRecHitWorkerSimple::HGCalRecHitWorkerSimple(const edm::ParameterSet& ps) : 
   rechitMaker_->setNoseLayerWeights(weightsNose_);
 
   // residual correction for cell thickness
+  // first for silicon
   const auto& rcorr = ps.getParameter<std::vector<double> >("thicknessCorrection");
   rcorr_.clear();
   rcorr_.push_back(1.f);
   for (auto corr : rcorr) {
     rcorr_.push_back(1.0 / corr);
   }
+  // here for scintillator
+  rcorrscint_ = 1.0 / ps.getParameter<double>("sciThicknessCorrection");
+
+  //This is for the index position in CE_H silicon thickness cases
+  deltasi_index_regemfac_ = ps.getParameter<int>("deltasi_index_regemfac");
   const auto& rcorrnose = ps.getParameter<std::vector<double> >("thicknessNoseCorrection");
   rcorrNose_.clear();
   rcorrNose_.push_back(1.f);
@@ -82,8 +91,10 @@ HGCalRecHitWorkerSimple::HGCalRecHitWorkerSimple(const edm::ParameterSet& ps) : 
 }
 
 void HGCalRecHitWorkerSimple::set(const edm::EventSetup& es) {
-  tools_->getEventSetup(es);
-  rechitMaker_->set(es);
+  edm::ESHandle<CaloGeometry> geom;
+  es.get<CaloGeometryRecord>().get(geom);
+  tools_->setGeometry(*geom);
+  rechitMaker_->set(*geom);
   if (hgcEE_isSiFE_) {
     edm::ESHandle<HGCalGeometry> hgceeGeoHandle;
     es.get<IdealGeometryRecord>().get("HGCalEESensitive", hgceeGeoHandle);
@@ -170,12 +181,12 @@ bool HGCalRecHitWorkerSimple::run(const edm::Event& evt,
     case hgcfh:
       rechitMaker_->setADCToGeVConstant(float(hgchefUncalib2GeV_));
       cce_correction = hgcHEF_cce_[thickness - 1];
-      sigmaNoiseGeV = 1e-3 * weights_[layer] * rcorr_[thickness] * hgcHEF_noise_fC_[thickness - 1] /
-                      hgcHEF_fCPerMIP_[thickness - 1];
+      sigmaNoiseGeV = 1e-3 * weights_[layer] * rcorr_[thickness + deltasi_index_regemfac_] *
+                      hgcHEF_noise_fC_[thickness - 1] / hgcHEF_fCPerMIP_[thickness - 1];
       break;
     case hgcbh:
       rechitMaker_->setADCToGeVConstant(float(hgchebUncalib2GeV_));
-      sigmaNoiseGeV = 1e-3 * hgcHEB_noise_MIP_ * weights_[layer];
+      sigmaNoiseGeV = 1e-3 * hgcHEB_noise_MIP_ * weights_[layer] * rcorrscint_;
       break;
     case hgchfnose:
       rechitMaker_->setADCToGeVConstant(float(hgchfnoseUncalib2GeV_));
@@ -193,8 +204,12 @@ bool HGCalRecHitWorkerSimple::run(const edm::Event& evt,
   double new_E = myrechit.energy();
   if (detid.det() == DetId::Forward && detid.subdetId() == ForwardSubdetector::HFNose) {
     new_E *= (thickness == -1 ? 1.0 : rcorrNose_[thickness]) / cce_correction;
-  } else {
-    new_E *= (thickness == -1 ? 1.0 : rcorr_[thickness]) / cce_correction;
+  }  //regional factors for silicon in CE_H
+  else if (idtype == hgcfh) {
+    new_E *= rcorr_[thickness + deltasi_index_regemfac_] / cce_correction;
+  }  //regional factors for scintillator and silicon in CE_E
+  else {
+    new_E *= (thickness == -1 ? rcorrscint_ : rcorr_[thickness]) / cce_correction;
   }
 
   myrechit.setEnergy(new_E);

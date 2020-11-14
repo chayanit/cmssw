@@ -29,8 +29,6 @@
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "TFile.h"
 #include "FWCore/ServiceRegistry/interface/Service.h"
-//#include "CondCore/DBOutputService/interface/PoolDBOutputService.h"
-//#include "CondCore/DBCommon/interface/CoralServiceManager.h"
 
 #include "CondCore/DBOutputService/interface/PoolDBOutputService.h"
 #include "FWCore/Framework/interface/ESHandle.h"
@@ -59,11 +57,13 @@ private:
   EGEnergyCorrector cordb;
 
   edm::EDGetTokenT<EcalRecHitCollection> ebRHToken_, eeRHToken_;
+  const EcalClusterLazyTools::ESGetTokens ecalClusterToolsESGetTokens_;
 };
 
-EGEnergyAnalyzer::EGEnergyAnalyzer(const edm::ParameterSet& iConfig) {
-  ebRHToken_ = consumes<EcalRecHitCollection>(edm::InputTag("reducedEcalRecHitsEB"));
-  eeRHToken_ = consumes<EcalRecHitCollection>(edm::InputTag("reducedEcalRecHitsEE"));
+EGEnergyAnalyzer::EGEnergyAnalyzer(const edm::ParameterSet& iConfig)
+    : ecalClusterToolsESGetTokens_{consumesCollector()} {
+  ebRHToken_ = consumes(edm::InputTag("reducedEcalRecHitsEB"));
+  eeRHToken_ = consumes(edm::InputTag("reducedEcalRecHitsEE"));
 }
 
 EGEnergyAnalyzer::~EGEnergyAnalyzer() {
@@ -93,7 +93,7 @@ void EGEnergyAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& 
   Handle<reco::PhotonCollection> hPhotonProduct;
   iEvent.getByLabel("photons", hPhotonProduct);
 
-  EcalClusterLazyTools lazyTools(iEvent, iSetup, ebRHToken_, eeRHToken_);
+  EcalClusterLazyTools lazyTools(iEvent, ecalClusterToolsESGetTokens_.get(iSetup), ebRHToken_, eeRHToken_);
 
   Handle<reco::VertexCollection> hVertexProduct;
   iEvent.getByLabel("offlinePrimaryVerticesWithBS", hVertexProduct);

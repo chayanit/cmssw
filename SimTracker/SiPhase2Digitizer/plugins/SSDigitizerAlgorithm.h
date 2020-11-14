@@ -11,12 +11,24 @@ public:
   // initialization that cannot be done in the constructor
   void init(const edm::EventSetup& es) override;
 
-  // run the algorithm to digitize a single det
-  void accumulateSimHits(const std::vector<PSimHit>::const_iterator inputBegin,
-                         const std::vector<PSimHit>::const_iterator inputEnd,
-                         const size_t inputBeginGlobalIndex,
-                         const uint32_t tofBin,
-                         const Phase2TrackerGeomDetUnit* pixdet,
-                         const GlobalVector& bfield) override;
+  bool select_hit(const PSimHit& hit, double tCorr, double& sigScale) const override;
+  bool isAboveThreshold(const DigitizerUtility::SimHitInfo* hitInfo, float charge, float thr) const override;
+
+private:
+  enum { SquareWindow, SampledMode, LatchedMode, SampledOrLachedMode, HIPFindingMode };
+  double cbc3PulsePolarExpansion(double x) const;
+  double signalShape(double x) const;
+  double getSignalScale(double xval) const;
+  void storeSignalShape();
+  bool select_hit_sampledMode(const PSimHit& hit, double tCorr, double& sigScale) const;
+  bool select_hit_latchedMode(const PSimHit& hit, double tCorr, double& sigScale) const;
+
+  int hitDetectionMode_;
+  std::vector<double> pulseShapeVec_;
+  std::vector<double> pulseShapeParameters_;
+  float deadTime_;
+  static constexpr float bx_time{25};
+  static constexpr size_t interpolationPoints{1000};
+  static constexpr int interpolationStep{10};
 };
 #endif

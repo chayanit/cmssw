@@ -58,15 +58,19 @@ bool PFTrackTransformer::addPoints(reco::PFRecTrack& pftrack,
       B_.z());
 
   float pfoutenergy = sqrt((pfmass * pfmass) + track.outerMomentum().Mag2());
-  BaseParticlePropagator theOutParticle = BaseParticlePropagator(
-      RawParticle(
-          XYZTLorentzVector(
-              track.outerMomentum().x(), track.outerMomentum().y(), track.outerMomentum().z(), pfoutenergy),
-          XYZTLorentzVector(track.outerPosition().x(), track.outerPosition().y(), track.outerPosition().z(), 0.),
-          track.charge()),
-      0.,
-      0.,
-      B_.z());
+  BaseParticlePropagator theOutParticle;
+  if (track.outerOk())
+    theOutParticle = BaseParticlePropagator(
+        RawParticle(
+            XYZTLorentzVector(
+                track.outerMomentum().x(), track.outerMomentum().y(), track.outerMomentum().z(), pfoutenergy),
+            XYZTLorentzVector(track.outerPosition().x(), track.outerPosition().y(), track.outerPosition().z(), 0.),
+            track.charge()),
+        0.,
+        0.,
+        B_.z());
+  else
+    theOutParticle = theParticle;  // if outer state is not available, use the information at the closest approach
 
   math::XYZTLorentzVector momClosest = math::XYZTLorentzVector(track.px(), track.py(), track.pz(), track.p());
   const math::XYZPoint& posClosest = track.vertex();
@@ -541,7 +545,6 @@ bool PFTrackTransformer::addPointsAndBrems(reco::GsfPFRecTrack& pftrack,
         brem.addPoint(dummyHOLayer);
       }
     }
-    brem.calculatePositionREP();
     pftrack.addBrem(brem);
     iTrajPos++;
   }
@@ -740,7 +743,6 @@ bool PFTrackTransformer::addPointsAndBrems(reco::GsfPFRecTrack& pftrack,
     }
   }
 
-  brem.calculatePositionREP();
   pftrack.addBrem(brem);
   iTrajPos++;
 
@@ -904,7 +906,6 @@ bool PFTrackTransformer::addPointsAndBrems(reco::GsfPFRecTrack& pftrack,
       }
     }
 
-    brem.calculatePositionREP();
     pftrack.addBrem(brem);
     iTrajPos++;
   }
@@ -1157,7 +1158,6 @@ bool PFTrackTransformer::addPointsAndBrems(reco::GsfPFRecTrack& pftrack,
         brem.addPoint(dummyHOLayer);
       }
     }
-    brem.calculatePositionREP();
     pftrack.addBrem(brem);
     iTrajPos++;
   }

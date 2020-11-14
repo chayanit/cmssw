@@ -17,6 +17,7 @@
 #include "TH1F.h"
 
 //Insert here the include to the algos
+#include "CalibTracker/Records/interface/SiStripQualityRcd.h"
 #include "CalibTracker/SiStripQuality/interface/SiStripHotStripAlgorithmFromClusterOccupancy.h"
 #include "CalibTracker/SiStripQuality/interface/SiStripBadAPVAlgorithmFromClusterOccupancy.h"
 #include "CalibTracker/SiStripQuality/interface/SiStripBadAPVandHotStripAlgorithmFromClusterOccupancy.h"
@@ -85,7 +86,7 @@ std::unique_ptr<SiStripBadStrip> SiStripQualityHotStripIdentifierRoot::getNewObj
         theIdentifier->extractBadStrips(
             qobj,
             ClusterPositionHistoMap,
-            SiStripQuality_);  //here I insert SiStripQuality as input and get qobj as output
+            SiStripQuality_.product());  //here I insert SiStripQuality as input and get qobj as output
 
         //----------
 

@@ -46,7 +46,8 @@ particleFlowBlock = cms.EDProducer(
                   useIterativeTracking = cms.bool(True),
                   DPtOverPtCuts_byTrackAlgo = cms.vdouble(10.0,10.0,10.0,
                                                            10.0,10.0,5.0),
-                  NHitCuts_byTrackAlgo = cms.vuint32(3,3,3,3,3,3)
+                  NHitCuts_byTrackAlgo = cms.vuint32(3,3,3,3,3,3),
+                  muonMaxDPtOPt = cms.double(1)
                   ),
         # secondary GSF tracks are also turned off
         #cms.PSet( importerName = cms.string("GSFTrackImporter"),
@@ -92,12 +93,15 @@ particleFlowBlock = cms.EDProducer(
                   linkType   = cms.string("TRACK:HCAL"),
                   useKDTree  = cms.bool(True),
                   trajectoryLayerEntrance = cms.string("HCALEntrance"),
-                  trajectoryLayerExit = cms.string("HCALExit")),
+                  trajectoryLayerExit = cms.string("HCALExit"),
+                  nMaxHcalLinksPerTrack = cms.int32(1) # the max hcal links per track (negative values: no restriction)
+        ),
         cms.PSet( linkerName = cms.string("TrackAndHOLinker"),
                   linkType   = cms.string("TRACK:HO"),
                   useKDTree  = cms.bool(False) ),
         cms.PSet( linkerName = cms.string("ECALAndHCALLinker"),
                   linkType   = cms.string("ECAL:HCAL"),
+                  minAbsEtaEcal = cms.double(2.5),
                   useKDTree  = cms.bool(False) ),
         cms.PSet( linkerName = cms.string("HCALAndHOLinker"),
                   linkType   = cms.string("HCAL:HO"),
@@ -194,14 +198,18 @@ _addTrackHFLinks.append(
             linkType   = cms.string("TRACK:HFEM"),
             useKDTree  = cms.bool(True),
             trajectoryLayerEntrance = cms.string("VFcalEntrance"),
-            trajectoryLayerExit = cms.string(""))
-  )
+            trajectoryLayerExit = cms.string(""),
+            nMaxHcalLinksPerTrack = cms.int32(-1) # Keep all track-HFEM links
+          )
+)
 _addTrackHFLinks.append(
   cms.PSet( linkerName = cms.string("TrackAndHCALLinker"),
             linkType   = cms.string("TRACK:HFHAD"),
             useKDTree  = cms.bool(True),
             trajectoryLayerEntrance = cms.string("VFcalEntrance"),
-            trajectoryLayerExit = cms.string(""))
+            trajectoryLayerExit = cms.string(""),
+            nMaxHcalLinksPerTrack = cms.int32(-1) # Keep all track-HFHAD links for now
+          )
 )
 phase2_tracker.toModify(
     particleFlowBlock,
@@ -223,11 +231,14 @@ _addTimingLayer = particleFlowBlock.elementImporters.copy()
 _addTimingLayer.append( cms.PSet( importerName = cms.string("TrackTimingImporter"),
                              timeValueMap = cms.InputTag("tofPID:t0"),
                              timeErrorMap = cms.InputTag("tofPID:sigmat0"),
+                             timeQualityMap = cms.InputTag("mtdTrackQualityMVA:mtdQualMVA"),
+                             timeQualityThreshold = cms.double(0.5),
                              #this will cause no time to be set for gsf tracks
                              #(since this is not available for the fullsim/reconstruction yet)
                              #*TODO* update when gsf times are available
                              timeValueMapGsf = cms.InputTag("tofPID:t0"),
-                             timeErrorMapGsf = cms.InputTag("tofPID:sigmat0")
+                             timeErrorMapGsf = cms.InputTag("tofPID:sigmat0"),
+                             timeQualityMapGsf = cms.InputTag("mtdTrackQualityMVA:mtdQualMVA"),
                              )
                    )
 

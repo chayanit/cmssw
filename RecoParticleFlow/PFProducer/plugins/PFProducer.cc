@@ -1,21 +1,12 @@
-#include "FWCore/Framework/interface/Frameworkfwd.h"
 #include "FWCore/Framework/interface/stream/EDProducer.h"
 #include "FWCore/Framework/interface/Event.h"
 #include "FWCore/Utilities/interface/EDPutToken.h"
 #include "FWCore/Framework/interface/MakerMacros.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
-#include "DataFormats/EgammaCandidates/interface/GsfElectronFwd.h"
 #include "DataFormats/EgammaCandidates/interface/GsfElectron.h"
-#include "DataFormats/ParticleFlowReco/interface/PFRecHitFwd.h"
 #include "DataFormats/ParticleFlowReco/interface/PFRecHit.h"
-#include "DataFormats/ParticleFlowReco/interface/PFBlockElementSuperClusterFwd.h"
 #include "DataFormats/ParticleFlowReco/interface/PFBlockElementSuperCluster.h"
 #include "DataFormats/Common/interface/ValueMap.h"
-#include "DataFormats/TrackReco/interface/TrackFwd.h"
-#include "DataFormats/VertexReco/interface/VertexFwd.h"
-#include "DataFormats/EgammaCandidates/interface/GsfElectronFwd.h"
-#include "DataFormats/ParticleFlowReco/interface/PFBlockFwd.h"
-#include "DataFormats/ParticleFlowCandidate/interface/PFCandidateFwd.h"
 #include "RecoParticleFlow/PFProducer/interface/PFEGammaFilters.h"
 #include "RecoParticleFlow/PFProducer/interface/PFAlgo.h"
 #include "FWCore/Framework/interface/MakerMacros.h"
@@ -153,6 +144,7 @@ PFProducer::PFProducer(const edm::ParameterSet& iConfig)
 
   // Reading new EGamma selection cuts
   bool useProtectionsForJetMET(false);
+
   // Reading new EGamma ubiased collections and value maps
   if (use_EGammaFilters_) {
     inputTagPFEGammaCandidates_ =
@@ -162,7 +154,14 @@ PFProducer::PFProducer(const edm::ParameterSet& iConfig)
     inputTagValueMapGedPhotons_ =
         consumes<edm::ValueMap<reco::PhotonRef>>(iConfig.getParameter<edm::InputTag>("GedPhotonValueMap"));
     useProtectionsForJetMET = iConfig.getParameter<bool>("useProtectionsForJetMET");
+
+    const edm::ParameterSet pfEGammaFiltersParams =
+        iConfig.getParameter<edm::ParameterSet>("PFEGammaFiltersParameters");
+    pfegamma_ = std::make_unique<PFEGammaFilters>(pfEGammaFiltersParams);
   }
+
+  // EGamma filters
+  pfAlgo_.setEGammaParameters(use_EGammaFilters_, useProtectionsForJetMET);
 
   //Secondary tracks and displaced vertices parameters
 
@@ -182,15 +181,6 @@ PFProducer::PFProducer(const edm::ParameterSet& iConfig)
 
   if (useCalibrationsFromDB_)
     calibrationsLabel_ = iConfig.getParameter<std::string>("calibrationsLabel");
-
-  // EGamma filters
-  pfAlgo_.setEGammaParameters(use_EGammaFilters_, useProtectionsForJetMET);
-
-  if (use_EGammaFilters_) {
-    const edm::ParameterSet pfEGammaFiltersParams =
-        iConfig.getParameter<edm::ParameterSet>("PFEGammaFiltersParameters");
-    pfegamma_ = std::make_unique<PFEGammaFilters>(pfEGammaFiltersParams);
-  }
 
   // Secondary tracks and displaced vertices parameters
   pfAlgo_.setDisplacedVerticesParameters(
@@ -336,7 +326,7 @@ void PFProducer::fillDescriptions(edm::ConfigurationDescriptions& descriptions) 
 
   // EGamma-related
   desc.add<edm::InputTag>("PFEGammaCandidates", edm::InputTag("particleFlowEGamma"));
-  desc.add<edm::InputTag>("GedElectronValueMap", edm::InputTag("gedGsfElectronsTmp"));
+  desc.add<edm::InputTag>("GedElectronValueMap", {"gedGsfElectronValueMapsTmp"});
   desc.add<edm::InputTag>("GedPhotonValueMap", edm::InputTag("gedPhotonsTmp", "valMapPFEgammaCandToPhoton"));
 
   desc.add<bool>("useEGammaElectrons", true);
@@ -358,7 +348,7 @@ void PFProducer::fillDescriptions(edm::ConfigurationDescriptions& descriptions) 
 
   // For PFMuonAlgo
   edm::ParameterSetDescription psd_PFMuonAlgo;
-  PFEGammaFilters::fillPSetDescription(psd_PFMuonAlgo);
+  PFMuonAlgo::fillPSetDescription(psd_PFMuonAlgo);
   desc.add<edm::ParameterSetDescription>("PFMuonAlgoParameters", psd_PFMuonAlgo);
 
   // Input displaced vertices

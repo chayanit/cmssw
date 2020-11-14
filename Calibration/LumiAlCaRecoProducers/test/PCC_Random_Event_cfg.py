@@ -1,6 +1,6 @@
 #########################
 #Author: Attila Radl (attila.radl@cern.ch) 
-#Purpose: To investigate the AlCaPCCProducerEvent input and output. 
+#Purpose: To investigate the AlCaPCCEventProducer input and output. 
 #########################
 import FWCore.ParameterSet.Config as cms
 
@@ -20,13 +20,10 @@ process.OutALCARECOPromptCalibProdPCC = cms.PSet(
         'keep *_MEtoEDMConvertSiStrip_*_*')
 )
 #Make sure that variables match in producer.cc and .h
-process.alcaPCCProducerEvent = cms.EDProducer("AlcaPCCProducerEvent",
-    AlcaPCCProducerEventParameters = cms.PSet(
-        WriteToDB = cms.bool(False),
-        pixelClusterLabel = cms.InputTag("siPixelClustersForLumi"),
-        #Mod factor to count lumi and the string to specify output 
-        trigstring = cms.untracked.string("alcaPCCRandom") 
-    ),
+process.alcaPCCEventProducer = cms.EDProducer("AlcaPCCEventProducer",
+     pixelClusterLabel = cms.InputTag("siPixelClustersForLumi"),
+     #Mod factor to count lumi and the string to specify output 
+     trigstring = cms.untracked.string("alcaPCCRandom") 
 )
 
 process.OutALCARECOLumiPixels = cms.PSet(
@@ -97,12 +94,12 @@ process.ALCARECOStreamPromptCalibProdPCC = cms.OutputModule("PoolOutputModule",
     eventAutoFlushCompressedSize = cms.untracked.int32(5242880),
     fileName = cms.untracked.string('ProdPCC_Random_Event_100.root'),
     outputCommands = cms.untracked.vstring('drop *', 
-        'keep *_alcaPCCProducerEvent_*_*', 
+        'keep *_alcaPCCEventProducer_*_*', 
         'keep *_MEtoEDMConvertSiStrip_*_*')
 )
 
 #This is the key sequence that we are adding first...
-process.seqALCARECOPromptCalibProdPCC = cms.Sequence(process.ALCARECOHltFilterForPCC+process.alcaPCCProducerEvent)
+process.seqALCARECOPromptCalibProdPCC = cms.Sequence(process.ALCARECOHltFilterForPCC+process.alcaPCCEventProducer)
 
 process.pathALCARECOPromptCalibProdPCC = cms.Path(process.seqALCARECOPromptCalibProdPCC)
 
@@ -113,11 +110,6 @@ process.pathALCARECOLumiPixels = cms.Path(process.seqALCARECOLumiPixels)
 process.ALCARECOStreamPromptCalibProdOutPath = cms.EndPath(process.ALCARECOStreamPromptCalibProdPCC)
 
 process.MessageLogger = cms.Service("MessageLogger",
-    FrameworkJobReport = cms.untracked.PSet(
-        FwkJob = cms.untracked.PSet(
-            limit = cms.untracked.int32(10000000),
-            optionalPSet = cms.untracked.bool(True)
-        ),
         default = cms.untracked.PSet(
             limit = cms.untracked.int32(0)
         ),
@@ -180,7 +172,6 @@ process.MessageLogger = cms.Service("MessageLogger",
     errors = cms.untracked.PSet(
         placeholder = cms.untracked.bool(True)
     ),
-    fwkJobReports = cms.untracked.vstring('FrameworkJobReport'),
     infos = cms.untracked.PSet(
         Root_NoDictionary = cms.untracked.PSet(
             limit = cms.untracked.int32(0),

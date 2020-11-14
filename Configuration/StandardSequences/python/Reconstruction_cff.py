@@ -11,6 +11,7 @@ from RecoParticleFlow.PFClusterProducer.particleFlowCluster_cff import *
 from TrackingTools.Configuration.TrackingTools_cff import *
 from RecoTracker.MeasurementDet.MeasurementTrackerEventProducer_cfi import *
 from RecoPixelVertexing.PixelLowPtUtilities.siPixelClusterShapeCache_cfi import *
+from RecoHGCal.Configuration.recoHGCAL_cff import *
 
 from Configuration.Eras.Modifier_fastSim_cff import fastSim
 
@@ -38,7 +39,7 @@ from RecoBTag.Configuration.RecoBTag_cff import *
 #local reconstruction
 from RecoLocalTracker.Configuration.RecoLocalTracker_cff import *
 from RecoParticleFlow.Configuration.RecoParticleFlow_cff import *
-from RecoCTPPS.Configuration.recoCTPPS_cff import *
+from RecoPPS.Configuration.recoCTPPS_cff import *
 #
 # new tau configuration
 #
@@ -47,9 +48,6 @@ from RecoTauTag.Configuration.RecoPFTauTag_cff import *
 from RecoVertex.BeamSpotProducer.BeamSpot_cff import *
 
 from RecoLocalCalo.CastorReco.CastorSimpleReconstructor_cfi import *
-
-# Cosmic During Collisions
-from RecoTracker.SpecialSeedGenerators.cosmicDC_cff import *
 
 # Low pT electrons
 from RecoEgamma.EgammaElectronProducers.lowPtGsfElectronSequence_cff import *
@@ -105,7 +103,7 @@ fastSim.toReplaceWith(localrecoTask, _fastSim_localrecoTask)
 from RecoLocalCalo.Castor.Castor_cff import *
 from RecoLocalCalo.Configuration.hcalGlobalReco_cff import *
 
-globalreco_trackingTask = cms.Task(offlineBeamSpot,
+globalreco_trackingTask = cms.Task(offlineBeamSpotTask,
                           MeasurementTrackerEventPreSplitting, # unclear where to put this
                           siPixelClusterShapeCachePreSplitting, # unclear where to put this
                           standalonemuontrackingTask,
@@ -119,7 +117,7 @@ trackingLowPU.toReplaceWith(globalreco_trackingTask, _globalreco_tracking_LowPUT
 ##########################################
 # offlineBeamSpot is reconstructed before mixing in fastSim
 ##########################################
-_fastSim_globalreco_trackingTask = globalreco_trackingTask.copyAndExclude([offlineBeamSpot,MeasurementTrackerEventPreSplitting,siPixelClusterShapeCachePreSplitting])
+_fastSim_globalreco_trackingTask = globalreco_trackingTask.copyAndExclude([offlineBeamSpotTask,MeasurementTrackerEventPreSplitting,siPixelClusterShapeCachePreSplitting])
 fastSim.toReplaceWith(globalreco_trackingTask,_fastSim_globalreco_trackingTask)
 
 _phase2_timing_layer_globalreco_trackingTask = globalreco_trackingTask.copy()
@@ -146,6 +144,17 @@ _fastSim_globalrecoTask = globalrecoTask.copyAndExclude([CastorFullRecoTask,muon
 _fastSim_globalrecoTask.add(newCombinedSeeds,trackExtrapolator,caloTowerForTrk,firstStepPrimaryVerticesUnsorted,ak4CaloJetsForTrk,initialStepTrackRefsForJets,firstStepPrimaryVertices)
 fastSim.toReplaceWith(globalrecoTask,_fastSim_globalrecoTask)
 
+from Configuration.Eras.Modifier_phase2_hgcal_cff import phase2_hgcal
+_phase2HGALRecoTask = globalrecoTask.copy()
+_phase2HGALRecoTask.add(iterTICLTask)
+phase2_hgcal.toReplaceWith(globalrecoTask, _phase2HGALRecoTask)
+
+from Configuration.Eras.Modifier_phase2_hfnose_cff import phase2_hfnose
+_phase2HFNoseRecoTask = globalrecoTask.copy()
+_phase2HFNoseRecoTask.add(iterHFNoseTICLTask)
+phase2_hfnose.toReplaceWith(globalrecoTask, _phase2HFNoseRecoTask)
+
+
 globalreco_plusPLTask= cms.Task(globalrecoTask,ctfTracksPixelLessTask)
 globalreco_plusPL= cms.Sequence(globalreco_plusPLTask)
 
@@ -164,16 +173,15 @@ highlevelrecoTask = cms.Task(egammaHighLevelRecoPrePFTask,
                              recoPFMETTask,
                              PFTauTask,
                              reducedRecHitsTask,
-                             cosmicDCTracksSeqTask,
                              lowPtGsfElectronTask,
                              conversionOpenTrackTask,
-                             gsfTracksOpenConversions 
+                             gsfTracksOpenConversions
                              )
 highlevelreco = cms.Sequence(highlevelrecoTask)
 
 # AA data with pp reco
 from Configuration.Eras.Modifier_pp_on_XeXe_2017_cff import pp_on_XeXe_2017
-from Configuration.Eras.Modifier_pp_on_AA_2018_cff import pp_on_AA_2018
+from Configuration.ProcessModifiers.pp_on_AA_cff import pp_on_AA
 from RecoHI.HiTracking.HILowPtConformalPixelTracks_cfi import *
 from RecoHI.HiCentralityAlgos.HiCentrality_cfi import hiCentrality
 from RecoHI.HiCentralityAlgos.HiClusterCompatibility_cfi import hiClusterCompatibility
@@ -181,11 +189,11 @@ _highlevelreco_HITask = highlevelrecoTask.copy()
 _highlevelreco_HITask.add(hiConformalPixelTracksTaskPhase1)
 _highlevelreco_HITask.add(hiCentrality)
 _highlevelreco_HITask.add(hiClusterCompatibility)
-(pp_on_XeXe_2017 | pp_on_AA_2018).toReplaceWith(highlevelrecoTask, _highlevelreco_HITask)
-pp_on_AA_2018.toReplaceWith(highlevelrecoTask,highlevelrecoTask.copyAndExclude([PFTauTask]))
+(pp_on_XeXe_2017 | pp_on_AA ).toReplaceWith(highlevelrecoTask, _highlevelreco_HITask)
+pp_on_AA.toReplaceWith(highlevelrecoTask,highlevelrecoTask.copyAndExclude([PFTauTask]))
 
 # not commisoned and not relevant in FastSim (?):
-_fastSim_highlevelrecoTask = highlevelrecoTask.copyAndExclude([cosmicDCTracksSeqTask,muoncosmichighlevelrecoTask])
+_fastSim_highlevelrecoTask = highlevelrecoTask.copyAndExclude([muoncosmichighlevelrecoTask])
 fastSim.toReplaceWith(highlevelrecoTask,_fastSim_highlevelrecoTask)
 
 
@@ -201,14 +209,36 @@ reconstructionTask.visit(cms.ModuleNamesFromGlobalsVisitor(globals(),_modulesInR
 logErrorHarvester.includeModules = cms.untracked.vstring(set(_modulesInReconstruction))
 
 reconstruction_trackingOnlyTask = cms.Task(localrecoTask,globalreco_trackingTask)
+#calo parts removed as long as tracking is not running jetCore in phase2
+trackingPhase2PU140.toReplaceWith(reconstruction_trackingOnlyTask,
+                                  reconstruction_trackingOnlyTask.copyAndExclude([hgcalLocalRecoTask,castorreco]))
 reconstruction_trackingOnly = cms.Sequence(reconstruction_trackingOnlyTask)
 reconstruction_pixelTrackingOnlyTask = cms.Task(
     pixeltrackerlocalrecoTask,
-    offlineBeamSpot,
+    offlineBeamSpotTask,
     siPixelClusterShapeCachePreSplitting,
     recopixelvertexingTask
 )
 reconstruction_pixelTrackingOnly = cms.Sequence(reconstruction_pixelTrackingOnlyTask)
+
+reconstruction_ecalOnlyTask = cms.Task(
+    bunchSpacingProducer,
+    offlineBeamSpot,
+    ecalOnlyLocalRecoTask,
+    pfClusteringPSTask,
+    pfClusteringECALTask,
+    particleFlowSuperClusterECALOnly
+)
+reconstruction_ecalOnly = cms.Sequence(reconstruction_ecalOnlyTask)
+
+reconstruction_hcalOnlyTask = cms.Task(
+    bunchSpacingProducer,
+    offlineBeamSpot,
+    hcalOnlyLocalRecoTask,
+    pfClusteringHBHEHFOnlyTask
+)
+
+reconstruction_hcalOnly = cms.Sequence(reconstruction_hcalOnlyTask)
 
 #need a fully expanded sequence copy
 modulesToRemove = list() # copy does not work well

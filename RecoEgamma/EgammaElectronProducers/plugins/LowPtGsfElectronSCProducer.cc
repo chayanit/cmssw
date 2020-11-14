@@ -28,8 +28,6 @@ class LowPtGsfElectronSCProducer : public edm::stream::EDProducer<> {
 public:
   explicit LowPtGsfElectronSCProducer(const edm::ParameterSet&);
 
-  ~LowPtGsfElectronSCProducer() override;
-
   void produce(edm::Event&, const edm::EventSetup&) override;
 
   static void fillDescriptions(edm::ConfigurationDescriptions&);
@@ -57,11 +55,7 @@ LowPtGsfElectronSCProducer::LowPtGsfElectronSCProducer(const edm::ParameterSet& 
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-LowPtGsfElectronSCProducer::~LowPtGsfElectronSCProducer() {}
-
-////////////////////////////////////////////////////////////////////////////////
-//
-void LowPtGsfElectronSCProducer::produce(edm::Event& event, const edm::EventSetup& setup) {
+void LowPtGsfElectronSCProducer::produce(edm::Event& event, const edm::EventSetup&) {
   // Input GsfPFRecTracks collection
   auto gsfPfRecTracks = edm::makeValid(event.getHandle(gsfPfRecTracks_));
 

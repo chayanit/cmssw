@@ -18,7 +18,7 @@
 #include "DataFormats/SiStripDetId/interface/StripSubdetector.h"
 #include "DataFormats/DetId/interface/DetId.h"
 
-#include "Alignment/CommonAlignment/interface/Utilities.h"
+#include "CondFormats/Alignment/interface/Definitions.h"
 
 // needed for the tracker map
 #include "CommonTools/TrackerMap/interface/TrackerMap.h"
@@ -52,8 +52,9 @@ namespace {
       Base::setSingleIov(true);
     }
 
-    bool fill(const std::vector<std::tuple<cond::Time_t, cond::Hash> > &iovs) override {
-      for (auto const &iov : iovs) {
+    bool fill() override {
+      auto tag = PlotBase::getTag<0>();
+      for (auto const &iov : tag.iovs) {
         std::shared_ptr<AlignmentSurfaceDeformations> payload = Base::fetchPayload(std::get<1>(iov));
         if (payload.get()) {
           int i = 0;
@@ -319,7 +320,7 @@ namespace {
       std::string titleMap =
           "Surface deformation parameter " + std::to_string(par) + " value (payload : " + std::get<1>(iov) + ")";
 
-      std::unique_ptr<TrackerMap> tmap = std::unique_ptr<TrackerMap>(new TrackerMap("Surface Deformations"));
+      std::unique_ptr<TrackerMap> tmap = std::make_unique<TrackerMap>("Surface Deformations");
       tmap->setTitle(titleMap);
       tmap->setPalette(1);
 
@@ -431,7 +432,7 @@ namespace {
                              " (IOV : " + std::to_string(std::get<0>(lastiov)) + "- " +
                              std::to_string(std::get<0>(firstiov)) + ")";
 
-      std::unique_ptr<TrackerMap> tmap = std::unique_ptr<TrackerMap>(new TrackerMap("Surface Deformations #Delta"));
+      std::unique_ptr<TrackerMap> tmap = std::make_unique<TrackerMap>("Surface Deformations #Delta");
       tmap->setTitle(titleMap);
       tmap->setPalette(1);
 

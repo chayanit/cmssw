@@ -1,6 +1,6 @@
 import FWCore.ParameterSet.Config as cms
 
-from L1Trigger.CSCCommonTrigger.CSCCommonTrigger_cfi import *
+from L1Trigger.CSCTriggerPrimitives.CSCCommonTrigger_cfi import *
 # Default parameters for CSCTriggerPrimitives generator
 # =====================================================
 cscTriggerPrimitiveDigis = cms.EDProducer("CSCTriggerPrimitivesProducer",
@@ -27,6 +27,30 @@ cscTriggerPrimitiveDigis = cms.EDProducer("CSCTriggerPrimitivesProducer",
 
     # Write out pre-triggers
     savePreTriggers = cms.bool(False),
+
+    positionLUTFiles = cms.vstring(
+        "L1Trigger/CSCTriggerPrimitives/data/CSCComparatorCodePosOffsetLUT_pat0_v1.txt",
+        "L1Trigger/CSCTriggerPrimitives/data/CSCComparatorCodePosOffsetLUT_pat1_v1.txt",
+        "L1Trigger/CSCTriggerPrimitives/data/CSCComparatorCodePosOffsetLUT_pat2_v1.txt",
+        "L1Trigger/CSCTriggerPrimitives/data/CSCComparatorCodePosOffsetLUT_pat3_v1.txt",
+        "L1Trigger/CSCTriggerPrimitives/data/CSCComparatorCodePosOffsetLUT_pat4_v1.txt"
+    ),
+
+    slopeLUTFiles = cms.vstring(
+        "L1Trigger/CSCTriggerPrimitives/data/CSCComparatorCodeSlopeLUT_pat0_v1.txt",
+        "L1Trigger/CSCTriggerPrimitives/data/CSCComparatorCodeSlopeLUT_pat1_v1.txt",
+        "L1Trigger/CSCTriggerPrimitives/data/CSCComparatorCodeSlopeLUT_pat2_v1.txt",
+        "L1Trigger/CSCTriggerPrimitives/data/CSCComparatorCodeSlopeLUT_pat3_v1.txt",
+        "L1Trigger/CSCTriggerPrimitives/data/CSCComparatorCodeSlopeLUT_pat4_v1.txt"
+    ),
+
+    patternConversionLUTFiles = cms.vstring(
+        "L1Trigger/CSCTriggerPrimitives/data/CSCComparatorCodePatternConversionLUT_pat0_v1.txt",
+        "L1Trigger/CSCTriggerPrimitives/data/CSCComparatorCodePatternConversionLUT_pat1_v1.txt",
+        "L1Trigger/CSCTriggerPrimitives/data/CSCComparatorCodePatternConversionLUT_pat2_v1.txt",
+        "L1Trigger/CSCTriggerPrimitives/data/CSCComparatorCodePatternConversionLUT_pat3_v1.txt",
+        "L1Trigger/CSCTriggerPrimitives/data/CSCComparatorCodePatternConversionLUT_pat4_v1.txt"
+    ),
 
     # Parameters common for all boards
     commonParam = cms.PSet(
@@ -160,7 +184,11 @@ cscTriggerPrimitiveDigis = cms.EDProducer("CSCTriggerPrimitivesProducer",
         verbosity = cms.int32(0),
 
         # BX to start CLCT finding (poor man's dead-time shortening):
-        clctStartBxShift  = cms.int32(0)
+        clctStartBxShift  = cms.int32(0),
+
+        useRun3Patterns = cms.bool(False),
+
+        useComparatorCodes = cms.bool(False),
     ),
 
     # Parameters for CLCT processors: SLHC studies
@@ -187,11 +215,6 @@ cscTriggerPrimitiveDigis = cms.EDProducer("CSCTriggerPrimitivesProducer",
         # Width (in #HS) of a fixed dead zone around a key HS:
         clctStateMachineZone = cms.uint32(4),
 
-        # Enables the algo which instead of using the fixed dead zone width,
-        # varies it depending on the width of a triggered CLCT pattern
-        # (if True, the clctStateMachineZone is ignored):
-        useDynamicStateMachineZone = cms.bool(False),
-
         # Pretrigger HS +- clctPretriggerTriggerZone sets the trigger matching zone
         # which defines how far from pretrigger HS the TMB may look for a trigger HS
         # (it becomes important to do so with localized dead-time zoning):
@@ -202,7 +225,11 @@ cscTriggerPrimitiveDigis = cms.EDProducer("CSCTriggerPrimitivesProducer",
         # (currently it is median time of all hits in a pattern) into the CSCCLCTDigi bx,
         # and temporary store the regular "key layer hit" time into the CSCCLCTDigi fullBX:
         # not feasible --Tao
-        clctUseCorrectedBx = cms.bool(False)
+        clctUseCorrectedBx = cms.bool(False),
+
+        useRun3Patterns = cms.bool(False),
+
+        useComparatorCodes = cms.bool(False),
     ),
 
     tmbParam = cms.PSet(
@@ -237,6 +264,9 @@ cscTriggerPrimitiveDigis = cms.EDProducer("CSCTriggerPrimitivesProducer",
         #  False = ALCT-centric matching (recommended for SLHC,
         #         take ALCTs in BX look for matching CLCTs in window)
         clctToAlct = cms.bool(False),
+
+        ## bits for high-multiplicity triggers
+        useHighMultiplicityBits = cms.bool(False),
     ),
 
     # to be used by ME11 chambers with upgraded TMB and ALCT
@@ -270,6 +300,9 @@ cscTriggerPrimitiveDigis = cms.EDProducer("CSCTriggerPrimitivesProducer",
         #  False = ALCT-centric matching (recommended for SLHC,
         #         take ALCTs in BX look for matching CLCTs in window)
         clctToAlct = cms.bool(False),
+
+        ## bits for high-multiplicity triggers
+        useHighMultiplicityBits = cms.bool(False),
 
         # For ALCT-centric matching, whether to drop CLCTs that were matched
         # to ALCTs in this BX, and not use them in the following BX
@@ -305,11 +338,13 @@ cscTriggerPrimitiveDigis = cms.EDProducer("CSCTriggerPrimitivesProducer",
 
     ),
 
-    # MPC sorter config for Run2 and beyond
-    mpcRun2 = cms.PSet(
-        sortStubs = cms.bool(False),
-        dropInvalidStubs = cms.bool(False),
-        dropLowQualityStubs = cms.bool(False),
+    # MPC sorter config
+    mpcParams = cms.PSet(
+        sortStubs = cms.bool(True),
+        dropInvalidStubs = cms.bool(True),
+        dropLowQualityStubs = cms.bool(True),
+        # How many maximum LCTs per MPC
+        maxStubs = cms.uint32(3),
     )
 )
 
@@ -377,6 +412,9 @@ me11tmbSLHCGEM = cms.PSet(
     promoteALCTGEMquality = cms.bool(True),
     promoteCLCTGEMquality_ME1a = cms.bool(True),
     promoteCLCTGEMquality_ME1b = cms.bool(True),
+
+    ## bits for high-multiplicity triggers
+    useHighMultiplicityBits = cms.bool(False),
 )
 
 # to be used by ME21 chambers with GEM-CSC ILT
@@ -422,6 +460,9 @@ me21tmbSLHCGEM = cms.PSet(
     promoteALCTGEMpattern = cms.bool(True),
     promoteALCTGEMquality = cms.bool(True),
     promoteCLCTGEMquality = cms.bool(True),
+
+    ## bits for high-multiplicity triggers
+    useHighMultiplicityBits = cms.bool(False),
 )
 
 # to be used by ME31-ME41 chambers
@@ -446,6 +487,18 @@ meX1tmbSLHC = cms.PSet(
     ## run in debug mode
     debugLUTs = cms.bool(False),
     debugMatching = cms.bool(False),
+
+    ## bits for high-multiplicity triggers
+    useHighMultiplicityBits = cms.bool(False),
+)
+
+
+# MPC sorter config for Run2 and beyond
+mpcParamsRun2 = cms.PSet(
+    sortStubs = cms.bool(False),
+    dropInvalidStubs = cms.bool(False),
+    dropLowQualityStubs = cms.bool(False),
+    maxStubs = cms.uint32(18),
 )
 
 ## unganging in ME1/a
@@ -454,6 +507,7 @@ run2_common.toModify( cscTriggerPrimitiveDigis,
                       debugParameters = True,
                       checkBadChambers = False,
                       commonParam = dict(gangedME1a = False),
+                      mpcParams = mpcParamsRun2
                       )
 
 ## GEM-CSC ILT in ME1/1
@@ -479,11 +533,10 @@ phase2_muon.toModify( cscTriggerPrimitiveDigis,
                                          runME31Up = cms.bool(True),
                                          runME41Up = cms.bool(True)),
                       tmbSLHC = dict(ignoreAlctCrossClct = cms.bool(False)),
-                      clctSLHC = dict(useDynamicStateMachineZone = cms.bool(True)),
                       alctSLHCME21 = cscTriggerPrimitiveDigis.alctSLHC.clone(alctNplanesHitPattern = 3),
                       clctSLHCME21 = cscTriggerPrimitiveDigis.clctSLHC.clone(clctNplanesHitPattern = 3),
                       me21tmbSLHCGEM = me21tmbSLHCGEM,
-                      alctSLHCME3141 = cscTriggerPrimitiveDigis.alctSLHC.clone(alctNplanesHitPattern = 4),
+                      alctSLHCME3141 = cscTriggerPrimitiveDigis.alctParam07.clone(alctNplanesHitPattern = 4),
                       clctSLHCME3141 = cscTriggerPrimitiveDigis.clctSLHC.clone(clctNplanesHitPattern = 4),
                       meX1tmbSLHC = meX1tmbSLHC,
                       copadParamGE11 = copadParamGE11,

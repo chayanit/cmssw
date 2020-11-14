@@ -1,13 +1,13 @@
-# hltGetConfiguration --cff --data /dev/CMSSW_11_1_0/PIon --type PIon
+# hltGetConfiguration --cff --data /dev/CMSSW_11_2_0/PIon --type PIon
 
-# /dev/CMSSW_11_1_0/PIon/V1 (CMSSW_11_1_0_pre1)
+# /dev/CMSSW_11_2_0/PIon/V10 (CMSSW_11_2_0_pre7)
 
 import FWCore.ParameterSet.Config as cms
 
 fragment = cms.ProcessFragment( "HLT" )
 
 fragment.HLTConfigVersion = cms.PSet(
-  tableName = cms.string('/dev/CMSSW_11_1_0/PIon/V1')
+  tableName = cms.string('/dev/CMSSW_11_2_0/PIon/V10')
 )
 
 fragment.transferSystem = cms.PSet( 
@@ -3813,6 +3813,11 @@ fragment.PropagatorWithMaterialForMixedStep = cms.ESProducer( "PropagatorWithMat
   MaxDPhi = cms.double( 1.6 ),
   useRungeKutta = cms.bool( False )
 )
+fragment.SiStripClusterizerConditionsESProducer = cms.ESProducer( "SiStripClusterizerConditionsESProducer",
+  appendToDataLabel = cms.string( "" ),
+  QualityLabel = cms.string( "" ),
+  Label = cms.string( "" )
+)
 fragment.SiStripRegionConnectivity = cms.ESProducer( "SiStripRegionConnectivity",
   EtaDivisions = cms.untracked.uint32( 20 ),
   PhiDivisions = cms.untracked.uint32( 20 ),
@@ -3910,6 +3915,7 @@ fragment.ecalSeverityLevel = cms.ESProducer( "EcalSeverityLevelESProducer",
     kTime = cms.vstring( 'kOutOfTime' )
   )
 )
+fragment.hcalChannelPropertiesESProd = cms.ESProducer( "HcalChannelPropertiesEP" )
 fragment.hcalDDDRecConstants = cms.ESProducer( "HcalDDDRecConstantsESModule",
   appendToDataLabel = cms.string( "" )
 )
@@ -3982,39 +3988,12 @@ fragment.hltBoostedDoubleSecondaryVertexAK8Computer = cms.ESProducer( "Candidate
   useAdaBoost = cms.bool( False )
 )
 fragment.hltCombinedSecondaryVertex = cms.ESProducer( "CombinedSecondaryVertexESProducer",
-  charmCut = cms.double( 1.5 ),
   recordLabel = cms.string( "HLT" ),
+  categoryVariableName = cms.string( "vertexCategory" ),
   useTrackWeights = cms.bool( True ),
   useCategories = cms.bool( True ),
   pseudoMultiplicityMin = cms.uint32( 2 ),
-  categoryVariableName = cms.string( "vertexCategory" ),
-  trackPseudoSelection = cms.PSet( 
-    maxDistToAxis = cms.double( 0.07 ),
-    totalHitsMin = cms.uint32( 0 ),
-    ptMin = cms.double( 0.0 ),
-    sip2dSigMax = cms.double( 99999.9 ),
-    sip2dValMax = cms.double( 99999.9 ),
-    sip3dSigMax = cms.double( 99999.9 ),
-    sip3dValMax = cms.double( 99999.9 ),
-    maxDecayLen = cms.double( 5.0 ),
-    qualityClass = cms.string( "any" ),
-    jetDeltaRMax = cms.double( 0.3 ),
-    normChi2Max = cms.double( 99999.9 ),
-    pixelHitsMin = cms.uint32( 0 ),
-    sip2dSigMin = cms.double( 2.0 ),
-    sip2dValMin = cms.double( -99999.9 ),
-    sip3dSigMin = cms.double( -99999.9 ),
-    sip3dValMin = cms.double( -99999.9 )
-  ),
-  calibrationRecords = cms.vstring( 'CombinedSVRecoVertex',
-    'CombinedSVPseudoVertex',
-    'CombinedSVNoVertex' ),
-  trackPairV0Filter = cms.PSet(  k0sMassWindow = cms.double( 0.03 ) ),
   correctVertexMass = cms.bool( True ),
-  vertexFlip = cms.bool( False ),
-  minimumTrackWeight = cms.double( 0.5 ),
-  pseudoVertexV0Filter = cms.PSet(  k0sMassWindow = cms.double( 0.05 ) ),
-  trackMultiplicityMin = cms.uint32( 3 ),
   trackSelection = cms.PSet( 
     maxDistToAxis = cms.double( 0.07 ),
     totalHitsMin = cms.uint32( 0 ),
@@ -4033,54 +4012,44 @@ fragment.hltCombinedSecondaryVertex = cms.ESProducer( "CombinedSecondaryVertexES
     sip3dSigMin = cms.double( -99999.9 ),
     sip3dValMin = cms.double( -99999.9 )
   ),
+  calibrationRecords = cms.vstring( 'CombinedSVRecoVertex',
+    'CombinedSVPseudoVertex',
+    'CombinedSVNoVertex' ),
+  trackPairV0Filter = cms.PSet(  k0sMassWindow = cms.double( 0.03 ) ),
+  charmCut = cms.double( 1.5 ),
+  vertexFlip = cms.bool( False ),
+  minimumTrackWeight = cms.double( 0.5 ),
+  pseudoVertexV0Filter = cms.PSet(  k0sMassWindow = cms.double( 0.05 ) ),
+  trackMultiplicityMin = cms.uint32( 3 ),
+  trackPseudoSelection = cms.PSet( 
+    maxDistToAxis = cms.double( 0.07 ),
+    totalHitsMin = cms.uint32( 0 ),
+    ptMin = cms.double( 0.0 ),
+    sip2dSigMax = cms.double( 99999.9 ),
+    sip2dValMax = cms.double( 99999.9 ),
+    sip3dSigMax = cms.double( 99999.9 ),
+    sip3dValMax = cms.double( 99999.9 ),
+    maxDecayLen = cms.double( 5.0 ),
+    qualityClass = cms.string( "any" ),
+    jetDeltaRMax = cms.double( 0.3 ),
+    normChi2Max = cms.double( 99999.9 ),
+    pixelHitsMin = cms.uint32( 0 ),
+    sip2dSigMin = cms.double( 2.0 ),
+    sip2dValMin = cms.double( -99999.9 ),
+    sip3dSigMin = cms.double( -99999.9 ),
+    sip3dValMin = cms.double( -99999.9 )
+  ),
   trackSort = cms.string( "sip2dSig" ),
   SoftLeptonFlip = cms.bool( False ),
   trackFlip = cms.bool( False )
 )
 fragment.hltCombinedSecondaryVertexV2 = cms.ESProducer( "CombinedSecondaryVertexESProducer",
-  charmCut = cms.double( 1.5 ),
   recordLabel = cms.string( "HLT" ),
+  categoryVariableName = cms.string( "vertexCategory" ),
   useTrackWeights = cms.bool( True ),
   useCategories = cms.bool( True ),
   pseudoMultiplicityMin = cms.uint32( 2 ),
-  categoryVariableName = cms.string( "vertexCategory" ),
-  trackPseudoSelection = cms.PSet( 
-    max_pT_dRcut = cms.double( 0.1 ),
-    b_dR = cms.double( 0.6263 ),
-    min_pT = cms.double( 120.0 ),
-    b_pT = cms.double( 0.3684 ),
-    ptMin = cms.double( 0.0 ),
-    max_pT_trackPTcut = cms.double( 3.0 ),
-    max_pT = cms.double( 500.0 ),
-    useVariableJTA = cms.bool( False ),
-    maxDecayLen = cms.double( 5.0 ),
-    qualityClass = cms.string( "any" ),
-    normChi2Max = cms.double( 99999.9 ),
-    sip2dValMin = cms.double( -99999.9 ),
-    sip3dValMin = cms.double( -99999.9 ),
-    a_dR = cms.double( -0.001053 ),
-    maxDistToAxis = cms.double( 0.07 ),
-    totalHitsMin = cms.uint32( 0 ),
-    a_pT = cms.double( 0.005263 ),
-    sip2dSigMax = cms.double( 99999.9 ),
-    sip2dValMax = cms.double( 99999.9 ),
-    sip3dSigMax = cms.double( 99999.9 ),
-    sip3dValMax = cms.double( 99999.9 ),
-    min_pT_dRcut = cms.double( 0.5 ),
-    jetDeltaRMax = cms.double( 0.3 ),
-    pixelHitsMin = cms.uint32( 0 ),
-    sip3dSigMin = cms.double( -99999.9 ),
-    sip2dSigMin = cms.double( 2.0 )
-  ),
-  calibrationRecords = cms.vstring( 'CombinedSVIVFV2RecoVertex',
-    'CombinedSVIVFV2PseudoVertex',
-    'CombinedSVIVFV2NoVertex' ),
-  trackPairV0Filter = cms.PSet(  k0sMassWindow = cms.double( 0.03 ) ),
   correctVertexMass = cms.bool( True ),
-  vertexFlip = cms.bool( False ),
-  minimumTrackWeight = cms.double( 0.5 ),
-  pseudoVertexV0Filter = cms.PSet(  k0sMassWindow = cms.double( 0.05 ) ),
-  trackMultiplicityMin = cms.uint32( 3 ),
   trackSelection = cms.PSet( 
     max_pT_dRcut = cms.double( 0.1 ),
     b_dR = cms.double( 0.6263 ),
@@ -4108,6 +4077,43 @@ fragment.hltCombinedSecondaryVertexV2 = cms.ESProducer( "CombinedSecondaryVertex
     pixelHitsMin = cms.uint32( 0 ),
     sip3dSigMin = cms.double( -99999.9 ),
     sip2dSigMin = cms.double( -99999.9 )
+  ),
+  calibrationRecords = cms.vstring( 'CombinedSVIVFV2RecoVertex',
+    'CombinedSVIVFV2PseudoVertex',
+    'CombinedSVIVFV2NoVertex' ),
+  trackPairV0Filter = cms.PSet(  k0sMassWindow = cms.double( 0.03 ) ),
+  charmCut = cms.double( 1.5 ),
+  vertexFlip = cms.bool( False ),
+  minimumTrackWeight = cms.double( 0.5 ),
+  pseudoVertexV0Filter = cms.PSet(  k0sMassWindow = cms.double( 0.05 ) ),
+  trackMultiplicityMin = cms.uint32( 3 ),
+  trackPseudoSelection = cms.PSet( 
+    max_pT_dRcut = cms.double( 0.1 ),
+    b_dR = cms.double( 0.6263 ),
+    min_pT = cms.double( 120.0 ),
+    b_pT = cms.double( 0.3684 ),
+    ptMin = cms.double( 0.0 ),
+    max_pT_trackPTcut = cms.double( 3.0 ),
+    max_pT = cms.double( 500.0 ),
+    useVariableJTA = cms.bool( False ),
+    maxDecayLen = cms.double( 5.0 ),
+    qualityClass = cms.string( "any" ),
+    normChi2Max = cms.double( 99999.9 ),
+    sip2dValMin = cms.double( -99999.9 ),
+    sip3dValMin = cms.double( -99999.9 ),
+    a_dR = cms.double( -0.001053 ),
+    maxDistToAxis = cms.double( 0.07 ),
+    totalHitsMin = cms.uint32( 0 ),
+    a_pT = cms.double( 0.005263 ),
+    sip2dSigMax = cms.double( 99999.9 ),
+    sip2dValMax = cms.double( 99999.9 ),
+    sip3dSigMax = cms.double( 99999.9 ),
+    sip3dValMax = cms.double( 99999.9 ),
+    min_pT_dRcut = cms.double( 0.5 ),
+    jetDeltaRMax = cms.double( 0.3 ),
+    pixelHitsMin = cms.uint32( 0 ),
+    sip3dSigMin = cms.double( -99999.9 ),
+    sip2dSigMin = cms.double( 2.0 )
   ),
   trackSort = cms.string( "sip2dSig" ),
   SoftLeptonFlip = cms.bool( False ),
@@ -4864,11 +4870,12 @@ fragment.hltESPPixelCPEGeneric = cms.ESProducer( "PixelCPEGenericESProducer",
   ClusterProbComputationFlag = cms.int32( 0 ),
   Alpha2Order = cms.bool( True ),
   appendToDataLabel = cms.string( "" ),
-  EdgeClusterErrorY = cms.double( 85.0 ),
+  lAWidthFPix = cms.double( 0.0 ),
   SmallPitch = cms.bool( False ),
   LoadTemplatesFromDB = cms.bool( True ),
+  NoTemplateErrorsWhenNoTrkAngles = cms.bool( False ),
   EdgeClusterErrorX = cms.double( 50.0 ),
-  lAWidthFPix = cms.double( 0.0 ),
+  EdgeClusterErrorY = cms.double( 85.0 ),
   lAOffset = cms.double( 0.0 ),
   ComponentName = cms.string( "hltESPPixelCPEGeneric" ),
   MagneticFieldRecord = cms.ESInputTag( "" ),
@@ -5306,7 +5313,11 @@ fragment.siStripLorentzAngleDepESProducer = cms.ESProducer( "SiStripLorentzAngle
 
 fragment.ThroughputService = cms.Service( "ThroughputService",
     dqmPath = cms.untracked.string( "HLT/Throughput" ),
+    eventRange = cms.untracked.uint32( 10000 ),
     timeRange = cms.untracked.double( 60000.0 ),
+    printEventSummary = cms.untracked.bool( False ),
+    eventResolution = cms.untracked.uint32( 1 ),
+    enableDQM = cms.untracked.bool( True ),
     dqmPathByProcesses = cms.untracked.bool( False ),
     timeResolution = cms.untracked.double( 5.828 )
 )
@@ -5319,6 +5330,7 @@ fragment.hltGetConditions = cms.EDAnalyzer( "EventSetupRecordDataGetter",
 fragment.hltGetRaw = cms.EDAnalyzer( "HLTGetRaw",
     RawDataCollection = cms.InputTag( "rawDataCollector" )
 )
+fragment.hltPSetMap = cms.EDProducer( "ParameterSetBlobProducer" )
 fragment.hltBoolFalse = cms.EDFilter( "HLTBool",
     result = cms.bool( False )
 )
@@ -5354,6 +5366,7 @@ fragment.hltGtStage2Digis = cms.EDProducer( "L1TRawToDigi",
 fragment.hltGtStage2ObjectMap = cms.EDProducer( "L1TGlobalProducer",
     L1DataBxInEvent = cms.int32( 5 ),
     AlgorithmTriggersUnmasked = cms.bool( True ),
+    RequireMenuToMatchAlgoBlkInput = cms.bool( True ),
     EtSumInputTag = cms.InputTag( 'hltGtStage2Digis','EtSum' ),
     BstLengthBytes = cms.int32( -1 ),
     MuonInputTag = cms.InputTag( 'hltGtStage2Digis','Muon' ),
@@ -5367,12 +5380,12 @@ fragment.hltGtStage2ObjectMap = cms.EDProducer( "L1TGlobalProducer",
     PrescaleCSVFile = cms.string( "prescale_L1TGlobal.csv" ),
     PrintL1Menu = cms.untracked.bool( False ),
     ExtInputTag = cms.InputTag( "hltGtStage2Digis" ),
-    AlgoBlkInputTag = cms.InputTag( "hltGtStage2Digis" ),
+    TauInputTag = cms.InputTag( 'hltGtStage2Digis','Tau' ),
     PrescaleSet = cms.uint32( 1 ),
     EGammaInputTag = cms.InputTag( 'hltGtStage2Digis','EGamma' ),
     ProduceL1GtObjectMapRecord = cms.bool( True ),
     GetPrescaleColumnFromData = cms.bool( False ),
-    TauInputTag = cms.InputTag( 'hltGtStage2Digis','Tau' )
+    AlgoBlkInputTag = cms.InputTag( "hltGtStage2Digis" )
 )
 fragment.hltScalersRawToDigi = cms.EDProducer( "ScalersRawToDigi",
     scalersInputTag = cms.InputTag( "rawDataCollector" )
@@ -5459,7 +5472,7 @@ fragment.HLTEndSequence = cms.Sequence( fragment.hltBoolEnd )
 fragment.HLTBeginSequenceRandom = cms.Sequence( fragment.hltRandomEventsFilter + fragment.hltGtStage2Digis )
 fragment.HLTBeginSequence = cms.Sequence( fragment.hltTriggerType + fragment.HLTL1UnpackerSequence + fragment.HLTBeamSpot )
 
-fragment.HLTriggerFirstPath = cms.Path( fragment.hltGetConditions + fragment.hltGetRaw + fragment.hltBoolFalse )
+fragment.HLTriggerFirstPath = cms.Path( fragment.hltGetConditions + fragment.hltGetRaw + fragment.hltPSetMap + fragment.hltBoolFalse )
 fragment.HLT_Physics_v7 = cms.Path( fragment.HLTBeginSequenceL1Fat + fragment.hltPrePhysics + fragment.HLTEndSequence )
 fragment.HLT_Random_v3 = cms.Path( fragment.HLTBeginSequenceRandom + fragment.hltPreRandom + fragment.HLTEndSequence )
 fragment.HLT_ZeroBias_v6 = cms.Path( fragment.HLTBeginSequence + fragment.hltL1sZeroBias + fragment.hltPreZeroBias + fragment.HLTEndSequence )

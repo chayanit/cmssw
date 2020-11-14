@@ -4,11 +4,13 @@
 #include "Worker.h"
 #include "UnscheduledAuxiliary.h"
 #include "UnscheduledConfigurator.h"
+#include "FWCore/Framework/interface/EventPrincipal.h"
 #include "FWCore/Framework/interface/MergeableRunProductMetadata.h"
 #include "FWCore/Framework/interface/Principal.h"
-#include "FWCore/Framework/interface/ProductDeletedException.h"
+#include "FWCore/Framework/src/ProductDeletedException.h"
 #include "FWCore/Framework/interface/SharedResourcesAcquirer.h"
 #include "FWCore/Framework/interface/DelayedReader.h"
+#include "FWCore/Framework/src/TransitionInfoTypes.h"
 #include "DataFormats/Provenance/interface/ProductProvenanceRetriever.h"
 #include "DataFormats/Provenance/interface/BranchKey.h"
 #include "DataFormats/Provenance/interface/ParentageRegistry.h"
@@ -163,17 +165,17 @@ namespace edm {
                                                                         ModuleCallingContext const* mcc) const {
     return resolveProductImpl<true>([this, &principal, mcc]() {
       auto branchType = principal.branchType();
-      if (branchType != InEvent) {
+      if (branchType == InLumi || branchType == InRun) {
         //delayed get has not been allowed with Run or Lumis
         // The file may already be closed so the reader is invalid
         return;
       }
-      if (mcc and (branchType == InEvent) and aux_) {
+      if (mcc and (branchType == InEvent || branchType == InProcess) and aux_) {
         aux_->preModuleDelayedGetSignal_.emit(*(mcc->getStreamContext()), *mcc);
       }
 
       auto sentry(make_sentry(mcc, [this, branchType](ModuleCallingContext const* iContext) {
-        if (branchType == InEvent and aux_) {
+        if ((branchType == InEvent || branchType == InProcess) and aux_) {
           aux_->postModuleDelayedGetSignal_.emit(*(iContext->getStreamContext()), *iContext);
         }
       }));
@@ -247,10 +249,12 @@ namespace edm {
                                             ServiceToken const& token,
                                             SharedResourcesAcquirer* sra,
                                             ModuleCallingContext const* mcc) const {
+    //need to try changing m_prefetchRequested before adding to m_waitingTasks
+    bool expected = false;
+    bool prefetchRequested = m_prefetchRequested.compare_exchange_strong(expected, true);
     m_waitingTasks.add(waitTask);
 
-    bool expected = false;
-    if (m_prefetchRequested.compare_exchange_strong(expected, true)) {
+    if (prefetchRequested) {
       auto workToDo = [this, mcc, &principal, token]() {
         //need to make sure Service system is activated on the reading thread
         ServiceRegistry::Operate operate(token);
@@ -331,10 +335,12 @@ namespace edm {
           return;
         }
       }
+      //Need to try modifying prefetchRequested_ before adding to m_waitingTasks
+      bool expected = false;
+      bool prefetchRequested = prefetchRequested_.compare_exchange_strong(expected, true);
       m_waitingTasks.add(waitTask);
 
-      bool expected = false;
-      if (worker_ and prefetchRequested_.compare_exchange_strong(expected, true)) {
+      if (worker_ and prefetchRequested) {
         //using a waiting task to do a callback guarantees that
         // the m_waitingTasks list will be released from waiting even
         // if the module does not put this data product or the
@@ -378,24 +384,24 @@ namespace edm {
     assert(worker_ != nullptr);
   }
 
-  ProductResolverBase::Resolution UnscheduledProductResolver::resolveProduct_(Principal const& principal,
+  ProductResolverBase::Resolution UnscheduledProductResolver::resolveProduct_(Principal const&,
                                                                               bool skipCurrentProcess,
                                                                               SharedResourcesAcquirer* sra,
                                                                               ModuleCallingContext const* mcc) const {
     if (!skipCurrentProcess and worker_) {
-      return resolveProductImpl<true>([&principal, this, sra, mcc]() {
+      return resolveProductImpl<true>([this, sra, mcc]() {
         try {
-          auto const& event = static_cast<EventPrincipal const&>(principal);
           ParentContext parentContext(mcc);
           aux_->preModuleDelayedGetSignal_.emit(*(mcc->getStreamContext()), *mcc);
 
-          auto workCall = [this, &event, &parentContext, mcc]() {
+          auto workCall = [this, &parentContext, mcc]() {
             auto sentry(make_sentry(mcc, [this](ModuleCallingContext const* iContext) {
               aux_->postModuleDelayedGetSignal_.emit(*(iContext->getStreamContext()), *iContext);
             }));
 
+            EventTransitionInfo const& info = aux_->eventTransitionInfo();
             worker_->doWork<OccurrenceTraits<EventPrincipal, BranchActionStreamBegin> >(
-                event, *(aux_->eventSetup()), event.streamID(), parentContext, mcc->getStreamContext());
+                info, info.principal().streamID(), parentContext, mcc->getStreamContext());
           };
 
           if (sra) {
@@ -425,9 +431,11 @@ namespace edm {
     if (skipCurrentProcess) {
       return;
     }
-    waitingTasks_.add(waitTask);
+    //need to try changing prefetchRequested_ before adding to waitingTasks_
     bool expected = false;
-    if (prefetchRequested_.compare_exchange_strong(expected, true)) {
+    bool prefetchRequested = prefetchRequested_.compare_exchange_strong(expected, true);
+    waitingTasks_.add(waitTask);
+    if (prefetchRequested) {
       //Have to create a new task which will make sure the state for UnscheduledProductResolver
       // is properly set after the module has run
       auto t = make_waiting_task(tbb::task::allocate_root(), [this](std::exception_ptr const* iPtr) {
@@ -446,11 +454,11 @@ namespace edm {
         }
         waitingTasks_.doneWaiting(nullptr);
       });
-      auto const& event = static_cast<EventPrincipal const&>(principal);
-      ParentContext parentContext(mcc);
 
+      ParentContext parentContext(mcc);
+      EventTransitionInfo const& info = aux_->eventTransitionInfo();
       worker_->doWorkAsync<OccurrenceTraits<EventPrincipal, BranchActionStreamBegin> >(
-          t, event, *(aux_->eventSetup()), token, event.streamID(), parentContext, mcc->getStreamContext());
+          t, info, token, info.principal().streamID(), parentContext, mcc->getStreamContext());
     }
   }
 
@@ -696,10 +704,13 @@ namespace edm {
     if (branchDescription().availableOnlyAtEndTransition() and mcc and not mcc->parent().isAtEndTransition()) {
       return;
     }
+
+    //need to try changing prefetchRequested before adding to waitingTasks
+    bool expected = false;
+    bool doPrefetchRequested = prefetchRequested().compare_exchange_strong(expected, true);
     waitingTasks().add(waitTask);
 
-    bool expected = false;
-    if (prefetchRequested().compare_exchange_strong(expected, true)) {
+    if (doPrefetchRequested) {
       //using a waiting task to do a callback guarantees that
       // the waitingTasks() list will be released from waiting even
       // if the module does not put this data product or the
@@ -763,10 +774,13 @@ namespace edm {
     if (skipCurrentProcess) {
       return;
     }
+
+    //need to try changing prefetchRequested_ before adding to waitingTasks_
+    bool expected = false;
+    bool doPrefetchRequested = prefetchRequested().compare_exchange_strong(expected, true);
     waitingTasks().add(waitTask);
 
-    bool expected = false;
-    if (prefetchRequested().compare_exchange_strong(expected, true)) {
+    if (doPrefetchRequested) {
       //using a waiting task to do a callback guarantees that
       // the waitingTasks() list will be released from waiting even
       // if the module does not put this data product or the
@@ -920,10 +934,12 @@ namespace edm {
 
     //If timeToMakeAtEnd is false, then it is equivalent to skipping the current process
     if (not skipCurrentProcess and timeToMakeAtEnd) {
+      //need to try changing prefetchRequested_ before adding to waitingTasks_
+      bool expected = false;
+      bool prefetchRequested = prefetchRequested_.compare_exchange_strong(expected, true);
       waitingTasks_.add(waitTask);
 
-      bool expected = false;
-      if (prefetchRequested_.compare_exchange_strong(expected, true)) {
+      if (prefetchRequested) {
         //we are the first thread to request
         tryPrefetchResolverAsync(0, principal, false, sra, mcc, token);
       }
