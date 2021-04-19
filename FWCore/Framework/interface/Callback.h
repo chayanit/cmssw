@@ -77,38 +77,42 @@ namespace edm {
         bool expected = false;
         auto doPrefetch = wasCalledForThisRecord_.compare_exchange_strong(expected, true);
         taskList_.add(iTask);
+        auto group = iTask.group();
         if (doPrefetch) {
           callingContext_.setContext(ESModuleCallingContext::State::kPrefetching, iParent);
           iRecord->activityRegistry()->preESModulePrefetchingSignal_.emit(iRecord->key(), callingContext_);
           if UNLIKELY (producer_->hasMayConsumes()) {
             //after prefetching need to do the mayGet
+            ServiceWeakToken weakToken = token;
             auto mayGetTask = edm::make_waiting_task(
-                tbb::task::allocate_root(), [this, iRecord, iEventSetupImpl, token](std::exception_ptr const* iExcept) {
+                [this, iRecord, iEventSetupImpl, weakToken, group](std::exception_ptr const* iExcept) {
                   if (iExcept) {
-                    runProducerAsync(iExcept, iRecord, iEventSetupImpl, token);
+                    runProducerAsync(group, iExcept, iRecord, iEventSetupImpl, weakToken.lock());
                     return;
                   }
                   if (handleMayGet(iRecord, iEventSetupImpl)) {
                     auto runTask = edm::make_waiting_task(
-                        tbb::task::allocate_root(),
-                        [this, iRecord, iEventSetupImpl, token](std::exception_ptr const* iExcept) {
-                          runProducerAsync(iExcept, iRecord, iEventSetupImpl, token);
+                        [this, group, iRecord, iEventSetupImpl, weakToken](std::exception_ptr const* iExcept) {
+                          runProducerAsync(group, iExcept, iRecord, iEventSetupImpl, weakToken.lock());
                         });
-                    prefetchNeededDataAsync(
-                        WaitingTaskHolder(runTask), iEventSetupImpl, &((*postMayGetProxies_).front()), token);
+                    prefetchNeededDataAsync(WaitingTaskHolder(*group, runTask),
+                                            iEventSetupImpl,
+                                            &((*postMayGetProxies_).front()),
+                                            weakToken.lock());
                   } else {
-                    runProducerAsync(iExcept, iRecord, iEventSetupImpl, token);
+                    runProducerAsync(group, iExcept, iRecord, iEventSetupImpl, weakToken.lock());
                   }
                 });
 
             //Get everything we can before knowing about the mayGets
-            prefetchNeededDataAsync(WaitingTaskHolder(mayGetTask), iEventSetupImpl, getTokenIndices(), token);
+            prefetchNeededDataAsync(WaitingTaskHolder(*group, mayGetTask), iEventSetupImpl, getTokenIndices(), token);
           } else {
+            ServiceWeakToken weakToken = token;
             auto task = edm::make_waiting_task(
-                tbb::task::allocate_root(), [this, iRecord, iEventSetupImpl, token](std::exception_ptr const* iExcept) {
-                  runProducerAsync(iExcept, iRecord, iEventSetupImpl, token);
+                [this, group, iRecord, iEventSetupImpl, weakToken](std::exception_ptr const* iExcept) {
+                  runProducerAsync(group, iExcept, iRecord, iEventSetupImpl, weakToken.lock());
                 });
-            prefetchNeededDataAsync(WaitingTaskHolder(task), iEventSetupImpl, getTokenIndices(), token);
+            prefetchNeededDataAsync(WaitingTaskHolder(*group, task), iEventSetupImpl, getTokenIndices(), token);
           }
         }
       }
@@ -146,7 +150,6 @@ namespace edm {
                                    EventSetupImpl const* iImpl,
                                    ESProxyIndex const* proxies,
                                    edm::ServiceToken const& token) const {
-        WaitingTaskHolder h(task);
         auto recs = producer_->getTokenRecordIndices(id_);
         auto n = producer_->numberOfTokenIndices(id_);
         for (size_t i = 0; i != n; ++i) {
@@ -166,7 +169,8 @@ namespace edm {
         return static_cast<bool>(postMayGetProxies_);
       }
 
-      void runProducerAsync(std::exception_ptr const* iExcept,
+      void runProducerAsync(tbb::task_group* iGroup,
+                            std::exception_ptr const* iExcept,
                             EventSetupRecordImpl const* iRecord,
                             EventSetupImpl const* iEventSetupImpl,
                             ServiceToken const& token) {
@@ -176,11 +180,12 @@ namespace edm {
           return;
         }
         iRecord->activityRegistry()->postESModulePrefetchingSignal_.emit(iRecord->key(), callingContext_);
-        producer_->queue().push([this, iRecord, iEventSetupImpl, token]() {
+        ServiceWeakToken weakToken = token;
+        producer_->queue().push(*iGroup, [this, iRecord, iEventSetupImpl, weakToken]() {
           callingContext_.setState(ESModuleCallingContext::State::kRunning);
           std::exception_ptr exceptPtr;
           try {
-            convertException::wrap([this, iRecord, iEventSetupImpl, token] {
+            convertException::wrap([this, iRecord, iEventSetupImpl, weakToken] {
               auto proxies = getTokenIndices();
               if (postMayGetProxies_) {
                 proxies = &((*postMayGetProxies_).front());
@@ -188,7 +193,7 @@ namespace edm {
               TRecord rec;
               edm::ESParentContext pc{&callingContext_};
               rec.setImpl(iRecord, transitionID(), proxies, iEventSetupImpl, &pc, true);
-              ServiceRegistry::Operate operate(token);
+              ServiceRegistry::Operate operate(weakToken.lock());
               iRecord->activityRegistry()->preESModuleSignal_.emit(iRecord->key(), callingContext_);
               struct EndGuard {
                 EndGuard(EventSetupRecordImpl const* iRecord, ESModuleCallingContext const& iContext)

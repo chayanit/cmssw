@@ -3,6 +3,7 @@ import FWCore.ParameterSet.Config as cms
 
 #AOD content
 TICL_AOD = cms.PSet(
+  # 13/04/2021 Felice: MultiClusters will be deprecated soon
     outputCommands = cms.untracked.vstring(
       'keep *_ticlMultiClustersFromTrackstersEM_*_*',
       'keep *_ticlMultiClustersFromTrackstersHAD_*_*',
@@ -10,6 +11,7 @@ TICL_AOD = cms.PSet(
       'keep *_ticlMultiClustersFromTrackstersTrkEM_*_*',
       'keep *_ticlMultiClustersFromTrackstersMIP_*_*',
       'keep *_ticlMultiClustersFromTrackstersMerge_*_*',
+      'keep *_ticlMultiClustersFromSimTracksters_*_*',
       )
     )
 
@@ -22,8 +24,10 @@ TICL_RECO = cms.PSet(
       'keep *_ticlTrackstersTrk_*_*',
       'keep *_ticlTrackstersMIP_*_*',
       'keep *_ticlTrackstersMerge_*_*',
+      'keep *_ticlTrackstersHFNoseTrkEM_*_*',
       'keep *_ticlTrackstersHFNoseEM_*_*',
       'keep *_ticlTrackstersHFNoseMIP_*_*',
+      'keep *_ticlTrackstersHFNoseHAD_*_*',
       'keep *_ticlTrackstersHFNoseMerge_*_*',
       'keep *_pfTICL_*_*'
       )
@@ -33,6 +37,7 @@ TICL_RECO.outputCommands.extend(TICL_AOD.outputCommands)
 # FEVT Content
 TICL_FEVT = cms.PSet(
     outputCommands = cms.untracked.vstring(
+      'keep *_ticlSimTracksters_*_*',
       )
     )
 TICL_FEVT.outputCommands.extend(TICL_RECO.outputCommands)
